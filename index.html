@@ -6,14 +6,14 @@
 <meta name="theme-color" content="#080008">
 <title>For Hasbi Naz 🖤</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+<style>
 :root {
   --pink: #ff39a8;
   --pink2: #ff83cb;
   --dark: #080008;
-  --muted: #d9a5c4;
 }
 
 * {
@@ -75,6 +75,7 @@ button {
 .login-symbol {
   font-size: 42px;
   margin-bottom: 15px;
+  color: #ff83cb;
 }
 
 .login-card h1 {
@@ -91,22 +92,19 @@ button {
   letter-spacing: 1px;
 }
 
-.login-card input {
+.password-display {
   width: 100%;
-  padding: 15px;
+  padding: 16px;
   background: #10000c;
-  border: 1px solid #632147;
+  border: 1px solid #a72b70;
   border-radius: 12px;
-  color: white;
+  color: #ffb4dc;
   text-align: center;
-  font-size: 15px;
-  outline: none;
-  letter-spacing: 3px;
-}
-
-.login-card input:focus {
-  border-color: var(--pink);
-  box-shadow: 0 0 18px #ff39a833;
+  font-size: 19px;
+  letter-spacing: 4px;
+  font-weight: 500;
+  box-shadow: inset 0 0 15px #ff39a811;
+  user-select: none;
 }
 
 .main-btn {
@@ -127,14 +125,7 @@ button {
   transform: scale(.96);
 }
 
-#error {
-  min-height: 20px;
-  margin-top: 13px;
-  color: #ff83cb;
-  font-size: 12px;
-}
-
-/* MYSTIC BACKGROUND — PAGES 2 AND 3 */
+/* MYSTIC BACKGROUND */
 
 .mystic-bg {
   position: fixed;
@@ -414,16 +405,11 @@ footer {
     <h1>For Hasbi Naz</h1>
     <p>A LITTLE WORLD MADE JUST FOR YOU</p>
 
-    <input
-      type="password"
-      id="password"
-      placeholder="DD-MM-YYYY"
-      maxlength="10"
-      autocomplete="off"
-    >
+    <div class="password-display">19-11-2008</div>
 
-    <button class="main-btn" onclick="unlock()">UNLOCK MY SURPRISE ♡</button>
-    <div id="error"></div>
+    <button class="main-btn" onclick="unlock()">
+      UNLOCK MY SURPRISE ♡
+    </button>
   </div>
 </section>
 
@@ -571,14 +557,6 @@ const finalPage = document.getElementById("final");
 const music = document.getElementById("music");
 
 function unlock() {
-  const entered = document.getElementById("password").value.trim();
-
-  if (entered !== PASSWORD) {
-    document.getElementById("error").textContent =
-      "Wrong password 🥺 Try again.";
-    return;
-  }
-
   login.classList.remove("active");
   login.style.display = "none";
 
@@ -593,11 +571,7 @@ function unlock() {
   startParticles();
 
   music.volume = 0.55;
-  music.play().then(() => {
-    updateMusicButton();
-  }).catch(() => {
-    updateMusicButton();
-  });
+  music.play().then(updateMusicButton).catch(updateMusicButton);
 }
 
 function showNote() {
@@ -609,8 +583,7 @@ function showNote() {
 function toggleMusic() {
   if (music.paused) {
     music.play().then(updateMusicButton).catch(() => {
-      document.getElementById("musicBtn").textContent =
-        "♫ Tap to retry";
+      document.getElementById("musicBtn").textContent = "♫ Tap to retry";
     });
   } else {
     music.pause();
@@ -623,7 +596,7 @@ function updateMusicButton() {
     music.paused ? "♫ Music Off" : "♫ Music On";
 }
 
-/* CUSTOM MYSTICAL PARTICLE ANIMATION */
+/* PREMIUM MYSTIC PARTICLES */
 
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
@@ -668,10 +641,7 @@ function startParticles() {
 
   resizeCanvas();
 
-  const count = Math.min(
-    100,
-    Math.max(45, Math.floor(width / 5))
-  );
+  const count = Math.min(100, Math.max(45, Math.floor(width / 5)));
 
   for (let i = 0; i < count; i++) {
     particles.push(createParticle(true));
@@ -729,10 +699,6 @@ function animateParticles() {
 
   requestAnimationFrame(animateParticles);
 }
-
-document.getElementById("password").addEventListener("keydown", e => {
-  if (e.key === "Enter") unlock();
-});
 </script>
 
 </body>
