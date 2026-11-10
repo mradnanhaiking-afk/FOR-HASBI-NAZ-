@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -20,6 +20,7 @@
   --muted:#c2aab9;
   --serif:"Cormorant Garamond",Georgia,serif;
   --sans:"DM Sans",Arial,sans-serif;
+  --urdu:"Noto Nastaliq Urdu",serif;
 }
 
 *{box-sizing:border-box}
@@ -62,7 +63,6 @@ button{cursor:pointer}
   pointer-events:none;
   z-index:0;
 }
-
 .flower{
   position:absolute;
   width:var(--size);
@@ -73,7 +73,6 @@ button{cursor:pointer}
   filter:drop-shadow(0 0 13px #ff3e9d77);
   animation:flowerDrift var(--duration) ease-in-out infinite alternate;
 }
-
 .flower:before,.flower:after{
   content:"";
   position:absolute;
@@ -93,7 +92,6 @@ button{cursor:pointer}
   background:radial-gradient(circle,#fff4c7 0 18%,#ffd05d 35%,#d77a30 75%);
   box-shadow:0 0 18px #ffd05d99;
 }
-
 @keyframes flowerDrift{
   0%{transform:translate(0,0) rotate(-12deg) scale(.9)}
   100%{transform:translate(18px,-30px) rotate(20deg) scale(1.1)}
@@ -190,7 +188,6 @@ button{cursor:pointer}
   from{opacity:0;transform:translateY(35px) scale(.96)}
   to{opacity:1;transform:translateY(0) scale(1)}
 }
-
 .eyebrow{
   font-size:.68rem;
   letter-spacing:.3em;
@@ -374,7 +371,7 @@ button{cursor:pointer}
   opacity:0;
 }
 
-/* MAIN WEBSITE */
+/* WEBSITE */
 #site{display:none;position:relative;z-index:1}
 .topbar{
   position:sticky;
@@ -472,6 +469,69 @@ button{cursor:pointer}
   margin:0 auto 30px;
 }
 
+/* URDU POETRY */
+.urdu{
+  font-family:var(--urdu);
+  direction:rtl;
+  text-align:center;
+  color:#ffe0ef;
+  font-size:clamp(1.35rem,5vw,2rem);
+  line-height:2.25;
+  padding:5px 0 15px;
+}
+.poetry-card{
+  position:relative;
+  overflow:hidden;
+  padding:32px 23px;
+  margin:25px auto;
+  max-width:720px;
+  border-radius:22px;
+  border:1px solid #ff83bd44;
+  background:linear-gradient(145deg,#241020dd,#100a10ee);
+  box-shadow:0 15px 50px #0007,0 0 35px #ff3e9d0c;
+  transition:.4s;
+}
+.poetry-card:hover{
+  transform:translateY(-6px);
+  border-color:#ff83bd99;
+  box-shadow:0 20px 55px #ff3e9d19;
+}
+.poetry-card:before{
+  content:"❀";
+  position:absolute;
+  top:8px;
+  left:15px;
+  color:#ff83bd55;
+  font-size:30px;
+}
+.poetry-card:after{
+  content:"✧";
+  position:absolute;
+  right:20px;
+  bottom:5px;
+  color:#ff83bd66;
+  font-size:35px;
+}
+.poetry-translation{
+  color:#d6b6c8;
+  font:italic 1.08rem/1.8 var(--serif);
+  text-align:center;
+  margin-top:14px;
+}
+.poetry-number{
+  color:var(--pink2);
+  font-size:.65rem;
+  letter-spacing:.25em;
+  text-align:center;
+  margin-bottom:17px;
+}
+.poetry-divider{
+  width:35px;
+  height:1px;
+  background:#ff83bd88;
+  margin:17px auto;
+}
+
 /* VIDEO */
 .video-box{
   border:1px solid #ff83bd55;
@@ -519,6 +579,27 @@ button{cursor:pointer}
   color:var(--pink2);
   text-align:right;
   margin-top:28px;
+}
+
+/* CHUGU SPECIAL */
+.chugu-note{
+  max-width:700px;
+  margin:25px auto;
+  text-align:center;
+  padding:35px 22px;
+  border:1px solid #ff83bd55;
+  border-radius:25px;
+  background:radial-gradient(circle at center,#4b1535 0%,#1a0c18 65%,#100910 100%);
+  box-shadow:0 0 45px #ff3e9d12;
+}
+.chugu-note h3{
+  font:italic 3rem var(--serif);
+  color:var(--pink2);
+  margin:0 0 12px;
+}
+.chugu-note p{
+  color:#f4d9e7;
+  font:1.25rem/1.8 var(--serif);
 }
 
 /* FINAL WISH */
@@ -618,12 +699,10 @@ button{cursor:pointer}
     </p>
 
     <div class="password-label">
-      PASSWORD IS YOU BIRTHDATE.
+      PASSWORD IS YOUR BIRTHDATE.
     </div>
 
     <form id="passwordForm">
-
-      <!-- PASSWORD IS VISIBLE AND PRE-FILLED -->
       <input
         id="passwordInput"
         class="field"
@@ -639,19 +718,18 @@ button{cursor:pointer}
       <button class="btn" type="submit">
         UNLOCK YOUR SURPRISE ✦
       </button>
-
     </form>
 
     <div id="passwordError" class="error" aria-live="polite"></div>
 
     <div class="eyebrow" style="font-size:.58rem;letter-spacing:.2em;margin-top:15px">
-      Made with love · For Hasbi Naz
+      Made with love ♡
     </div>
 
   </div>
 </section>
 
-<!-- GIFT BOX SCREEN -->
+<!-- GIFT BOX -->
 <section id="giftScreen" class="screen">
   <div class="glass">
 
@@ -678,17 +756,16 @@ button{cursor:pointer}
   </div>
 </section>
 
-<!-- BIRTHDAY WEBSITE -->
+<!-- MAIN WEBSITE -->
 <main id="site">
 
   <header class="topbar">
-    <div class="brand">H. N. <span class="pink">✦</span></div>
+    <div class="brand">A little love <span class="pink">✦</span></div>
     <button class="music" id="musicBtn" type="button">♫ Music: Off</button>
   </header>
 
-  <!-- GRAND BIRTHDAY REVEAL -->
+  <!-- FRONT PAGE: HASBI NAZ -->
   <section class="main-hero" id="home">
-
     <div class="main-hero-inner">
 
       <div class="eyebrow">19 November · Your day, your universe</div>
@@ -709,13 +786,98 @@ button{cursor:pointer}
         This tiny universe was made to celebrate you.
       </p>
 
-      <a class="btn" href="#video" style="display:inline-block;text-decoration:none">
-        EXPLORE YOUR SURPRISE ↓
+      <a class="btn" href="#poetry" style="display:inline-block;text-decoration:none">
+        ENTER YOUR LITTLE WORLD ↓
       </a>
 
       <div class="scrollhint">SCROLL TO FEEL THE LOVE</div>
 
     </div>
+  </section>
+
+  <!-- FIRST POETRY -->
+  <section class="section center" id="poetry">
+
+    <div class="eyebrow">Alfaaz jo dil se nikle hain</div>
+
+    <h2 class="section-title">
+      For my <span class="pink">Chugu</span> ♡
+    </h2>
+
+    <p class="section-copy">
+      Kuch ehsaas lafzon mein nahi aate,
+      phir bhi aaj tumhare liye kuch likhne ki koshish ki hai.
+    </p>
+
+    <div class="poetry-card">
+      <div class="poetry-number">01 · EK KHOOBSURAT EHSAAS</div>
+
+      <div class="urdu" lang="ur">
+        تم مسکراؤ تو موسم بھی نکھر جاتے ہیں،
+        <br>
+        تم جو دیکھو تو دن سنور جاتے ہیں،
+        <br>
+        کیا لکھوں تمہاری تعریف میں اے چُگو،
+        <br>
+        تمہارے ذکر سے لفظ بھی مہک جاتے ہیں۔
+      </div>
+
+      <div class="poetry-divider"></div>
+
+      <div class="poetry-translation">
+        Tum muskurao toh mausam bhi nikhar jaate hain,
+        tum jo dekho toh din sanwar jaate hain.
+        Chugu, tumhara zikr hi itna khoobsurat hai
+        ke lafz bhi mehak jaate hain.
+      </div>
+    </div>
+
+    <div class="poetry-card">
+      <div class="poetry-number">02 · TUMHARI MUSKURAHAT</div>
+
+      <div class="urdu" lang="ur">
+        تیری ہنسی سے روشن میری ہر شام رہے،
+        <br>
+        تیرے لبوں پہ ہمیشہ خوشیوں کا نام رہے،
+        <br>
+        مانگوں بھی تو رب سے بس اتنا مانگوں،
+        <br>
+        تیری زندگی محبت کے نام رہے۔
+      </div>
+
+      <div class="poetry-divider"></div>
+
+      <div class="poetry-translation">
+        Teri hansi se roshan meri har shaam rahe,
+        tere labon pe hamesha khushiyon ka naam rahe.
+        Rab se bas itni si dua hai,
+        teri zindagi mohabbat aur khushiyon ke naam rahe.
+      </div>
+    </div>
+
+    <div class="poetry-card">
+      <div class="poetry-number">03 · SIRF TUM</div>
+
+      <div class="urdu" lang="ur">
+        نہ چاند کی خواہش، نہ ستاروں کی آرزو،
+        <br>
+        بس تیری مسکراہٹ ہو، یہی ہے میری جستجو،
+        <br>
+        دنیا کی ہر خوشی ملے تمہیں اے چُگو،
+        <br>
+        یہی دعا ہے میری، یہی میری آرزو۔
+      </div>
+
+      <div class="poetry-divider"></div>
+
+      <div class="poetry-translation">
+        Na chaand ki khwahish, na sitaaron ki aarzu,
+        bas tumhari muskurahat hai meri justuju.
+        Chugu, tumhein duniya ki har khushi mile,
+        yahi meri dua aur yahi meri aarzu.
+      </div>
+    </div>
+
   </section>
 
   <!-- VIDEO MESSAGE -->
@@ -724,11 +886,12 @@ button{cursor:pointer}
     <div class="eyebrow">A message, just for you</div>
 
     <h2 class="section-title">
-      Press play, <span class="pink">beautiful.</span>
+      Press play, <span class="pink">Chugu.</span>
     </h2>
 
     <p class="section-copy">
-      A little video keepsake for a day that deserves to be remembered.
+      Ek chhoti si yaad, ek pyaara sa lamha.
+      I hope this brings a smile to your face.
     </p>
 
     <div class="video-box">
@@ -740,41 +903,158 @@ button{cursor:pointer}
 
   </section>
 
+  <!-- MORE SHAYARI -->
+  <section class="section center" id="shayari">
+
+    <div class="eyebrow">Dil ki kitaab se</div>
+
+    <h2 class="section-title">
+      Kuch aur <span class="pink">shayari.</span>
+    </h2>
+
+    <div class="poetry-card">
+      <div class="poetry-number">04 · EK DUA</div>
+
+      <div class="urdu" lang="ur">
+        ہر خوشی تیرے قدموں کا راستہ بن جائے،
+        <br>
+        ہر خواب تیری آنکھوں میں سجا رہ جائے،
+        <br>
+        اے چُگو، کبھی اداس نہ ہونا زندگی میں،
+        <br>
+        میری دعا ہے تیرا ہر دن عید بن جائے۔
+      </div>
+
+      <div class="poetry-divider"></div>
+
+      <div class="poetry-translation">
+        Har khushi tumhare kadmon ka raasta ban jaaye,
+        har khwaab tumhari aankhon mein saja reh jaaye.
+        Chugu, kabhi udaas na hona,
+        meri dua hai tumhara har din Eid ban jaaye.
+      </div>
+    </div>
+
+    <div class="poetry-card">
+      <div class="poetry-number">05 · MERI PASANDEEDA BAAT</div>
+
+      <div class="urdu" lang="ur">
+        تم سے بات ہو تو وقت ٹھہر سا جاتا ہے،
+        <br>
+        دل کا ہر گوشہ مسکرا سا جاتا ہے،
+        <br>
+        شاید اسی کو کہتے ہیں خوبصورت احساس،
+        <br>
+        جب کوئی اپنا سا لگنے لگ جاتا ہے۔
+      </div>
+
+      <div class="poetry-divider"></div>
+
+      <div class="poetry-translation">
+        Tumse baat ho toh waqt thehar sa jaata hai,
+        dil ka har kona muskura sa jaata hai.
+        Shayad isi ko kehte hain khoobsurat ehsaas,
+        jab koi dil ke kareeb aa jaata hai.
+      </div>
+    </div>
+
+    <div class="poetry-card">
+      <div class="poetry-number">06 · HAMESHA KHUSH RAHO</div>
+
+      <div class="urdu" lang="ur">
+        تیری راہوں میں کبھی کانٹے نہ آئیں،
+        <br>
+        تیری آنکھوں میں کبھی آنسو نہ آئیں،
+        <br>
+        زندگی تجھے اتنی خوشیاں دے چُگو،
+        <br>
+        کہ غم تیرے قریب بھی نہ آئیں۔
+      </div>
+
+      <div class="poetry-divider"></div>
+
+      <div class="poetry-translation">
+        Teri raahon mein kabhi kaante na aayein,
+        teri aankhon mein kabhi aansu na aayein.
+        Chugu, zindagi tujhe itni khushiyan de,
+        ke gham kabhi tere kareeb bhi na aayein.
+      </div>
+    </div>
+
+  </section>
+
   <!-- HEARTFELT LETTER -->
   <section class="section center" id="letter">
 
-    <div class="eyebrow">A few words from the heart</div>
+    <div class="eyebrow">A letter from my heart</div>
 
     <h2 class="section-title">
-      Dear <span class="pink">Hasbi,</span>
+      Dear <span class="pink">Chugu,</span>
     </h2>
 
     <div class="letter" style="text-align:left">
 
       <p>
-        On your special day, I just want you to know how precious you are.
-        I hope life gives you a thousand reasons to smile, the courage to
-        chase every dream, and the peace to enjoy every little moment.
+        Sabse pehle, tumhein janamdin ki bahut saari mubarakbaad.
+        I hope tumhara aaj ka din tumhari muskurahat jitna khoobsurat ho.
       </p>
 
       <p>
-        May this new chapter bring you beautiful surprises, genuine happiness,
-        unforgettable memories, and all the love your heart can hold.
+        Chugu, main chahta hoon tumhari zindagi mein hamesha khushiyan rahein.
+        Tumhare saare sapne poore hon, tumhein har woh cheez mile
+        jiske liye tumhara dil dua karta hai.
       </p>
 
       <p>
-        Never forget how special you are. Keep shining in your own way,
-        keep believing in yourself, and never stop being the wonderful person you are.
+        Kabhi khud ko kam mat samajhna. Tum apne aap mein bahut special ho.
+        Tumhari muskurahat, tumhari baatein aur tumhara andaaz —
+        sab kuch apni jagah bahut pyaara hai.
       </p>
 
       <p>
-        Today is all about you. So smile a little bigger, dream a little louder,
-        and make a wish that feels impossible. You deserve beautiful things.
+        Main dua karta hoon ke aane wala har saal tumhare liye pehle se
+        zyada khoobsurat ho. Tum hamesha hansti raho, aage badhti raho
+        aur apne har khwaab ko haqeeqat banta dekho.
       </p>
 
-      <div class="sign">With lots of love ♡</div>
+      <p>
+        Aur haan, aaj ke din bas ek baat yaad rakhna:
+        tumhari khushi bahut maayne rakhti hai.
+      </p>
+
+      <div class="sign">Always with love, Chugu's admirer ♡</div>
 
     </div>
+  </section>
+
+  <!-- SPECIAL CHUGU MESSAGE -->
+  <section class="section">
+
+    <div class="chugu-note">
+
+      <div class="eyebrow">Ek chhoti si baat</div>
+
+      <h3>My Chugu ♡</h3>
+
+      <p>
+        Agar kabhi duniya tumhein thaka de,
+        toh yaad rakhna ke tumhari muskurahat
+        kisi ke liye poori duniya se badhkar hai.
+      </p>
+
+      <div class="urdu" lang="ur" style="margin-top:22px">
+        تم خوش رہو، بس یہی دعا ہے،
+        <br>
+        تمہاری مسکراہٹ ہی میری وفا ہے۔
+      </div>
+
+      <div class="poetry-translation">
+        Tum khush raho, bas yahi dua hai,
+        tumhari muskurahat hi sabse pyaari ada hai.
+      </div>
+
+    </div>
+
   </section>
 
   <!-- FINAL WISH -->
@@ -789,15 +1069,26 @@ button{cursor:pointer}
       </div>
 
       <h2 class="section-title">
-        May your year be as <span class="pink">beautiful</span> as your soul.
+        Happy Birthday, <span class="pink">Chugu.</span>
       </h2>
 
       <p class="section-copy">
-        May every sunrise bring hope, every sunset bring peace,
-        and every day remind you how loved you are.
+        May your life be filled with endless happiness,
+        beautiful surprises, peaceful moments and dreams coming true.
       </p>
 
-      <button class="btn" id="wishBtn" type="button">
+      <div class="urdu" lang="ur">
+        تمہاری زندگی ہمیشہ پھولوں کی طرح مہکتی رہے،
+        <br>
+        ہر صبح نئی خوشی، ہر شام سکون لاتی رہے۔
+      </div>
+
+      <div class="poetry-translation">
+        Tumhari zindagi hamesha phoolon ki tarah mehakti rahe,
+        har subah nayi khushi aur har shaam sukoon laati rahe.
+      </div>
+
+      <button class="btn" id="wishBtn" type="button" style="margin-top:25px">
         MAKE A WISH ✨
       </button>
 
@@ -807,25 +1098,25 @@ button{cursor:pointer}
   </section>
 
   <footer class="footer">
-    CRAFTED WITH LOVE FOR HASBI NAZ ♡
+    MADE WITH LOVE ♡
     <br>
     <span style="display:block;margin-top:10px">19 · 11 · 2008</span>
+    <span style="display:block;margin-top:12px;color:#ff83bd">For my Chugu ✦</span>
   </footer>
 
 </main>
 
-<!-- MUSIC FILE -->
+<!-- MUSIC -->
 <audio id="bgMusic" src="assets/dreamy-piano.mp3" loop preload="none"></audio>
 
 <script>
 const $ = id => document.getElementById(id);
 
-/* CREATE FLOWERS, PETALS, SPARKLES AND HEARTS */
+/* FLOWERS, PETALS, SPARKLES AND HEARTS */
 (function createAtmosphere(){
 
-  const field = $("flowerField");
+  const field=$("flowerField");
 
-  /* Floating flowers */
   for(let i=0;i<18;i++){
 
     const flower=document.createElement("span");
@@ -841,7 +1132,6 @@ const $ = id => document.getElementById(id);
     field.appendChild(flower);
   }
 
-  /* Falling rose petals */
   for(let i=0;i<45;i++){
 
     const petal=document.createElement("span");
@@ -858,7 +1148,6 @@ const $ = id => document.getElementById(id);
     field.appendChild(petal);
   }
 
-  /* Twinkling lights */
   for(let i=0;i<38;i++){
 
     const star=document.createElement("span");
@@ -872,7 +1161,6 @@ const $ = id => document.getElementById(id);
     field.appendChild(star);
   }
 
-  /* Floating hearts */
   for(let i=0;i<15;i++){
 
     const heart=document.createElement("span");
@@ -889,7 +1177,7 @@ const $ = id => document.getElementById(id);
 
 })();
 
-/* FLOWER SHOWER EFFECT */
+/* FLOWER SHOWER */
 function flowerShower(count=30){
 
   const symbols=["✿","❀","✾","✽","🌸","♡"];
@@ -915,7 +1203,7 @@ function flowerShower(count=30){
   }
 }
 
-/* PASSWORD INPUT: KEEP DATE VISIBLE AND AUTO FORMAT */
+/* AUTO FORMAT PASSWORD */
 $("passwordInput").addEventListener("input",function(){
 
   const digits=this.value.replace(/\D/g,"").slice(0,8);
@@ -934,10 +1222,6 @@ $("passwordInput").addEventListener("input",function(){
 });
 
 /* PASSWORD CHECK */
-const passwordScreen=$("passwordScreen");
-const giftScreen=$("giftScreen");
-const site=$("site");
-
 $("passwordForm").addEventListener("submit",function(event){
 
   event.preventDefault();
@@ -946,18 +1230,17 @@ $("passwordForm").addEventListener("submit",function(event){
 
   if(entered==="19-11-2008"){
 
-    passwordScreen.style.display="none";
-    giftScreen.style.display="grid";
+    $("passwordScreen").style.display="none";
+    $("giftScreen").style.display="grid";
 
     $("passwordError").textContent="";
 
     flowerShower(35);
-
     window.scrollTo(0,0);
 
   }else{
 
-    $("passwordError").textContent="Wrong date! Try again, beautiful.";
+    $("passwordError").textContent="Wrong date! Try again, Chugu. ♡";
 
     $("passwordInput").focus();
 
@@ -1023,7 +1306,6 @@ function openGift(){
   flowerShower(75);
 
   const music=$("bgMusic");
-
   music.volume=.42;
 
   music.play().then(()=>{
@@ -1034,8 +1316,8 @@ function openGift(){
 
   setTimeout(()=>{
 
-    giftScreen.style.display="none";
-    site.style.display="block";
+    $("giftScreen").style.display="none";
+    $("site").style.display="block";
 
     window.scrollTo(0,0);
 
@@ -1082,7 +1364,7 @@ $("musicBtn").addEventListener("click",()=>{
 $("wishBtn").addEventListener("click",()=>{
 
   $("wishMessage").textContent=
-    "May every wish find its way to you. Happy Birthday! ♡";
+    "Chugu, may every wish find its way to you. ♡";
 
   celebrate();
   flowerShower(100);
@@ -1091,7 +1373,7 @@ $("wishBtn").addEventListener("click",()=>{
   $("wishBtn").disabled=true;
 
 });
-
 </script>
+
 </body>
 </html>
