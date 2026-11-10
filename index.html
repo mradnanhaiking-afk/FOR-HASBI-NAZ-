@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#090009">
-<title>For Hasbi Naz ♡</title>
+<title>For Hasbi Naz ❤️</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
-  --pink: #ff4f9a;
-  --light: #ffb5d4;
-  --dark: #090009;
-  --card: rgba(255,255,255,.055);
+  --pink: #ff4fa3;
+  --light: #ffb4d8;
+  --black: #090009;
+  --white: #fff4fa;
 }
 
 * {
@@ -22,816 +22,598 @@
   box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
-
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(ellipse at 15% 15%, #3a092a 0%, transparent 45%),
-    radial-gradient(ellipse at 85% 80%, #25091e 0%, transparent 45%),
-    var(--dark);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
-}
-
 [hidden] {
   display: none !important;
 }
 
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 20%, #351027 0%, transparent 45%),
+    #090009;
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
 button, input {
-  font: inherit;
+  font-family: inherit;
 }
 
 button {
   cursor: pointer;
 }
 
-#particles {
+#stars {
   position: fixed;
   inset: 0;
-  pointer-events: none;
   overflow: hidden;
+  pointer-events: none;
   z-index: 0;
 }
 
 .star {
   position: absolute;
-  color: #ffacd1;
+  width: 3px;
+  height: 3px;
+  background: #ff9bc9;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #ff4fa3;
   animation: twinkle 3s infinite ease-in-out;
-  opacity: .6;
 }
 
 @keyframes twinkle {
-  0%,100% { opacity: .2; transform: scale(.7); }
-  50% { opacity: 1; transform: scale(1.3); }
+  0%,100% { opacity: .15; transform: scale(.7); }
+  50% { opacity: 1; transform: scale(1.5); }
 }
 
-.heart {
-  position: fixed;
-  bottom: -40px;
-  z-index: 1;
-  pointer-events: none;
-  color: var(--pink);
-  animation: floatUp linear forwards;
-}
-
-@keyframes floatUp {
-  to {
-    transform: translateY(-115vh) rotate(35deg);
-    opacity: 0;
-  }
-}
-
-.petal {
-  position: fixed;
-  top: -30px;
-  z-index: 5;
-  pointer-events: none;
-  animation: fall 4s linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform: translate(100px, 110vh) rotate(600deg);
-    opacity: 0;
-  }
-}
-
-.page {
+.screen {
   position: relative;
-  z-index: 2;
-  width: 100%;
+  z-index: 1;
   min-height: 100vh;
   padding: 30px 18px;
-}
-
-#page1 {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-.login-card {
-  width: 100%;
-  max-width: 430px;
-  padding: 42px 25px;
+.panel {
+  width: min(100%, 520px);
+  padding: 35px 25px;
   text-align: center;
-  background: rgba(255,255,255,.045);
-  border: 1px solid rgba(255,128,190,.25);
-  border-radius: 28px;
-  backdrop-filter: blur(18px);
-  box-shadow: 0 0 55px rgba(255,40,140,.12);
-  animation: appear 1s ease both;
+  background: rgba(22, 5, 19, .78);
+  border: 1px solid rgba(255, 105, 180, .3);
+  border-radius: 25px;
+  box-shadow: 0 0 50px rgba(255, 35, 145, .12);
+  backdrop-filter: blur(12px);
 }
 
-@keyframes appear {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.small-heart {
+.eyebrow {
   color: var(--pink);
-  font-size: 43px;
-  margin-bottom: 15px;
-  animation: heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.18); }
+  letter-spacing: 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
 
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
 }
 
-.login-card h1 {
-  font-size: clamp(38px, 10vw, 53px);
-  color: #ffb2d2;
-  font-weight: 500;
-  line-height: 1.1;
+h1 {
+  font-size: clamp(43px, 10vw, 65px);
+  line-height: 1.05;
+  color: var(--light);
+  text-shadow: 0 0 25px rgba(255, 79, 163, .4);
 }
 
-.subtitle {
-  margin-top: 14px;
-  color: #d9b8ca;
-  font-size: 12px;
-  letter-spacing: 2px;
+h2 {
+  font-size: clamp(34px, 8vw, 48px);
+  color: var(--light);
+  margin-bottom: 14px;
 }
 
-.login-card .instruction {
-  margin: 30px 0 15px;
-  color: #f6c5dc;
-  font-size: 13px;
+h3 {
+  font-size: 27px;
+  color: #ff91c5;
+}
+
+p {
+  line-height: 1.9;
+  color: #f5dce9;
+  font-size: 14px;
+}
+
+.heart {
+  color: #ff4fa3;
+  font-size: 30px;
+  display: inline-block;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.22); }
 }
 
 .input-wrap {
-  margin: 0 auto 17px;
-  max-width: 310px;
+  margin: 28px 0 15px;
 }
 
-.input-wrap input {
+input {
   width: 100%;
-  padding: 15px;
-  text-align: center;
-  color: white;
-  font-size: 20px;
-  letter-spacing: 3px;
-  background: rgba(0,0,0,.35);
-  border: 1px solid rgba(255,100,170,.5);
+  padding: 16px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,105,180,.5);
   border-radius: 13px;
-  outline: none;
-}
-
-.input-wrap input:focus {
-  border-color: var(--pink);
-  box-shadow: 0 0 18px rgba(255,79,154,.2);
-}
-
-.primary-btn {
-  border: none;
   color: white;
-  background: linear-gradient(120deg, #d92879, #ff6eaa);
-  border-radius: 30px;
-  padding: 14px 32px;
-  box-shadow: 0 6px 25px rgba(255,50,140,.25);
+  font-size: 17px;
+  text-align: center;
+  outline: none;
+  letter-spacing: 3px;
+}
+
+input:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 18px rgba(255,79,163,.2);
+}
+
+.main-btn {
+  border: 0;
+  border-radius: 50px;
+  padding: 14px 30px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(120deg, #b90060, #ff4fa3, #d90073);
+  box-shadow: 0 8px 25px rgba(255, 20, 130, .25);
   transition: .3s;
 }
 
-.primary-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(255,50,140,.45);
+.main-btn:active {
+  transform: scale(.96);
+}
+
+.main-btn:hover {
+  box-shadow: 0 0 30px rgba(255,79,163,.6);
 }
 
 .error {
-  color: #ff85a9;
+  color: #ff7cae;
+  min-height: 25px;
+  margin-top: 12px;
   font-size: 12px;
-  margin-top: 13px;
-  min-height: 20px;
-}
-
-.page-heading {
-  text-align: center;
-  padding: 35px 0 25px;
-}
-
-.eyebrow {
-  color: var(--pink);
-  letter-spacing: 4px;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.page-heading h1 {
-  font-size: clamp(43px, 10vw, 67px);
-  color: #ffb6d4;
-  font-weight: 500;
-  margin: 12px 0;
-}
-
-.page-heading p {
-  color: #d9b6c9;
-  font-size: 13px;
 }
 
 .content {
-  width: 100%;
-  max-width: 760px;
+  width: min(100%, 720px);
   margin: auto;
-}
-
-.section-title {
   text-align: center;
-  color: #ffacd0;
-  font-size: 34px;
-  font-weight: 500;
-  margin: 45px 0 20px;
+  padding: 35px 0 100px;
 }
 
-.love-card {
-  padding: 25px 21px;
-  margin: 16px 0;
-  border: 1px solid rgba(255,130,190,.2);
-  border-radius: 20px;
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  text-align: center;
-  box-shadow: 0 10px 35px rgba(0,0,0,.15);
-  animation: appear .8s ease both;
+.section {
+  padding: 25px 20px;
+  margin: 18px 0;
+  border: 1px solid rgba(255, 105, 180, .22);
+  border-radius: 22px;
+  background: rgba(30, 5, 23, .75);
+  box-shadow: 0 0 35px rgba(255, 20, 130, .06);
 }
 
-.love-card h3 {
-  font-size: 25px;
-  color: #ffafd0;
-  margin-bottom: 12px;
-  font-weight: 500;
-}
-
-.love-card p {
+.shayari {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  line-height: 1.6;
-  color: #f9e2ed;
+  font-size: 23px;
+  line-height: 1.65;
+  font-style: italic;
+  color: #ffd0e6;
+  margin: 15px 0;
 }
 
-.love-card .meaning {
-  font-family: 'Poppins', sans-serif;
-  font-size: 11px;
-  color: #d99bb9;
-  margin-top: 13px;
-  line-height: 1.7;
+.divider {
+  width: 65px;
+  height: 2px;
+  background: var(--pink);
+  margin: 20px auto;
+  box-shadow: 0 0 15px var(--pink);
 }
 
-.wish-text {
-  font-size: 14px;
-  line-height: 2;
-  color: #f1d7e4;
-}
-
-.special-message {
-  border-color: rgba(255,79,154,.45);
-  box-shadow: 0 0 35px rgba(255,50,140,.1);
-}
-
-.special-message p {
-  font-size: 24px;
-}
-
-.gift-area {
-  text-align: center;
-  padding: 45px 0 60px;
-}
-
-.gift-area h2 {
-  font-size: 35px;
-  color: #ffb4d3;
-  margin-bottom: 12px;
-}
-
-.gift-area p {
-  color: #e0b8cb;
-  font-size: 13px;
+.small {
+  font-size: 12px;
+  color: #d7a9c1;
 }
 
 .gift {
+  font-size: 85px;
   display: inline-block;
-  position: relative;
-  margin: 40px auto 25px;
-  font-size: 100px;
+  margin: 20px;
   cursor: pointer;
-  filter: drop-shadow(0 0 25px rgba(255,50,150,.5));
-  animation: giftBounce 2s infinite ease-in-out;
-  transition: .4s;
+  filter: drop-shadow(0 0 18px #ff4fa3);
+  animation: giftFloat 2s ease-in-out infinite;
 }
 
-.gift:hover {
-  transform: scale(1.15) rotate(-5deg);
+@keyframes giftFloat {
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
 }
 
-@keyframes giftBounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-13px); }
+.music-control {
+  position: fixed;
+  right: 15px;
+  bottom: 18px;
+  z-index: 20;
+  border: 1px solid rgba(255,150,205,.5);
+  color: white;
+  background: rgba(35, 5, 25, .9);
+  border-radius: 40px;
+  padding: 11px 16px;
+  font-size: 12px;
+  box-shadow: 0 0 20px rgba(255,79,163,.25);
 }
 
-.gift-button {
-  display: block;
+/* FINAL NOTE SCREEN */
+
+#page3 {
+  position: relative;
+  overflow: hidden;
+  background: #050008;
+}
+
+#rainVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: .65;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(rgba(8,0,9,.48), rgba(8,0,9,.84)),
+    radial-gradient(circle at center, transparent, rgba(0,0,0,.5));
+}
+
+.note-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 650px);
+  padding: 35px 24px;
   margin: auto;
-}
-
-.footer {
   text-align: center;
-  color: #a97a92;
-  font-size: 11px;
-  padding: 20px 0 35px;
+  animation: reveal 2s ease both;
 }
 
-.note-container {
-  max-width: 720px;
-  margin: 25px auto;
-  padding: 30px 22px;
-  background: rgba(255,255,255,.045);
-  border: 1px solid rgba(255,130,190,.25);
-  border-radius: 24px;
-  box-shadow: 0 0 50px rgba(255,30,130,.1);
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.note-container h1 {
-  text-align: center;
-  color: #ffafd0;
-  font-size: 43px;
-  font-weight: 500;
-  margin-bottom: 25px;
+.note-card {
+  background: rgba(10, 0, 10, .55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 130, 190, .35);
+  border-radius: 22px;
+  padding: 28px 22px;
+  box-shadow: 0 0 45px rgba(255, 30, 140, .15);
 }
 
-.note-text {
-  color: #f4dbe7;
+.note-card p {
   font-size: 14px;
-  line-height: 2.15;
-  white-space: pre-line;
+  line-height: 2.1;
+  color: #ffe6f2;
+  margin: 15px 0;
 }
 
 .signature {
-  text-align: right;
-  color: #ffafd0;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 27px;
-  margin-top: 28px;
+  font-size: 30px;
+  color: #ff9bca;
+  font-style: italic;
+  margin-top: 25px;
 }
 
-.back-btn {
-  display: block;
-  margin: 25px auto;
-  background: transparent;
-  border: 1px solid #ff7db4;
-  color: #ffb4d3;
-  border-radius: 30px;
-  padding: 12px 25px;
-}
-
-.music-btn {
-  position: fixed;
-  z-index: 10;
-  top: 15px;
-  right: 15px;
-  background: rgba(255,70,150,.15);
-  border: 1px solid rgba(255,150,200,.4);
-  color: white;
-  border-radius: 30px;
-  padding: 9px 13px;
-  font-size: 11px;
-}
-
-@media (min-width: 700px) {
-  .page { padding: 35px 35px; }
-  .note-container { padding: 45px; }
-  .love-card { padding: 30px; }
+@media (max-width: 480px) {
+  .panel { padding: 30px 19px; }
+  .section { padding: 22px 15px; }
+  .shayari { font-size: 21px; }
+  .note-card { padding: 24px 17px; }
 }
 </style>
 </head>
 
 <body>
 
-<div id="particles"></div>
+<div id="stars"></div>
 
-<audio id="backgroundMusic" loop preload="none">
-  <source src="assets/dreamy-piano.mp3" type="audio/mpeg">
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="assets/Maula_Mere_Maula__Slowed___Reverb__-_Roop_Kumar_Rathod___Aankhein_Teri_Kitni_Haseen___Also_Holic(256k).mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" id="musicButton" hidden>
-  ♫ Play Music
+<button class="music-control" id="musicBtn" onclick="toggleMusic()">
+  ♫ Music On
 </button>
 
 <!-- PAGE 1: LOGIN -->
-<section class="page" id="page1">
-  <div class="login-card">
-    <div class="small-heart">♡</div>
-    <div class="subtitle">A LITTLE WORLD MADE FOR YOU</div>
-    <h1>Hasbi Naz</h1>
-    <p class="instruction">A special surprise is waiting for you...</p>
+<section class="screen" id="page1">
+  <div class="panel">
+    <div class="eyebrow">A little surprise for someone special</div>
+    <div class="heart">♥</div>
 
-    <form id="loginForm">
-      <div class="input-wrap">
-        <input
-          id="dateInput"
-          type="text"
-          inputmode="numeric"
-          maxlength="10"
-          placeholder="DD-MM-YYYY"
-          autocomplete="off"
-          required
-        >
-      </div>
+    <h1>For Hasbi<br> Naz</h1>
 
-      <button class="primary-btn" type="submit">
-        Unlock My Surprise ♡
-      </button>
-      <p class="error" id="loginError" aria-live="polite"></p>
-    </form>
+    <div class="divider"></div>
 
-    <p class="subtitle">MADE WITH LOVE ♡</p>
+    <p>
+      Some surprises are made with love,<br>
+      and this one is only for you.
+    </p>
+
+    <div class="input-wrap">
+      <input
+        id="password"
+        type="text"
+        inputmode="numeric"
+        maxlength="10"
+        placeholder="DD-MM-YYYY"
+        autocomplete="off"
+      >
+    </div>
+
+    <button class="main-btn" onclick="login()">
+      Unlock Your Surprise ♡
+    </button>
+
+    <div class="error" id="error"></div>
+    <p class="small">A secret date opens a little world of love.</p>
   </div>
 </section>
 
-<!-- PAGE 2: BIRTHDAY -->
-<section class="page" id="page2" hidden>
+<!-- PAGE 2: WISHES AND SHAYARI -->
+<section class="screen" id="page2" hidden>
+  <div class="content">
 
-  <header class="page-heading">
-    <div class="eyebrow">A DAY AS BEAUTIFUL AS YOU</div>
-    <h1>Happy Birthday ♡</h1>
-    <p>To my favourite person, Hasbi Naz</p>
-  </header>
+    <div class="eyebrow">Today is all about you</div>
+    <h1>Happy Birthday</h1>
+    <h2>Hasbi Naz ♡</h2>
 
-  <main class="content">
+    <div class="heart">♥</div>
 
-    <div class="love-card">
-      <h3>Today Is All About You ✨</h3>
-      <p class="wish-text">
-        Aaj ka din mere liye bhi bahut special hai,
-        kyunki aaj us insaan ka birthday hai
-        jo meri duniya mein ek alag hi jagah rakhta hai.
-        Tum hamesha khush raho, muskurati raho
-        aur tumhare har sapne ko ek khoobsurat manzil mile.
+    <div class="section">
+      <h3>For My Chugu 🥀</h3>
+      <div class="divider"></div>
+
+      <p class="shayari">
+        Teri muskurahat se roshan meri har shaam rahe,<br>
+        Tere chehre pe hamesha khushiyon ka naam rahe.
+      </p>
+
+      <p class="shayari">
+        Tu mile ya na mile, ye muqaddar ki baat hai,<br>
+        Meri har dua mein bas tera hi zikr rahe.
+      </p>
+
+      <p class="shayari">
+        Teri aankhon mein jo khwab hain, woh poore ho jaayein,<br>
+        Tere dil ke saare gham mujhse pehle kho jaayein.
       </p>
     </div>
 
-    <h2 class="section-title">Kuch Dil Ki Baatein 🌹</h2>
+    <div class="section">
+      <h3>A Birthday Wish For You ✨</h3>
+      <div class="divider"></div>
 
-    <div class="love-card">
-      <h3>01. Ek Dua</h3>
       <p>
-        Teri muskurahat se roshan meri har shaam rahe,
-        Tere chehre pe hamesha khushiyon ka naam rahe,
-        Chahe kitne bhi aayein zindagi mein mod,
-        Tere labon pe hamesha muskurahat rahe.
+        Happy Birthday, my special person.
+        May your life always be filled with happiness,
+        peace, endless smiles and beautiful surprises.
+        May every dream you carry in your heart
+        find its way into reality.
       </p>
-    </div>
 
-    <div class="love-card">
-      <h3>02. Tumhari Yaad</h3>
+      <br>
+
       <p>
-        Har pal mein tera khayal rehta hai,
-        Dil mein tera hi sawaal rehta hai,
-        Lafzon mein bayan karna mushkil hai,
-        Tu mere liye kitna khaas rehta hai.
+        I hope you never lose that beautiful smile.
+        You deserve all the love, care and happiness
+        that this world can offer.
       </p>
+
+      <br>
+
+      <h3>Stay Blessed, Chugu ❤️</h3>
     </div>
 
-    <div class="love-card">
-      <h3>03. Mohabbat</h3>
+    <div class="section">
+      <div class="eyebrow">One last surprise</div>
+      <h2>A Gift For You</h2>
+
       <p>
-        Na chaand ki khwahish, na sitaron ki talab,
-        Bas tera saath ho, aur kuch nahi talab,
-        Zindagi chahe jitni bhi mushkil ho,
-        Teri muskurahat ban jaaye mera sabab.
+        There's something more waiting for you.
+        Open it when you're ready...
       </p>
-    </div>
 
-    <div class="love-card">
-      <h3>04. Ek Khubsurat Ehsaas</h3>
-      <p>
-        Tujhse milkar ye jaana hai maine,
-        Khushi kya hoti hai pehchana hai maine,
-        Teri baaton mein ek sukoon sa hai,
-        Jise apne dil mein basaya hai maine.
-      </p>
-    </div>
+      <div class="gift" onclick="openGift()">🎁</div>
 
-    <h2 class="section-title">My Birthday Wishes 💗</h2>
+      <br>
 
-    <div class="love-card">
-      <p class="wish-text">
-        Chugu, meri dua hai ki tumhari zindagi ka har din
-        aaj ki tarah khoobsurat ho.
-
-        Tumhe kabhi apne aap ko akela mehsoos na karna pade.
-        Tumhari aankhon mein aansu se zyada khushi ho.
-        Tumhare chehre ki smile kabhi kam na ho.
-
-        May you get everything your heart wishes for.
-        Keep shining, keep smiling and keep being you.
-      </p>
-    </div>
-
-    <div class="love-card special-message">
-      <h3>For My Chugu 🥹</h3>
-      <p>
-        Tum sirf ek naam nahi ho,
-        tum meri bahut si khubsurat feelings ka hissa ho.
-        Tumhari chhoti chhoti baatein,
-        tumhara gussa, tumhari smile,
-        sab kuch mere liye special hai.
-        ♡
-      </p>
-    </div>
-
-    <div class="love-card">
-      <h3>One More Thing...</h3>
-      <p class="wish-text">
-        Main ye nahi kahunga ki har din perfect hoga,
-        lekin itna zaroor kahunga ki tumhari khushi
-        mere liye hamesha important rahegi.
-        Happy Birthday, Chugu! 🥀
-      </p>
-    </div>
-
-    <!-- GIFT AT THE END -->
-    <div class="gift-area">
-      <h2>One Last Surprise 🎁</h2>
-      <p>There is something more I want to tell you...</p>
-
-      <div
-        class="gift"
-        id="giftBox"
-        role="button"
-        tabindex="0"
-        aria-label="Open your final surprise"
-      >🎁</div>
-
-      <button class="primary-btn gift-button" id="giftButton">
+      <button class="main-btn" onclick="openGift()">
         Open Your Gift ♡
       </button>
+
+      <p class="small" style="margin-top:15px">
+        Made with love, just for you.
+      </p>
     </div>
 
-  </main>
-
-  <footer class="footer">
-    Made specially for Hasbi Naz ♡
-  </footer>
+  </div>
 </section>
 
-<!-- PAGE 3: FINAL NOTE -->
-<section class="page" id="page3" hidden>
+<!-- PAGE 3: FINAL EMOTIONAL NOTE + RAINY ANIME VIDEO -->
+<section class="screen" id="page3" hidden>
 
-  <div class="page-heading">
-    <div class="eyebrow">WORDS FROM MY HEART</div>
-    <h1>Ek Aakhri Baat... 🥀</h1>
-    <p>Just for you, Chugu ♡</p>
+  <video id="rainVideo" autoplay muted loop playsinline preload="auto">
+    <source src="assets/anime-rain.mp4" type="video/mp4">
+  </video>
+
+  <div class="video-overlay"></div>
+
+  <div class="note-content">
+    <div class="eyebrow">A little note from my heart</div>
+
+    <div class="note-card">
+      <div class="heart">♥</div>
+
+      <h2>For You, Hasbi</h2>
+
+      <div class="divider"></div>
+
+      <p>
+        Pata nahi main apni feelings ko kitne achhe se
+        words mein express kar paunga, lekin ek baat
+        dil se kehna chahta hoon...
+      </p>
+
+      <p>
+        Tum meri zindagi ka ek bahut khoobsurat hissa ho.
+        Tumhari smile, tumhari baatein aur tumhara woh
+        chhota sa andaaz mere liye bahut special hai.
+      </p>
+
+      <p>
+        Main dua karta hoon ki tumhari zindagi mein
+        kabhi khushiyon ki kami na ho. Jab bhi tum udaas
+        ho, tumhe koi wajah mil jaaye muskurane ki.
+      </p>
+
+      <p>
+        Dooriyan chahe jitni bhi hon, meri duaon mein
+        tumhare liye hamesha ek khoobsurat jagah rahegi.
+      </p>
+
+      <p>
+        Aaj ka din tumhara hai. Khul kar muskurana,
+        khush rehna aur apne saare dreams poore karna.
+      </p>
+
+      <div class="divider"></div>
+
+      <h3>Happy Birthday, Chugu 🥀</h3>
+
+      <div class="signature">
+        With lots of love ♡
+      </div>
+    </div>
   </div>
 
-  <main class="note-container">
-
-    <h1>Dear Chugu ❤️</h1>
-
-    <div class="note-text">
-Pata nahi main apni saari feelings ko words mein kitni achhi tarah samjha paunga, lekin aaj dil se kuch kehna chahta hoon.
-
-Sabse pehle, Happy Birthday meri pyaari Chugu. ❤️
-
-Bahut si galtiyan sabse hoti hain. Mujhse bhi hui hongi. Kabhi meri baaton se tumhe bura laga ho, kabhi maine tumhe samajhne mein der kar di ho, ya kabhi meri wajah se tumhari aankhon mein aansu aaye hon, toh dil se sorry.
-
-Main perfect nahi hoon, lekin meri feelings tumhare liye sachchi hain. Main har baar sahi nahi ho sakta, lekin main apni galtiyon ko samajhna aur khud ko behtar banana chahta hoon.
-
-Kabhi kabhi sochta hoon ki tumhare alawa mere paas aur hai hi kaun jiske saath main apni itni saari baatein share kar sakun. Tumhari importance meri life mein lafzon se kahin zyada hai.
-
-Chugu, please kabhi ye mat sochna ki tum mere liye kam important ho. Tumhari khushi, tumhara sukoon aur tumhari smile mere liye bahut matter karti hai.
-
-Main chahta hoon ki tum apni life mein bahut aage jao. Tumhare saare dreams poore hon. Tumhe woh saari khushiyan milen jinki tum haqdar ho.
-
-Agar kabhi humare beech misunderstandings ho jaayein, toh unhe apne dil mein rakhne ke bajaye ek doosre se baat karein. Main chahta hoon ki hum ek doosre ko samjhein, ek doosre ki respect karein aur har din thoda aur behtar banein.
-
-Tumhe har waqt strong banne ki zaroorat nahi hai. Kabhi udaas ho, kabhi pareshan ho, toh apni feelings share kar sakti ho. Tumhari har feeling important hai.
-
-Mujhe tumhari sirf achhi baatein hi nahi, tumhari imperfections bhi apni lagti hain. Main tumhe badalne ke liye nahi, balki tumhe samajhne ke liye tumhare saath rehna chahta hoon.
-
-Bas itna yaad rakhna, tum special ho. Tumhari jagah koi aur nahi le sakta. Aur tumhari smile mere liye duniya ki sabse pyaari cheezon mein se ek hai.
-
-Aaj tumhara birthday hai, toh meri taraf se ek chhoti si dua:
-
-Khuda tumhe hamesha khush rakhe, tumhari har mushkil aasaan kare, tumhare chehre se muskurahat kabhi door na hone de aur tumhe zindagi ki har woh khushi de jo tum deserve karti ho.
-
-Thank you meri life ka itna khoobsurat hissa banne ke liye.
-
-Once again, Happy Birthday, Hasbi Naz.
-
-I hope tumhara aaj ka din utna hi beautiful ho jitni tum ho.
-
-Hamesha khush rehna, meri Chugu. ❤️
-    </div>
-
-    <div class="signature">
-      Always with love,<br>
-      Yours ♡
-    </div>
-
-  </main>
-
-  <button class="back-btn" id="backButton">
-    ← Back to Birthday Page
-  </button>
-
-  <footer class="footer">
-    Some feelings are too beautiful for words. ♡
-  </footer>
 </section>
 
 <script>
-(function () {
-  "use strict";
+/* FLOATING STARS */
+const stars = document.getElementById("stars");
 
-  const pages = {
-    login: document.getElementById("page1"),
-    birthday: document.getElementById("page2"),
-    note: document.getElementById("page3")
-  };
+for (let i = 0; i < 65; i++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDelay = Math.random() * 4 + "s";
+  star.style.opacity = Math.random();
+  stars.appendChild(star);
+}
 
-  const dateInput = document.getElementById("dateInput");
-  const loginForm = document.getElementById("loginForm");
-  const loginError = document.getElementById("loginError");
+/* PASSWORD FORMATTING */
+const passwordInput = document.getElementById("password");
 
-  const giftBox = document.getElementById("giftBox");
-  const giftButton = document.getElementById("giftButton");
-  const backButton = document.getElementById("backButton");
+passwordInput.addEventListener("input", function() {
+  let digits = this.value.replace(/\D/g, "").slice(0, 8);
 
-  const music = document.getElementById("backgroundMusic");
-  const musicButton = document.getElementById("musicButton");
-
-  const correctPassword = "19-11-2008";
-
-  // Only one page can be visible at a time.
-  function showPage(pageName) {
-    Object.keys(pages).forEach(function (key) {
-      pages[key].hidden = key !== pageName;
-    });
-
-    window.scrollTo({
-      top: 0,
-      behavior: "instant"
-    });
-
-    if (pageName !== "login") {
-      musicButton.hidden = false;
-    }
+  if (digits.length > 4) {
+    this.value = digits.slice(0,2) + "-" +
+                 digits.slice(2,4) + "-" +
+                 digits.slice(4);
+  } else if (digits.length > 2) {
+    this.value = digits.slice(0,2) + "-" +
+                 digits.slice(2);
+  } else {
+    this.value = digits;
   }
+});
 
-  // Format date as DD-MM-YYYY.
-  dateInput.addEventListener("input", function () {
-    let digits = this.value.replace(/\D/g, "").slice(0, 8);
+/* MUSIC */
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
 
-    let formatted = digits;
-
-    if (digits.length > 4) {
-      formatted =
-        digits.slice(0, 2) + "-" +
-        digits.slice(2, 4) + "-" +
-        digits.slice(4);
-    } else if (digits.length > 2) {
-      formatted =
-        digits.slice(0, 2) + "-" +
-        digits.slice(2);
-    }
-
-    this.value = formatted;
-    loginError.textContent = "";
-  });
-
-  // Login.
-  loginForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    if (dateInput.value === correctPassword) {
-      loginError.textContent = "";
-      showPage("birthday");
-      createPetalShower();
-
-      // Browser may block autoplay; music button remains available.
-      music.play().then(function () {
-        musicButton.textContent = "♫ Music On";
-      }).catch(function () {
-        musicButton.textContent = "♫ Play Music";
-      });
-
-    } else {
-      loginError.textContent = "Oops! Date sahi nahi hai. Try again ♡";
-      dateInput.focus();
-    }
-  });
-
-  // Gift opens final note directly.
-  let giftOpening = false;
-
-  function openGift() {
-    if (giftOpening) return;
-
-    giftOpening = true;
-    giftBox.style.animation = "none";
-    giftBox.style.transform = "scale(1.4) rotate(12deg)";
-    giftBox.style.filter = "drop-shadow(0 0 45px #ff4f9a)";
-
-    createPetalShower();
-
-    setTimeout(function () {
-      showPage("note");
-      giftOpening = false;
-      createPetalShower();
-    }, 550);
+async function startMusic() {
+  try {
+    await music.play();
+    musicBtn.textContent = "♫ Music On";
+  } catch (error) {
+    musicBtn.textContent = "♫ Tap for Music";
   }
+}
 
-  giftBox.addEventListener("click", openGift);
-  giftButton.addEventListener("click", openGift);
-
-  giftBox.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openGift();
-    }
-  });
-
-  // Back to birthday page.
-  backButton.addEventListener("click", function () {
-    showPage("birthday");
-  });
-
-  // Music toggle.
-  musicButton.addEventListener("click", function () {
-    if (music.paused) {
-      music.play().then(function () {
-        musicButton.textContent = "♫ Music On";
-      }).catch(function () {
-        musicButton.textContent = "♫ Music Unavailable";
-      });
-    } else {
-      music.pause();
-      musicButton.textContent = "♫ Play Music";
-    }
-  });
-
-  // Background stars.
-  const particleLayer = document.getElementById("particles");
-
-  for (let i = 0; i < 55; i++) {
-    const star = document.createElement("span");
-    star.className = "star";
-    star.textContent = "✦";
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
-    star.style.fontSize = (5 + Math.random() * 9) + "px";
-    star.style.animationDelay = Math.random() * 4 + "s";
-    particleLayer.appendChild(star);
+function toggleMusic() {
+  if (music.paused) {
+    startMusic();
+  } else {
+    music.pause();
+    musicBtn.textContent = "♫ Music Off";
   }
+}
 
-  // Floating hearts.
-  setInterval(function () {
-    if (document.hidden) return;
+/* SCREEN NAVIGATION */
+function showPage(pageId) {
+  document.getElementById("page1").hidden = true;
+  document.getElementById("page2").hidden = true;
+  document.getElementById("page3").hidden = true;
 
-    const heart = document.createElement("span");
-    heart.className = "heart";
-    heart.textContent = Math.random() > .5 ? "♥" : "♡";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (12 + Math.random() * 18) + "px";
-    heart.style.animationDuration = (6 + Math.random() * 5) + "s";
+  document.getElementById(pageId).hidden = false;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-    document.body.appendChild(heart);
+/* LOGIN */
+function login() {
+  const entered = passwordInput.value.trim();
 
-    setTimeout(function () {
-      heart.remove();
-    }, 12000);
-  }, 1000);
+  if (entered === "19-11-2008") {
+    document.getElementById("error").textContent = "";
+    showPage("page2");
 
-  // Rose petal shower.
-  function createPetalShower() {
-    for (let i = 0; i < 28; i++) {
-      setTimeout(function () {
-        const petal = document.createElement("span");
-        petal.className = "petal";
-        petal.textContent = Math.random() > .5 ? "🌸" : "🌹";
-        petal.style.left = Math.random() * 100 + "vw";
-        petal.style.fontSize = (13 + Math.random() * 15) + "px";
-        petal.style.animationDuration = (3 + Math.random() * 3) + "s";
-
-        document.body.appendChild(petal);
-
-        setTimeout(function () {
-          petal.remove();
-        }, 7000);
-      }, i * 65);
-    }
+    // User interaction ke baad music start karne ki koshish
+    startMusic();
+  } else {
+    document.getElementById("error").textContent =
+      "Oops! Wrong date. Try again, my dear ♡";
   }
+}
 
-  // Always start on the login screen.
-  showPage("login");
+/* ENTER KEY LOGIN */
+passwordInput.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    login();
+  }
+});
 
-})();
+/* GIFT OPENS FINAL PAGE */
+function openGift() {
+  showPage("page3");
+
+  const video = document.getElementById("rainVideo");
+  video.play().catch(() => {});
+}
+
+/* KEEP MUSIC RUNNING WHEN CHANGING PAGES */
+music.addEventListener("ended", function() {
+  music.currentTime = 0;
+  startMusic();
+});
 </script>
 
 </body>
