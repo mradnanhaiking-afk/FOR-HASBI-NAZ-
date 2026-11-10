@@ -3,1060 +3,835 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08030a">
+<meta name="theme-color" content="#090009">
 <title>For Hasbi Naz ♡</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
-:root{
- --bg:#08030a;
- --pink:#ff4d99;
- --pink2:#ffafd0;
- --pale:#ffe3ef;
- --white:#fff4fa;
- --muted:#c9a6ba;
- --card:#190b18;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
- background:var(--bg);
- color:var(--white);
- font-family:'DM Sans',sans-serif;
- overflow-x:hidden;
-}
-button,input{font:inherit}
-button{cursor:pointer}
-.serif{font-family:'Cormorant Garamond',serif}
-.pink{color:var(--pink2)}
-.glow{text-shadow:0 0 25px #ff4d9980,0 0 60px #ff4d9935}
-.eyebrow{
- color:var(--pink2);
- font-size:10px;
- letter-spacing:4px;
- text-transform:uppercase;
-}
-.center{
- display:flex;
- flex-direction:column;
- align-items:center;
- justify-content:center;
- text-align:center;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --pink: #ff4f9a;
+  --light: #ffb5d4;
+  --dark: #090009;
+  --card: rgba(255,255,255,.055);
 }
 
-/* STRICT THREE-PAGE NAVIGATION */
-.page{
- display:none !important;
- width:100%;
- min-height:100vh;
-}
-.page.active{
- display:block !important;
- animation:pageEnter .8s ease both;
-}
-#page1.active,#page3.active{
- display:flex !important;
-}
-@keyframes pageEnter{
- from{opacity:0;transform:translateY(15px)}
- to{opacity:1;transform:translateY(0)}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* BACKGROUND */
-#background{
- position:fixed;
- inset:0;
- z-index:-3;
- background:
- radial-gradient(ellipse at 50% 15%,#47102f 0%,transparent 50%),
- radial-gradient(ellipse at 90% 90%,#2b0c2b 0%,transparent 45%),
- #08030a;
-}
-#stars,#floating,#petals{
- position:fixed;
- inset:0;
- pointer-events:none;
- overflow:hidden;
-}
-#stars{z-index:0}
-#floating{z-index:1}
-#petals{z-index:50}
-.star{
- position:absolute;
- border-radius:50%;
- background:#fff;
- box-shadow:0 0 8px #ffc6e0;
- animation:twinkle 2s ease-in-out infinite alternate;
-}
-@keyframes twinkle{
- from{opacity:.15;transform:scale(.6)}
- to{opacity:1;transform:scale(1.5)}
-}
-.float{
- position:absolute;
- bottom:-40px;
- color:#ff82b9;
- opacity:0;
- text-shadow:0 0 15px #ff4d99;
- animation:floatUp linear infinite;
-}
-@keyframes floatUp{
- 0%{transform:translateY(0) rotate(0);opacity:0}
- 15%{opacity:.7}
- 85%{opacity:.6}
- 100%{transform:translateY(-115vh) rotate(260deg);opacity:0}
-}
-.petal{
- position:absolute;
- top:-30px;
- animation:fall linear forwards;
- filter:drop-shadow(0 0 7px #ff4d99);
-}
-@keyframes fall{
- to{
-  transform:translate(var(--drift),110vh) rotate(650deg);
-  opacity:0;
- }
-}
-@keyframes heartbeat{
- 0%,100%{transform:scale(1)}
- 15%{transform:scale(1.15)}
- 30%{transform:scale(1)}
- 45%{transform:scale(1.1)}
-}
-@keyframes gentleFloat{
- 50%{transform:translateY(-10px)}
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 15% 15%, #3a092a 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 80%, #25091e 0%, transparent 45%),
+    var(--dark);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
-/* BUTTONS */
-.btn{
- background:linear-gradient(120deg,#ff5ba3,#b71468);
- border:1px solid #ffb4d3;
- border-radius:50px;
- color:white;
- padding:15px 27px;
- font-size:11px;
- letter-spacing:1.5px;
- box-shadow:0 0 28px #ff4d9940;
- transition:.3s;
-}
-.btn:active{transform:scale(.96)}
-.btn:hover{box-shadow:0 0 38px #ff4d9980}
-.divider{
- width:60px;
- height:1px;
- background:var(--pink);
- box-shadow:0 0 12px var(--pink);
- margin:20px auto;
+[hidden] {
+  display: none !important;
 }
 
-/* PAGE 1: LOGIN ONLY */
-#page1{
- min-height:100svh;
- padding:24px;
- position:relative;
- z-index:2;
-}
-.login-card{
- width:min(100%,390px);
- padding:38px 25px;
- border-radius:25px;
- background:#130913e8;
- border:1px solid #ff80b64d;
- box-shadow:0 0 65px #ff4d991b,inset 0 0 25px #ff4d9908;
- backdrop-filter:blur(18px);
-}
-.lock-icon{
- font-size:43px;
- margin-bottom:22px;
- animation:heartbeat 2s infinite;
-}
-.login-card h1{
- font-size:48px;
- line-height:1;
- margin:17px 0;
-}
-.login-card p{
- color:var(--muted);
- font-size:13px;
- line-height:1.9;
-}
-#password{
- display:block;
- width:100%;
- margin:25px 0 10px;
- padding:16px 10px;
- background:#08030a;
- border:1px solid #ff78ae80;
- border-radius:12px;
- outline:none;
- text-align:center;
- font-size:22px;
- letter-spacing:4px;
- color:white;
-}
-#password:focus{
- border-color:var(--pink);
- box-shadow:0 0 22px #ff4d9935;
-}
-#error{
- min-height:25px;
- color:#ff9bc6;
- font-size:12px;
-}
-.login-foot{
- font-size:9px!important;
- letter-spacing:3px;
- margin-top:24px;
- color:#a78398!important;
+button, input {
+  font: inherit;
 }
 
-/* PAGE 2: BIRTHDAY */
-#page2{
- position:relative;
- z-index:2;
-}
-nav{
- position:sticky;
- top:0;
- z-index:20;
- display:flex;
- justify-content:space-between;
- align-items:center;
- padding:15px 19px;
- background:#08030ae8;
- backdrop-filter:blur(15px);
- border-bottom:1px solid #ff4d9928;
-}
-.brand{
- font-family:'Cormorant Garamond',serif;
- font-size:24px;
- color:var(--pink2);
-}
-.music-btn{
- background:#190b18;
- border:1px solid #ff76ad70;
- border-radius:30px;
- color:white;
- padding:9px 13px;
- font-size:11px;
-}
-.hero{
- min-height:88svh;
- padding:55px 20px;
- background:radial-gradient(ellipse at center,#48102e80,transparent 70%);
-}
-.hero-heart{
- font-size:31px;
- margin:22px;
- animation:heartbeat 2s infinite;
-}
-.hero h1{
- font-size:clamp(55px,14vw,90px);
- line-height:.94;
- margin:20px 0;
-}
-.hero p{
- max-width:340px;
- color:var(--muted);
- font-size:13px;
- line-height:2;
-}
-.scroll{
- color:#d4a4bd;
- font-size:10px;
- letter-spacing:3px;
- margin-top:48px;
- animation:gentleFloat 2s infinite;
-}
-section{padding:80px 20px}
-.heading{
- text-align:center;
- margin-bottom:32px;
-}
-.heading h2{
- font-size:43px;
- font-weight:500;
- margin-top:10px;
-}
-.heading p{
- color:var(--muted);
- font-size:12px;
- line-height:1.9;
- margin-top:10px;
-}
-.poem-grid{
- display:grid;
- gap:16px;
- max-width:700px;
- margin:auto;
-}
-.poem{
- padding:25px 18px;
- border-radius:18px;
- border:1px solid #ff78ae35;
- background:linear-gradient(145deg,#291020,#100811);
- text-align:center;
- box-shadow:0 12px 30px #0005;
- transition:.35s;
-}
-.poem:hover{
- transform:translateY(-5px);
- border-color:#ff9bc6;
-}
-.verse{
- font-family:'Cormorant Garamond',serif;
- color:#ffd7e8;
- font-size:25px;
- line-height:1.6;
-}
-.meaning{
- color:#cba9bc;
- font-size:11px;
- line-height:1.9;
- margin-top:13px;
- font-style:italic;
-}
-.heart-small{color:var(--pink);margin-top:12px}
-
-.wish-card{
- max-width:650px;
- margin:auto;
- padding:30px 23px;
- border-radius:20px;
- border:1px solid #ff79ae40;
- background:linear-gradient(145deg,#281020,#100811);
- text-align:center;
-}
-.wish-card h3{
- font-size:37px;
- color:var(--pink2);
- margin-bottom:15px;
-}
-.wish-card p{
- font-size:13px;
- color:#e8c9d9;
- line-height:2.1;
- margin-bottom:14px;
-}
-.special{
- text-align:center;
- max-width:550px;
- margin:auto;
-}
-.special .flower{
- font-size:43px;
- margin:20px;
-}
-.special h2{
- font-size:49px;
- color:var(--pink2);
-}
-.special p{
- color:#d9b7c9;
- font-size:13px;
- line-height:2.1;
- margin-top:15px;
+button {
+  cursor: pointer;
 }
 
-/* SURPRISE BOX AT END OF PAGE 2 */
-.surprise{
- text-align:center;
- padding:90px 20px 105px;
- background:radial-gradient(ellipse at center,#4a102f80,transparent 70%);
-}
-.surprise h2{
- font-size:45px;
- margin:17px 0;
-}
-.surprise p{
- color:var(--muted);
- font-size:12px;
- line-height:1.9;
-}
-.gift{
- width:155px;
- height:130px;
- position:relative;
- margin:36px auto 23px;
- cursor:pointer;
- animation:giftFloat 3s ease-in-out infinite;
- filter:drop-shadow(0 0 24px #ff4d9955);
-}
-@keyframes giftFloat{
- 50%{transform:translateY(-12px) rotate(3deg)}
-}
-.gift-body{
- position:absolute;
- bottom:0;
- left:0;
- width:155px;
- height:90px;
- background:linear-gradient(135deg,#ff91c2,#c51b6b);
- border-radius:7px 7px 14px 14px;
-}
-.gift-body:before{
- content:"";
- position:absolute;
- left:62px;
- width:30px;
- height:100%;
- background:#ffe8f1;
-}
-.gift-lid{
- position:absolute;
- top:23px;
- left:-8px;
- width:171px;
- height:28px;
- background:linear-gradient(135deg,#ffc2dc,#ee4b95);
- border-radius:7px;
- z-index:2;
- transition:.8s;
-}
-.gift-lid:before{
- content:"";
- position:absolute;
- left:70px;
- width:30px;
- height:100%;
- background:#fff0f7;
-}
-.gift-bow{
- position:absolute;
- top:-9px;
- left:59px;
- font-size:40px;
- z-index:3;
- color:#fff;
-}
-.gift.open .gift-lid{
- transform:translateY(-85px) rotate(-15deg);
-}
-.gift-label{
- color:var(--pink2);
- font-family:'Cormorant Garamond',serif;
- font-size:24px;
-}
-footer{
- text-align:center;
- padding:24px;
- color:#9e7c92;
- font-size:10px;
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
 }
 
-/* PAGE 3: FINAL NOTE */
-#page3{
- min-height:100svh;
- padding:30px 19px 70px;
- position:relative;
- z-index:2;
- background:radial-gradient(ellipse at top,#56153a,#1b0918 48%,#08030a 85%);
-}
-.note-content{
- max-width:650px;
- width:100%;
- margin:auto;
- text-align:center;
-}
-.note-heart{
- font-size:42px;
- margin:27px;
-}
-.note-content h1{
- font-size:clamp(48px,12vw,72px);
- line-height:1;
- color:#ffb4d1;
-}
-.note-intro{
- max-width:390px;
- margin:23px auto;
- color:#d8b4c8;
- font-size:13px;
- line-height:2;
-}
-.note-paper{
- text-align:left;
- margin:25px auto;
- padding:26px 20px;
- border:1px solid #ff83b34d;
- border-radius:19px;
- background:linear-gradient(145deg,#21101eeb,#100811ed);
- color:#f2d9e5;
- font-size:13px;
- line-height:2.15;
- box-shadow:0 0 40px #ff4d9913;
-}
-.note-paper p{margin-bottom:17px}
-.note-paper p:last-child{margin-bottom:0}
-.note-sign{
- font-family:'Cormorant Garamond',serif;
- color:#ffb1d0;
- font-size:32px;
- margin:28px 0;
-}
-.back{
- margin-top:20px;
- background:transparent;
- border:1px solid #ff86b8;
- border-radius:40px;
- padding:13px 22px;
- color:white;
- font-size:10px;
- letter-spacing:1.5px;
+.star {
+  position: absolute;
+  color: #ffacd1;
+  animation: twinkle 3s infinite ease-in-out;
+  opacity: .6;
 }
 
-@media(min-width:700px){
- section{padding:105px 35px}
- .poem-grid{grid-template-columns:1fr 1fr}
- .note-paper{padding:38px;font-size:14px}
+@keyframes twinkle {
+  0%,100% { opacity: .2; transform: scale(.7); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  z-index: 1;
+  pointer-events: none;
+  color: var(--pink);
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+.petal {
+  position: fixed;
+  top: -30px;
+  z-index: 5;
+  pointer-events: none;
+  animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translate(100px, 110vh) rotate(600deg);
+    opacity: 0;
+  }
+}
+
+.page {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px 18px;
+}
+
+#page1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 42px 25px;
+  text-align: center;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,128,190,.25);
+  border-radius: 28px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 55px rgba(255,40,140,.12);
+  animation: appear 1s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.small-heart {
+  color: var(--pink);
+  font-size: 43px;
+  margin-bottom: 15px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.login-card h1 {
+  font-size: clamp(38px, 10vw, 53px);
+  color: #ffb2d2;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin-top: 14px;
+  color: #d9b8ca;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.login-card .instruction {
+  margin: 30px 0 15px;
+  color: #f6c5dc;
+  font-size: 13px;
+}
+
+.input-wrap {
+  margin: 0 auto 17px;
+  max-width: 310px;
+}
+
+.input-wrap input {
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 3px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,100,170,.5);
+  border-radius: 13px;
+  outline: none;
+}
+
+.input-wrap input:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 18px rgba(255,79,154,.2);
+}
+
+.primary-btn {
+  border: none;
+  color: white;
+  background: linear-gradient(120deg, #d92879, #ff6eaa);
+  border-radius: 30px;
+  padding: 14px 32px;
+  box-shadow: 0 6px 25px rgba(255,50,140,.25);
+  transition: .3s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255,50,140,.45);
+}
+
+.error {
+  color: #ff85a9;
+  font-size: 12px;
+  margin-top: 13px;
+  min-height: 20px;
+}
+
+.page-heading {
+  text-align: center;
+  padding: 35px 0 25px;
+}
+
+.eyebrow {
+  color: var(--pink);
+  letter-spacing: 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.page-heading h1 {
+  font-size: clamp(43px, 10vw, 67px);
+  color: #ffb6d4;
+  font-weight: 500;
+  margin: 12px 0;
+}
+
+.page-heading p {
+  color: #d9b6c9;
+  font-size: 13px;
+}
+
+.content {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+}
+
+.section-title {
+  text-align: center;
+  color: #ffacd0;
+  font-size: 34px;
+  font-weight: 500;
+  margin: 45px 0 20px;
+}
+
+.love-card {
+  padding: 25px 21px;
+  margin: 16px 0;
+  border: 1px solid rgba(255,130,190,.2);
+  border-radius: 20px;
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(0,0,0,.15);
+  animation: appear .8s ease both;
+}
+
+.love-card h3 {
+  font-size: 25px;
+  color: #ffafd0;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.love-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  line-height: 1.6;
+  color: #f9e2ed;
+}
+
+.love-card .meaning {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: #d99bb9;
+  margin-top: 13px;
+  line-height: 1.7;
+}
+
+.wish-text {
+  font-size: 14px;
+  line-height: 2;
+  color: #f1d7e4;
+}
+
+.special-message {
+  border-color: rgba(255,79,154,.45);
+  box-shadow: 0 0 35px rgba(255,50,140,.1);
+}
+
+.special-message p {
+  font-size: 24px;
+}
+
+.gift-area {
+  text-align: center;
+  padding: 45px 0 60px;
+}
+
+.gift-area h2 {
+  font-size: 35px;
+  color: #ffb4d3;
+  margin-bottom: 12px;
+}
+
+.gift-area p {
+  color: #e0b8cb;
+  font-size: 13px;
+}
+
+.gift {
+  display: inline-block;
+  position: relative;
+  margin: 40px auto 25px;
+  font-size: 100px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 25px rgba(255,50,150,.5));
+  animation: giftBounce 2s infinite ease-in-out;
+  transition: .4s;
+}
+
+.gift:hover {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+@keyframes giftBounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-13px); }
+}
+
+.gift-button {
+  display: block;
+  margin: auto;
+}
+
+.footer {
+  text-align: center;
+  color: #a97a92;
+  font-size: 11px;
+  padding: 20px 0 35px;
+}
+
+.note-container {
+  max-width: 720px;
+  margin: 25px auto;
+  padding: 30px 22px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,130,190,.25);
+  border-radius: 24px;
+  box-shadow: 0 0 50px rgba(255,30,130,.1);
+}
+
+.note-container h1 {
+  text-align: center;
+  color: #ffafd0;
+  font-size: 43px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.note-text {
+  color: #f4dbe7;
+  font-size: 14px;
+  line-height: 2.15;
+  white-space: pre-line;
+}
+
+.signature {
+  text-align: right;
+  color: #ffafd0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  margin-top: 28px;
+}
+
+.back-btn {
+  display: block;
+  margin: 25px auto;
+  background: transparent;
+  border: 1px solid #ff7db4;
+  color: #ffb4d3;
+  border-radius: 30px;
+  padding: 12px 25px;
+}
+
+.music-btn {
+  position: fixed;
+  z-index: 10;
+  top: 15px;
+  right: 15px;
+  background: rgba(255,70,150,.15);
+  border: 1px solid rgba(255,150,200,.4);
+  color: white;
+  border-radius: 30px;
+  padding: 9px 13px;
+  font-size: 11px;
+}
+
+@media (min-width: 700px) {
+  .page { padding: 35px 35px; }
+  .note-container { padding: 45px; }
+  .love-card { padding: 30px; }
 }
 </style>
 </head>
 
 <body>
 
-<div id="background"></div>
-<div id="stars"></div>
-<div id="floating"></div>
-<div id="petals"></div>
+<div id="particles"></div>
 
-<!-- ================= PAGE 1: LOGIN ================= -->
-<div id="page1" class="page active center">
- <div class="login-card">
-  <div class="lock-icon">♡</div>
-  <div class="eyebrow">A secret little world</div>
-
-  <h1 class="serif glow">
-   Only for<br>
-   <span class="pink">Hasbi Naz</span>
-  </h1>
-
-  <p>
-   Ek chhoti si duniya, kuch khoobsurat ehsaas,
-   aur ek surprise jo sirf tumhare liye hai.
-  </p>
-
-  <label class="eyebrow" style="display:block;margin-top:25px">
-   PASSWORD IS YOUR BIRTHDATE.
-  </label>
-
-  <input
-   id="password"
-   type="text"
-   inputmode="numeric"
-   autocomplete="off"
-   maxlength="10"
-   placeholder="DD-MM-YYYY"
-  >
-
-  <div id="error"></div>
-
-  <button class="btn" onclick="login()">
-   UNLOCK MY SURPRISE ♡
-  </button>
-
-  <p class="login-foot">MADE WITH LOVE · JUST FOR YOU</p>
- </div>
-</div>
-
-
-<!-- ================= PAGE 2: BIRTHDAY ================= -->
-<div id="page2" class="page">
-
- <nav>
-  <div class="brand">With love ♡</div>
-  <button class="music-btn" onclick="toggleMusic()" id="musicBtn">
-   ♫ Music Off
-  </button>
- </nav>
-
- <audio id="music" loop preload="none">
+<audio id="backgroundMusic" loop preload="none">
   <source src="assets/dreamy-piano.mp3" type="audio/mpeg">
- </audio>
+</audio>
 
- <section class="hero center">
-  <div class="eyebrow">19 November · Your special day</div>
-  <div class="hero-heart">💗</div>
+<button class="music-btn" id="musicButton" hidden>
+  ♫ Play Music
+</button>
 
-  <h1 class="serif glow">
-   Happy Birthday<br>
-   <span class="pink">Hasbi Naz</span>
-  </h1>
+<!-- PAGE 1: LOGIN -->
+<section class="page" id="page1">
+  <div class="login-card">
+    <div class="small-heart">♡</div>
+    <div class="subtitle">A LITTLE WORLD MADE FOR YOU</div>
+    <h1>Hasbi Naz</h1>
+    <p class="instruction">A special surprise is waiting for you...</p>
 
-  <p>
-   Aaj ka din utna hi khoobsurat ho jitni khoobsurat tumhari muskurahat hai.
-   Meri dua hai tumhari zindagi hamesha khushiyon se bhari rahe.
-  </p>
+    <form id="loginForm">
+      <div class="input-wrap">
+        <input
+          id="dateInput"
+          type="text"
+          inputmode="numeric"
+          maxlength="10"
+          placeholder="DD-MM-YYYY"
+          autocomplete="off"
+          required
+        >
+      </div>
 
-  <div class="scroll">SCROLL DOWN, MY CHUGU ↓</div>
- </section>
+      <button class="primary-btn" type="submit">
+        Unlock My Surprise ♡
+      </button>
+      <p class="error" id="loginError" aria-live="polite"></p>
+    </form>
 
+    <p class="subtitle">MADE WITH LOVE ♡</p>
+  </div>
+</section>
 
- <!-- SHAYARI -->
- <section>
-  <div class="heading">
-   <div class="eyebrow">Words from my heart</div>
-   <h2 class="serif">For my <span class="pink">Chugu</span></h2>
-   <div class="divider"></div>
-   <p>Kuch alfaaz, kuch ehsaas... sirf tumhare liye.</p>
+<!-- PAGE 2: BIRTHDAY -->
+<section class="page" id="page2" hidden>
+
+  <header class="page-heading">
+    <div class="eyebrow">A DAY AS BEAUTIFUL AS YOU</div>
+    <h1>Happy Birthday ♡</h1>
+    <p>To my favourite person, Hasbi Naz</p>
+  </header>
+
+  <main class="content">
+
+    <div class="love-card">
+      <h3>Today Is All About You ✨</h3>
+      <p class="wish-text">
+        Aaj ka din mere liye bhi bahut special hai,
+        kyunki aaj us insaan ka birthday hai
+        jo meri duniya mein ek alag hi jagah rakhta hai.
+        Tum hamesha khush raho, muskurati raho
+        aur tumhare har sapne ko ek khoobsurat manzil mile.
+      </p>
+    </div>
+
+    <h2 class="section-title">Kuch Dil Ki Baatein 🌹</h2>
+
+    <div class="love-card">
+      <h3>01. Ek Dua</h3>
+      <p>
+        Teri muskurahat se roshan meri har shaam rahe,
+        Tere chehre pe hamesha khushiyon ka naam rahe,
+        Chahe kitne bhi aayein zindagi mein mod,
+        Tere labon pe hamesha muskurahat rahe.
+      </p>
+    </div>
+
+    <div class="love-card">
+      <h3>02. Tumhari Yaad</h3>
+      <p>
+        Har pal mein tera khayal rehta hai,
+        Dil mein tera hi sawaal rehta hai,
+        Lafzon mein bayan karna mushkil hai,
+        Tu mere liye kitna khaas rehta hai.
+      </p>
+    </div>
+
+    <div class="love-card">
+      <h3>03. Mohabbat</h3>
+      <p>
+        Na chaand ki khwahish, na sitaron ki talab,
+        Bas tera saath ho, aur kuch nahi talab,
+        Zindagi chahe jitni bhi mushkil ho,
+        Teri muskurahat ban jaaye mera sabab.
+      </p>
+    </div>
+
+    <div class="love-card">
+      <h3>04. Ek Khubsurat Ehsaas</h3>
+      <p>
+        Tujhse milkar ye jaana hai maine,
+        Khushi kya hoti hai pehchana hai maine,
+        Teri baaton mein ek sukoon sa hai,
+        Jise apne dil mein basaya hai maine.
+      </p>
+    </div>
+
+    <h2 class="section-title">My Birthday Wishes 💗</h2>
+
+    <div class="love-card">
+      <p class="wish-text">
+        Chugu, meri dua hai ki tumhari zindagi ka har din
+        aaj ki tarah khoobsurat ho.
+
+        Tumhe kabhi apne aap ko akela mehsoos na karna pade.
+        Tumhari aankhon mein aansu se zyada khushi ho.
+        Tumhare chehre ki smile kabhi kam na ho.
+
+        May you get everything your heart wishes for.
+        Keep shining, keep smiling and keep being you.
+      </p>
+    </div>
+
+    <div class="love-card special-message">
+      <h3>For My Chugu 🥹</h3>
+      <p>
+        Tum sirf ek naam nahi ho,
+        tum meri bahut si khubsurat feelings ka hissa ho.
+        Tumhari chhoti chhoti baatein,
+        tumhara gussa, tumhari smile,
+        sab kuch mere liye special hai.
+        ♡
+      </p>
+    </div>
+
+    <div class="love-card">
+      <h3>One More Thing...</h3>
+      <p class="wish-text">
+        Main ye nahi kahunga ki har din perfect hoga,
+        lekin itna zaroor kahunga ki tumhari khushi
+        mere liye hamesha important rahegi.
+        Happy Birthday, Chugu! 🥀
+      </p>
+    </div>
+
+    <!-- GIFT AT THE END -->
+    <div class="gift-area">
+      <h2>One Last Surprise 🎁</h2>
+      <p>There is something more I want to tell you...</p>
+
+      <div
+        class="gift"
+        id="giftBox"
+        role="button"
+        tabindex="0"
+        aria-label="Open your final surprise"
+      >🎁</div>
+
+      <button class="primary-btn gift-button" id="giftButton">
+        Open Your Gift ♡
+      </button>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    Made specially for Hasbi Naz ♡
+  </footer>
+</section>
+
+<!-- PAGE 3: FINAL NOTE -->
+<section class="page" id="page3" hidden>
+
+  <div class="page-heading">
+    <div class="eyebrow">WORDS FROM MY HEART</div>
+    <h1>Ek Aakhri Baat... 🥀</h1>
+    <p>Just for you, Chugu ♡</p>
   </div>
 
-  <div class="poem-grid">
+  <main class="note-container">
 
-   <div class="poem">
-    <div class="verse">
-     Tum muskura do toh bahaar aa jaaye,<br>
-     Tum paas ho toh har khushi mil jaaye.
+    <h1>Dear Chugu ❤️</h1>
+
+    <div class="note-text">
+Pata nahi main apni saari feelings ko words mein kitni achhi tarah samjha paunga, lekin aaj dil se kuch kehna chahta hoon.
+
+Sabse pehle, Happy Birthday meri pyaari Chugu. ❤️
+
+Bahut si galtiyan sabse hoti hain. Mujhse bhi hui hongi. Kabhi meri baaton se tumhe bura laga ho, kabhi maine tumhe samajhne mein der kar di ho, ya kabhi meri wajah se tumhari aankhon mein aansu aaye hon, toh dil se sorry.
+
+Main perfect nahi hoon, lekin meri feelings tumhare liye sachchi hain. Main har baar sahi nahi ho sakta, lekin main apni galtiyon ko samajhna aur khud ko behtar banana chahta hoon.
+
+Kabhi kabhi sochta hoon ki tumhare alawa mere paas aur hai hi kaun jiske saath main apni itni saari baatein share kar sakun. Tumhari importance meri life mein lafzon se kahin zyada hai.
+
+Chugu, please kabhi ye mat sochna ki tum mere liye kam important ho. Tumhari khushi, tumhara sukoon aur tumhari smile mere liye bahut matter karti hai.
+
+Main chahta hoon ki tum apni life mein bahut aage jao. Tumhare saare dreams poore hon. Tumhe woh saari khushiyan milen jinki tum haqdar ho.
+
+Agar kabhi humare beech misunderstandings ho jaayein, toh unhe apne dil mein rakhne ke bajaye ek doosre se baat karein. Main chahta hoon ki hum ek doosre ko samjhein, ek doosre ki respect karein aur har din thoda aur behtar banein.
+
+Tumhe har waqt strong banne ki zaroorat nahi hai. Kabhi udaas ho, kabhi pareshan ho, toh apni feelings share kar sakti ho. Tumhari har feeling important hai.
+
+Mujhe tumhari sirf achhi baatein hi nahi, tumhari imperfections bhi apni lagti hain. Main tumhe badalne ke liye nahi, balki tumhe samajhne ke liye tumhare saath rehna chahta hoon.
+
+Bas itna yaad rakhna, tum special ho. Tumhari jagah koi aur nahi le sakta. Aur tumhari smile mere liye duniya ki sabse pyaari cheezon mein se ek hai.
+
+Aaj tumhara birthday hai, toh meri taraf se ek chhoti si dua:
+
+Khuda tumhe hamesha khush rakhe, tumhari har mushkil aasaan kare, tumhare chehre se muskurahat kabhi door na hone de aur tumhe zindagi ki har woh khushi de jo tum deserve karti ho.
+
+Thank you meri life ka itna khoobsurat hissa banne ke liye.
+
+Once again, Happy Birthday, Hasbi Naz.
+
+I hope tumhara aaj ka din utna hi beautiful ho jitni tum ho.
+
+Hamesha khush rehna, meri Chugu. ❤️
     </div>
-    <div class="meaning">
-     Your smile feels like spring, and your presence feels like happiness.
+
+    <div class="signature">
+      Always with love,<br>
+      Yours ♡
     </div>
-    <div class="heart-small">♡</div>
-   </div>
 
-   <div class="poem">
-    <div class="verse">
-     Na chaand chahiye, na sitaaron ki roshni,<br>
-     Bas tum saath raho, yahi hai zindagi.
-    </div>
-    <div class="meaning">
-     I don't need the moon or stars; having you beside me is enough.
-    </div>
-    <div class="heart-small">♡</div>
-   </div>
+  </main>
 
-   <div class="poem">
-    <div class="verse">
-     Teri hansi meri pehchaan ban jaaye,<br>
-     Teri khushi meri jaan ban jaaye.
-    </div>
-    <div class="meaning">
-     Your laughter is a beautiful part of my world.
-    </div>
-    <div class="heart-small">♡</div>
-   </div>
-
-   <div class="poem">
-    <div class="verse">
-     Har dua mein tera naam rahe,<br>
-     Tere labon pe sada muskaan rahe.
-    </div>
-    <div class="meaning">
-     May every prayer bring you happiness and every day give you a reason to smile.
-    </div>
-    <div class="heart-small">♡</div>
-   </div>
-
-   <div class="poem">
-    <div class="verse">
-     Tujhse milkar ye jaana humne,<br>
-     Sukoon bhi kisi insaan mein hota hai.
-    </div>
-    <div class="meaning">
-     You taught me that a person can feel like home.
-    </div>
-    <div class="heart-small">♡</div>
-   </div>
-
-   <div class="poem">
-    <div class="verse">
-     Teri saadgi ka kya jawaab doon,<br>
-     Tujhe dekhoon toh bas dekhta reh jaaun.
-    </div>
-    <div class="meaning">
-     Sometimes there are no words; I just admire you quietly.
-    </div>
-    <div class="heart-small">♡</div>
-   </div>
-
-   <div class="poem">
-    <div class="verse">
-     Dooriyon se mohabbat kam nahi hoti,<br>
-     Dil mein jagah ho toh kami nahi hoti.
-    </div>
-    <div class="meaning">
-     Distance cannot reduce what the heart truly feels.
-    </div>
-    <div class="heart-small">♡</div>
-   </div>
-
-   <div class="poem">
-    <div class="verse">
-     Tere hone se roshan hai meri duniya,<br>
-     Tu hi meri duaon ka haseen sa hissa.
-    </div>
-    <div class="meaning">
-     Your presence makes my world brighter.
-    </div>
-    <div class="heart-small">♡</div>
-   </div>
-
-  </div>
- </section>
-
-
- <!-- BIRTHDAY WISHES -->
- <section>
-  <div class="heading">
-   <div class="eyebrow">A birthday wish from me</div>
-   <h2 class="serif">For your <span class="pink">happiness</span></h2>
-   <div class="divider"></div>
-  </div>
-
-  <div class="wish-card">
-   <h3 class="serif">Happy Birthday, Chugu! 🌷</h3>
-
-   <p>
-    Meri dua hai ke tumhari zindagi ka har din khushiyon se bhara ho.
-    Tumhare saare sapne poore hon aur tumhe har woh cheez mile
-    jo tumhare dil ko sukoon de.
-   </p>
-
-   <p>
-    Jab kabhi mushkil waqt aaye toh tumhare andar use paar karne ki himmat ho.
-    Jab kabhi udaas ho toh tumhe muskurane ki wajah mil jaaye.
-   </p>
-
-   <p>
-    Allah tumhe hamesha apni hifazat mein rakhe,
-    tumhari har achhi dua qubool kare aur tumhari zindagi
-    ko khoobsurat lamhon se bhar de. Aameen. ❤️
-   </p>
-  </div>
- </section>
-
-
- <!-- CHUGU SPECIAL -->
- <section>
-  <div class="special">
-   <div class="eyebrow">A little reminder</div>
-   <div class="flower">🌸</div>
-   <h2 class="serif">My Chugu</h2>
-
-   <p>
-    Tumhe shayad andaaza na ho, lekin tumhari chhoti si smile,
-    tumhari baatein aur tumhara bachpana bhi mere liye bahut khaas hai.
-    Hamesha apni asli wali muskurahat ke saath rehna.
-   </p>
-  </div>
- </section>
-
-
- <!-- GIFT IS THE LAST THING ON PAGE 2 -->
- <section class="surprise">
-  <div class="eyebrow">The final surprise</div>
-
-  <h2 class="serif glow">
-   One last thing,<br>
-   <span class="pink">my Chugu...</span>
-  </h2>
-
-  <p>
-   Mere dil ki kuch baatein abhi bhi baaki hain.
-   Ek aakhri surprise tumhara intezaar kar raha hai.
-  </p>
-
-  <div class="gift" id="gift" onclick="openFinalPage()">
-   <div class="gift-bow">♡</div>
-   <div class="gift-lid"></div>
-   <div class="gift-body"></div>
-  </div>
-
-  <div class="gift-label">Open your little surprise ♡</div>
-  <p style="margin-top:12px">Tap the gift, Chugu.</p>
- </section>
-
- <footer>Made with love, just for you ♡</footer>
-
-</div>
-
-
-<!-- ================= PAGE 3: FINAL NOTE ================= -->
-<div id="page3" class="page">
-
- <div class="note-content">
-  <div class="eyebrow" style="margin-top:35px">
-   A letter from my heart
-  </div>
-
-  <div class="note-heart">🥀</div>
-
-  <h1 class="serif glow">
-   Kuch dil ki<br>
-   baatein...
-  </h1>
-
-  <p class="note-intro">
-   Chugu, ye woh baatein hain jo shayad main har baar tumse keh nahi pata.
-   Aaj bas dil se padhna.
-  </p>
-
-  <div class="note-paper">
-
-   <p>Sabse pehle toh Happy Birthday meri pyaari Chugu. ❤️</p>
-
-   <p>
-    Pata hai, bahut si galtiyan sabse hoti hain.
-    Tumse bhi ho sakti hain, mujhse bhi hoti hain.
-    Lekin tumhare alawa mere paas aur hai hi kaun
-    jisse main apni har baat kahun?
-    Kisse apni khushi baantun, kisse roothun aur kise manaun?
-   </p>
-
-   <p>
-    Main ye nahi kehta ke main hamesha sahi hota hoon.
-    Kabhi meri baaton se tumhe bura lag sakta hai,
-    kabhi main tumhari feelings samajhne mein der kar sakta hoon.
-    Lekin yakeen karna, tumhari ahmiyat mere liye kabhi kam nahi hoti.
-   </p>
-
-   <p>
-    Agar kabhi humare beech koi galatfehmi aa jaaye,
-    toh use humare rishte se bada mat hone dena.
-    Gussa ho jaana, mujhse shikayat kar lena,
-    lekin apne dil ki baat kehna kabhi band mat karna.
-   </p>
-
-   <p>
-    Mujhe tumhara har andaaz pyaara hai.
-    Tumhara hansna, tumhara gussa karna,
-    tumhara chhoti-chhoti baaton par khush ho jaana.
-    Main chahta hoon tum mere saamne hamesha apni asli wali tum raho.
-   </p>
-
-   <p>
-    Main tumse perfection nahi chahta.
-    Na hi chahta hoon ke tum har waqt khush rehne ka dikhawa karo.
-    Udaas ho toh bata dena, pareshaan ho toh keh dena.
-    Har baat akele sambhalna zaroori nahi hota.
-   </p>
-
-   <p>
-    Kabhi tumhe lage ke tumhari koi baat sunne wala nahi hai,
-    toh mujhse keh dena.
-    Ho sakta hai main har pareshani ka hal na de paaun,
-    lekin tumhari baat ko samajhne ki poori koshish zaroor karunga.
-   </p>
-
-   <p>
-    Tumhari muskurahat mere liye bahut khaas hai.
-    Main chahta hoon tumhe muskurane ke liye kabhi
-    apni khushi se samjhauta na karna pade.
-   </p>
-
-   <p>
-    Meri dil se dua hai ke Allah tumhari har mushkil aasaan kare,
-    tumhare naseeb mein khushiyan likhe,
-    tumhare sapnon ko haqeeqat banaye
-    aur tumhe hamesha buri nazar aur har takleef se mehfooz rakhe.
-   </p>
-
-   <p>
-    Tumhe har kisi ke saamne khud ko saabit karne ki zaroorat nahi.
-    Tum jaisi ho, apne aap mein bahut khoobsurat ho.
-    Apni value kabhi mat bhoolna.
-   </p>
-
-   <p>
-    Main nahi jaanta ke aane wala waqt humare liye kya lekar aayega,
-    lekin aaj main bas itna kehna chahta hoon:
-    tum mere liye bahut special ho.
-    Tumhari khushi aur tumhari feelings mere liye maayne rakhti hain.
-   </p>
-
-   <p>
-    Kabhi khud ko akela mat samajhna, Chugu.
-    Apne sapne poore karna, khoob aage badhna,
-    aur apni woh pyaari si smile kabhi mat khona.
-   </p>
-
-   <p>
-    Janamdin bahut bahut mubarak ho, meri pyaari Hasbi Naz.
-    Hamesha khush raho, hamesha abaad raho. 🌷
-   </p>
-
-  </div>
-
-  <div class="note-sign">With all my heart, Chugu ♡</div>
-
-  <p style="font-size:12px;color:#cba9bc;line-height:2">
-   Ye chhota sa surprise yahin khatam hota hai,<br>
-   lekin tumhare liye meri duayein kabhi khatam nahi hongi.
-  </p>
-
-  <button class="back" onclick="backToPage2()">
-   BACK TO BIRTHDAY ♡
+  <button class="back-btn" id="backButton">
+    ← Back to Birthday Page
   </button>
 
- </div>
-</div>
-
+  <footer class="footer">
+    Some feelings are too beautiful for words. ♡
+  </footer>
+</section>
 
 <script>
-/* ==================================
-   THREE INDEPENDENT PAGES
-   ================================== */
+(function () {
+  "use strict";
 
-function showPage(pageId){
- document.querySelectorAll(".page").forEach(function(page){
-  page.classList.remove("active");
- });
+  const pages = {
+    login: document.getElementById("page1"),
+    birthday: document.getElementById("page2"),
+    note: document.getElementById("page3")
+  };
 
- const nextPage=document.getElementById(pageId);
+  const dateInput = document.getElementById("dateInput");
+  const loginForm = document.getElementById("loginForm");
+  const loginError = document.getElementById("loginError");
 
- if(nextPage){
-  nextPage.classList.add("active");
- }
+  const giftBox = document.getElementById("giftBox");
+  const giftButton = document.getElementById("giftButton");
+  const backButton = document.getElementById("backButton");
 
- window.scrollTo(0,0);
-}
+  const music = document.getElementById("backgroundMusic");
+  const musicButton = document.getElementById("musicButton");
 
-/* PAGE 1 -> PAGE 2 */
-const correctPassword="19-11-2008";
-const passwordInput=document.getElementById("password");
+  const correctPassword = "19-11-2008";
 
-passwordInput.addEventListener("input",function(){
- let digits=this.value.replace(/\D/g,"").slice(0,8);
- let formatted=digits;
+  // Only one page can be visible at a time.
+  function showPage(pageName) {
+    Object.keys(pages).forEach(function (key) {
+      pages[key].hidden = key !== pageName;
+    });
 
- if(digits.length>2){
-  formatted=digits.slice(0,2)+"-"+digits.slice(2);
- }
- if(digits.length>4){
-  formatted=digits.slice(0,2)+"-"+digits.slice(2,4)+"-"+digits.slice(4);
- }
+    window.scrollTo({
+      top: 0,
+      behavior: "instant"
+    });
 
- this.value=formatted;
-});
+    if (pageName !== "login") {
+      musicButton.hidden = false;
+    }
+  }
 
-function login(){
- const error=document.getElementById("error");
+  // Format date as DD-MM-YYYY.
+  dateInput.addEventListener("input", function () {
+    let digits = this.value.replace(/\D/g, "").slice(0, 8);
 
- if(passwordInput.value===correctPassword){
-  error.textContent="";
-  flowerShower(40);
-  showPage("page2");
- }else{
-  error.textContent="Birthday date sahi nahi hai. Try again ♡";
-  passwordInput.focus();
- }
-}
+    let formatted = digits;
 
-passwordInput.addEventListener("keydown",function(e){
- if(e.key==="Enter")login();
-});
+    if (digits.length > 4) {
+      formatted =
+        digits.slice(0, 2) + "-" +
+        digits.slice(2, 4) + "-" +
+        digits.slice(4);
+    } else if (digits.length > 2) {
+      formatted =
+        digits.slice(0, 2) + "-" +
+        digits.slice(2);
+    }
 
-/* PAGE 2 -> PAGE 3 DIRECTLY */
-let giftClicked=false;
-
-function openFinalPage(){
- if(giftClicked)return;
-
- giftClicked=true;
-
- document.getElementById("gift").classList.add("open");
-
- flowerShower(100);
-
- setTimeout(function(){
-  showPage("page3");
-  flowerShower(50);
- },850);
-}
-
-/* PAGE 3 -> PAGE 2 */
-function backToPage2(){
- showPage("page2");
- giftClicked=false;
-}
-
-/* STARS */
-const stars=document.getElementById("stars");
-
-for(let i=0;i<100;i++){
- const star=document.createElement("span");
- star.className="star";
-
- star.style.left=Math.random()*100+"%";
- star.style.top=Math.random()*100+"%";
-
- const size=1+Math.random()*2.5;
-
- star.style.width=size+"px";
- star.style.height=size+"px";
- star.style.animationDelay=Math.random()*3+"s";
- star.style.animationDuration=(1.5+Math.random()*3)+"s";
-
- stars.appendChild(star);
-}
-
-/* FLOATING HEARTS AND FLOWERS */
-const floating=document.getElementById("floating");
-const symbols=["♡","♥","✿","❀","✧","🌸"];
-
-for(let i=0;i<26;i++){
- const item=document.createElement("span");
-
- item.className="float";
- item.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-
- item.style.left=Math.random()*100+"%";
- item.style.fontSize=(12+Math.random()*19)+"px";
- item.style.animationDuration=(12+Math.random()*18)+"s";
- item.style.animationDelay=(-Math.random()*25)+"s";
-
- floating.appendChild(item);
-}
-
-/* FLOWER SHOWER */
-function flowerShower(amount){
- const root=document.getElementById("petals");
- const choices=["🌸","✿","❀","♥","♡","✧"];
-
- for(let i=0;i<amount;i++){
-  setTimeout(function(){
-   const petal=document.createElement("span");
-
-   petal.className="petal";
-   petal.textContent=choices[Math.floor(Math.random()*choices.length)];
-
-   petal.style.left=Math.random()*100+"%";
-   petal.style.fontSize=(13+Math.random()*18)+"px";
-   petal.style.setProperty("--drift",(Math.random()*180-90)+"px");
-   petal.style.animationDuration=(4+Math.random()*4)+"s";
-
-   root.appendChild(petal);
-
-   setTimeout(function(){
-    petal.remove();
-   },8500);
-
-  },i*25);
- }
-}
-
-/* OPTIONAL PIANO MUSIC */
-const music=document.getElementById("music");
-const musicBtn=document.getElementById("musicBtn");
-let musicOn=false;
-
-function toggleMusic(){
- if(!musicOn){
-  music.play().then(function(){
-   musicOn=true;
-   musicBtn.textContent="♫ Music On";
-  }).catch(function(){
-   musicBtn.textContent="♫ Music unavailable";
+    this.value = formatted;
+    loginError.textContent = "";
   });
- }else{
-  music.pause();
-  musicOn=false;
-  musicBtn.textContent="♫ Music Off";
- }
-}
+
+  // Login.
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (dateInput.value === correctPassword) {
+      loginError.textContent = "";
+      showPage("birthday");
+      createPetalShower();
+
+      // Browser may block autoplay; music button remains available.
+      music.play().then(function () {
+        musicButton.textContent = "♫ Music On";
+      }).catch(function () {
+        musicButton.textContent = "♫ Play Music";
+      });
+
+    } else {
+      loginError.textContent = "Oops! Date sahi nahi hai. Try again ♡";
+      dateInput.focus();
+    }
+  });
+
+  // Gift opens final note directly.
+  let giftOpening = false;
+
+  function openGift() {
+    if (giftOpening) return;
+
+    giftOpening = true;
+    giftBox.style.animation = "none";
+    giftBox.style.transform = "scale(1.4) rotate(12deg)";
+    giftBox.style.filter = "drop-shadow(0 0 45px #ff4f9a)";
+
+    createPetalShower();
+
+    setTimeout(function () {
+      showPage("note");
+      giftOpening = false;
+      createPetalShower();
+    }, 550);
+  }
+
+  giftBox.addEventListener("click", openGift);
+  giftButton.addEventListener("click", openGift);
+
+  giftBox.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openGift();
+    }
+  });
+
+  // Back to birthday page.
+  backButton.addEventListener("click", function () {
+    showPage("birthday");
+  });
+
+  // Music toggle.
+  musicButton.addEventListener("click", function () {
+    if (music.paused) {
+      music.play().then(function () {
+        musicButton.textContent = "♫ Music On";
+      }).catch(function () {
+        musicButton.textContent = "♫ Music Unavailable";
+      });
+    } else {
+      music.pause();
+      musicButton.textContent = "♫ Play Music";
+    }
+  });
+
+  // Background stars.
+  const particleLayer = document.getElementById("particles");
+
+  for (let i = 0; i < 55; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.textContent = "✦";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.fontSize = (5 + Math.random() * 9) + "px";
+    star.style.animationDelay = Math.random() * 4 + "s";
+    particleLayer.appendChild(star);
+  }
+
+  // Floating hearts.
+  setInterval(function () {
+    if (document.hidden) return;
+
+    const heart = document.createElement("span");
+    heart.className = "heart";
+    heart.textContent = Math.random() > .5 ? "♥" : "♡";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (12 + Math.random() * 18) + "px";
+    heart.style.animationDuration = (6 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function () {
+      heart.remove();
+    }, 12000);
+  }, 1000);
+
+  // Rose petal shower.
+  function createPetalShower() {
+    for (let i = 0; i < 28; i++) {
+      setTimeout(function () {
+        const petal = document.createElement("span");
+        petal.className = "petal";
+        petal.textContent = Math.random() > .5 ? "🌸" : "🌹";
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.fontSize = (13 + Math.random() * 15) + "px";
+        petal.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(petal);
+
+        setTimeout(function () {
+          petal.remove();
+        }, 7000);
+      }, i * 65);
+    }
+  }
+
+  // Always start on the login screen.
+  showPage("login");
+
+})();
 </script>
 
 </body>
