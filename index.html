@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>For Hasbi Naz ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #080808;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+:root {
+  --gold: #d8b779;
+  --cream: #f5e6c8;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+}
+
+#intro {
+  background:
+    radial-gradient(ellipse at center, #302315 0%, #100d09 45%, #080808 80%);
+}
+
+.content {
+  max-width: 650px;
+  width: 100%;
+}
+
+.ring {
+  width: 85px;
+  height: 85px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 35px;
+  font: 40px 'Cormorant Garamond';
+  color: var(--gold);
+  box-shadow: 0 0 35px #d8b77922;
+}
+
+.small {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+h1, h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: clamp(55px, 13vw, 95px);
+  line-height: .9;
+  margin: 30px 0;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+p {
+  color: #aaa;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.btn {
+  margin-top: 35px;
+  padding: 15px 28px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  letter-spacing: 2px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: #080808;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#main {
+  animation: appear 1.5s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+  background: radial-gradient(circle, #281e12, #080808 70%);
+}
+
+.hero h2 {
+  font-size: clamp(55px, 14vw, 100px);
+  line-height: .9;
+  margin: 25px 0;
+}
+
+.hero p {
+  letter-spacing: 2px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+section:not(.screen) {
+  padding: 90px 22px;
+  text-align: center;
+}
+
+.heading {
+  font-size: clamp(45px, 10vw, 65px);
+  margin: 20px 0;
+}
+
+.line {
+  height: 1px;
+  width: 65px;
+  background: var(--gold);
+  margin: 25px auto;
+}
+
+.gallery {
+  max-width: 850px;
+  margin: 40px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border: 1px solid #d8b77944;
+  background: #19140e;
+}
+
+.video {
+  max-width: 650px;
+  margin: 30px auto;
+}
+
+video {
+  width: 100%;
+  border: 1px solid #d8b77955;
+}
+
+.letter {
+  max-width: 600px;
+  margin: 35px auto;
+  padding: 35px 25px;
+  border: 1px solid #d8b77955;
+  background: linear-gradient(145deg, #19140e, #0c0b09);
+  text-align: left;
+}
+
+.letter p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  color: #e6dac6;
+  margin: 15px 0;
+}
+
+footer {
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.music {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #17120c;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  z-index: 10;
+}
+
+@media(max-width:480px) {
+  .gallery img { height: 180px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME SCREEN -->
+<div class="screen" id="intro">
+  <div class="content">
+    <div class="ring">H</div>
+    <div class="small">A special surprise for someone special</div>
+
+    <h1>
+      A World<br>
+      <span class="gold">Of You.</span>
+    </h1>
+
+    <p>
+      Not every feeling can be expressed in words...
+      So I created a little world just for you.
+    </p>
+
+    <button class="btn" onclick="openSurprise()">
+      OPEN YOUR SURPRISE ✦
+    </button>
+  </div>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div id="main" class="hidden">
+
+  <!-- BIRTHDAY REVEAL -->
+  <div class="screen hero">
+    <div class="content">
+      <div class="small">Today belongs to you</div>
+
+      <h2>
+        Happy Birthday<br>
+        <span class="gold">Hasbi Naz</span>
+      </h2>
+
+      <div class="line"></div>
+
+      <p>
+        To the girl who makes my world more beautiful.
+      </p>
+
+      <button class="btn"
+      onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">
+        EXPLORE YOUR WORLD ↓
+      </button>
+    </div>
+  </div>
+
+  <!-- MEMORIES -->
+  <section id="memories">
+    <div class="small">Chapter 01 · Memories</div>
+
+    <h2 class="heading">
+      Beautiful <span class="gold">Moments.</span>
+    </h2>
+
+    <p>
+      Every picture has a story, and every story is special.
+    </p>
+
+    <div class="gallery">
+      <img src="assets/photo1.jpg" alt="Memory 1">
+      <img src="assets/photo2.jpg" alt="Memory 2">
+      <img src="assets/photo3.jpg" alt="Memory 3">
+      <img src="assets/photo4.jpg" alt="Memory 4">
+      <img src="assets/photo5.jpg" alt="Memory 5">
+      <img src="assets/photo6.jpg" alt="Memory 6">
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section>
+    <div class="small">Chapter 02 · A little surprise</div>
+
+    <h2 class="heading">
+      A Moment <span class="gold">For You.</span>
+    </h2>
+
+    <div class="video">
+      <video controls playsinline>
+        <source src="assets/surprise.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- LOVE LETTER -->
+  <section>
+    <div class="small">Chapter 03 · From my heart</div>
+
+    <h2 class="heading">
+      Dear <span class="gold">Hasbi.</span>
+    </h2>
+
+    <div class="line"></div>
+
+    <div class="letter">
+      <p>My dearest Hasbi Naz, ♡</p>
+
+      <p>
+        Today is not just your birthday.
+        It's a celebration of the beautiful soul
+        you are.
+      </p>
+
+      <p>
+        I wish your life is always filled with
+        happiness, endless smiles, beautiful dreams
+        and countless reasons to feel special.
+      </p>
+
+      <p>
+        You deserve all the beautiful things
+        this universe has to offer.
+      </p>
+
+      <p>
+        And if I could make one wish today,
+        it would be to see you smiling every day.
+      </p>
+
+      <p class="gold">
+        Happy Birthday, my special girl. ❤️
+      </p>
+    </div>
+  </section>
+
+  <!-- FINAL SURPRISE -->
+  <section>
+    <div class="small">One last thing · Just for you</div>
+
+    <h2 class="heading">
+      Make A <span class="gold">Wish.</span>
+    </h2>
+
+    <div class="ring">✦</div>
+
+    <p>
+      Close your eyes, make a beautiful wish
+      and let the universe hear it.
+    </p>
+
+    <button class="btn" onclick="makeWish()">
+      I MADE A WISH ✨
+    </button>
+
+    <h2 id="finalMessage"
+    class="gold hidden"
+    style="margin-top:35px;font-size:40px">
+      May it all come true, Hasbi. ♡
+    </h2>
+  </section>
+
+  <footer>
+    MADE WITH LOVE ♡<br><br>
+    FOREVER A SPECIAL WORLD FOR HASBI NAZ
+  </footer>
+
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" class="music hidden"
+onclick="toggleMusic()">♫</button>
+
+<script>
+function openSurprise() {
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('main').classList.remove('hidden');
+  document.getElementById('musicBtn').classList.remove('hidden');
+
+  const music = document.getElementById('music');
+  music.play().catch(() => {});
+
+  confetti();
+}
+
+function toggleMusic() {
+  const music = document.getElementById('music');
+
+  if (music.paused) {
+    music.play().catch(() => {});
+  } else {
+    music.pause();
+  }
+}
+
+function makeWish() {
+  document.getElementById('finalMessage')
+    .classList.remove('hidden');
+
+  confetti();
+}
+
+function confetti() {
+  const symbols = ['✦', '✧', '♡', '·'];
+
+  for (let i = 0; i < 70; i++) {
+    const item = document.createElement('span');
+
+    item.innerHTML = symbols[
+      Math.floor(Math.random() * symbols.length)
+    ];
+
+    item.style.position = 'fixed';
+    item.style.top = '-20px';
+    item.style.left = Math.random() * 100 + 'vw';
+    item.style.color = '#d8b779';
+    item.style.fontSize = '18px';
+    item.style.zIndex = '100';
+    item.style.pointerEvents = 'none';
+    item.style.transition = 'transform 3s linear, opacity 3s';
+
+    document.body.appendChild(item);
+
+    setTimeout(() => {
+      item.style.transform =
+        'translateY(110vh) rotate(600deg)';
+      item.style.opacity = '0';
+    }, 50);
+
+    setTimeout(() => item.remove(), 3200);
+  }
+}
+</script>
+
+</body>
+</html>
