@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#09030a">
+<meta name="theme-color" content="#08030a">
 <title>For Hasbi Naz ♡</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,128 +11,114 @@
 
 <style>
 :root{
- --bg:#09030a;
- --pink:#ff4f9a;
- --pink2:#ff9bc6;
- --pale:#ffe0ed;
- --text:#fff2f8;
- --muted:#c7a6b8;
- --card:#190b17;
+ --bg:#08030a;
+ --pink:#ff4d99;
+ --pink2:#ffafd0;
+ --pale:#ffe3ef;
+ --white:#fff4fa;
+ --muted:#c9a6ba;
+ --card:#190b18;
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
  background:var(--bg);
- color:var(--text);
+ color:var(--white);
  font-family:'DM Sans',sans-serif;
  overflow-x:hidden;
 }
 button,input{font:inherit}
 button{cursor:pointer}
 .serif{font-family:'Cormorant Garamond',serif}
-.page{display:none;min-height:100vh}
-.page.active{display:block;animation:pageIn .85s ease both}
-@keyframes pageIn{
+.pink{color:var(--pink2)}
+.glow{text-shadow:0 0 25px #ff4d9980,0 0 60px #ff4d9935}
+.eyebrow{
+ color:var(--pink2);
+ font-size:10px;
+ letter-spacing:4px;
+ text-transform:uppercase;
+}
+.center{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+}
+
+/* STRICT THREE-PAGE NAVIGATION */
+.page{
+ display:none !important;
+ width:100%;
+ min-height:100vh;
+}
+.page.active{
+ display:block !important;
+ animation:pageEnter .8s ease both;
+}
+#page1.active,#page3.active{
+ display:flex !important;
+}
+@keyframes pageEnter{
  from{opacity:0;transform:translateY(15px)}
  to{opacity:1;transform:translateY(0)}
 }
-.center{
- display:flex;align-items:center;justify-content:center;
- flex-direction:column;text-align:center;
-}
-.pink{color:var(--pink2)}
-.eyebrow{
- font-size:10px;letter-spacing:4px;
- text-transform:uppercase;color:var(--pink2);
-}
-.glow{text-shadow:0 0 25px #ff4f9a80,0 0 55px #ff4f9a30}
-.btn{
- border:1px solid #ff8abd;
- border-radius:50px;
- padding:15px 27px;
- color:white;
- background:linear-gradient(120deg,#ff5ba1,#b91568);
- box-shadow:0 0 30px #ff4f9a45;
- letter-spacing:1.5px;
- font-size:11px;
- transition:.3s;
-}
-.btn:active{transform:scale(.95)}
-.btn:hover{box-shadow:0 0 40px #ff4f9a90}
-.divider{
- width:60px;height:1px;background:var(--pink);
- margin:20px auto;box-shadow:0 0 12px var(--pink);
-}
 
-/* DREAMY ANIME NIGHT BACKGROUND */
-#sky{
- position:fixed;inset:0;z-index:-2;pointer-events:none;
+/* BACKGROUND */
+#background{
+ position:fixed;
+ inset:0;
+ z-index:-3;
  background:
- radial-gradient(ellipse at 50% 25%,#45102e 0%,transparent 48%),
- radial-gradient(ellipse at 90% 90%,#280d27 0%,transparent 40%),
- #09030a;
+ radial-gradient(ellipse at 50% 15%,#47102f 0%,transparent 50%),
+ radial-gradient(ellipse at 90% 90%,#2b0c2b 0%,transparent 45%),
+ #08030a;
 }
-#stars,#floaties,#petals{
- position:fixed;inset:0;pointer-events:none;overflow:hidden;
+#stars,#floating,#petals{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ overflow:hidden;
 }
 #stars{z-index:0}
+#floating{z-index:1}
+#petals{z-index:50}
 .star{
- position:absolute;border-radius:50%;background:#fff;
- box-shadow:0 0 8px #ffc4df;
+ position:absolute;
+ border-radius:50%;
+ background:#fff;
+ box-shadow:0 0 8px #ffc6e0;
  animation:twinkle 2s ease-in-out infinite alternate;
 }
 @keyframes twinkle{
- from{opacity:.15;transform:scale(.7)}
+ from{opacity:.15;transform:scale(.6)}
  to{opacity:1;transform:scale(1.5)}
 }
-#floaties{z-index:1}
 .float{
- position:absolute;bottom:-50px;
+ position:absolute;
+ bottom:-40px;
+ color:#ff82b9;
+ opacity:0;
+ text-shadow:0 0 15px #ff4d99;
  animation:floatUp linear infinite;
- opacity:0;color:#ff82b8;
- text-shadow:0 0 15px #ff4f9a;
 }
 @keyframes floatUp{
  0%{transform:translateY(0) rotate(0);opacity:0}
- 15%{opacity:.65}
- 85%{opacity:.5}
- 100%{transform:translateY(-115vh) rotate(240deg);opacity:0}
+ 15%{opacity:.7}
+ 85%{opacity:.6}
+ 100%{transform:translateY(-115vh) rotate(260deg);opacity:0}
 }
-#petals{z-index:30}
 .petal{
- position:absolute;top:-35px;
- animation:petalFall linear forwards;
- filter:drop-shadow(0 0 6px #ff4f9a);
+ position:absolute;
+ top:-30px;
+ animation:fall linear forwards;
+ filter:drop-shadow(0 0 7px #ff4d99);
 }
-@keyframes petalFall{
- to{transform:translate(var(--drift),110vh) rotate(650deg);opacity:0}
-}
-.sparkle{
- position:fixed;pointer-events:none;z-index:25;
- color:#ffe2ef;animation:sparkleOut .8s forwards;
-}
-@keyframes sparkleOut{
- to{transform:translateY(-40px) scale(0);opacity:0}
-}
-
-/* PAGE ONE - LOGIN */
-#loginPage{
- min-height:100svh;padding:25px;
- background:radial-gradient(ellipse at center,#45102f99,transparent 70%);
- position:relative;z-index:2;
-}
-.login-card{
- width:min(100%,390px);
- padding:38px 26px;
- border:1px solid #ff83b544;
- border-radius:26px;
- background:#120812d9;
- backdrop-filter:blur(18px);
- box-shadow:0 0 70px #ff4f9a20,inset 0 0 30px #ff4f9a08;
-}
-.lock-heart{
- font-size:43px;margin-bottom:22px;
- animation:heartbeat 2s infinite;
+@keyframes fall{
+ to{
+  transform:translate(var(--drift),110vh) rotate(650deg);
+  opacity:0;
+ }
 }
 @keyframes heartbeat{
  0%,100%{transform:scale(1)}
@@ -140,214 +126,386 @@ button{cursor:pointer}
  30%{transform:scale(1)}
  45%{transform:scale(1.1)}
 }
+@keyframes gentleFloat{
+ 50%{transform:translateY(-10px)}
+}
+
+/* BUTTONS */
+.btn{
+ background:linear-gradient(120deg,#ff5ba3,#b71468);
+ border:1px solid #ffb4d3;
+ border-radius:50px;
+ color:white;
+ padding:15px 27px;
+ font-size:11px;
+ letter-spacing:1.5px;
+ box-shadow:0 0 28px #ff4d9940;
+ transition:.3s;
+}
+.btn:active{transform:scale(.96)}
+.btn:hover{box-shadow:0 0 38px #ff4d9980}
+.divider{
+ width:60px;
+ height:1px;
+ background:var(--pink);
+ box-shadow:0 0 12px var(--pink);
+ margin:20px auto;
+}
+
+/* PAGE 1: LOGIN ONLY */
+#page1{
+ min-height:100svh;
+ padding:24px;
+ position:relative;
+ z-index:2;
+}
+.login-card{
+ width:min(100%,390px);
+ padding:38px 25px;
+ border-radius:25px;
+ background:#130913e8;
+ border:1px solid #ff80b64d;
+ box-shadow:0 0 65px #ff4d991b,inset 0 0 25px #ff4d9908;
+ backdrop-filter:blur(18px);
+}
+.lock-icon{
+ font-size:43px;
+ margin-bottom:22px;
+ animation:heartbeat 2s infinite;
+}
 .login-card h1{
- font-size:48px;line-height:1;margin:17px 0;
+ font-size:48px;
+ line-height:1;
+ margin:17px 0;
 }
 .login-card p{
- color:var(--muted);font-size:13px;line-height:1.9;
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.9;
 }
 #password{
- width:100%;margin:24px 0 10px;
- padding:16px 12px;
- background:#09030a;
- border:1px solid #ff70ac75;
+ display:block;
+ width:100%;
+ margin:25px 0 10px;
+ padding:16px 10px;
+ background:#08030a;
+ border:1px solid #ff78ae80;
  border-radius:12px;
- color:white;
- font-size:22px;
- text-align:center;
- letter-spacing:4px;
  outline:none;
+ text-align:center;
+ font-size:22px;
+ letter-spacing:4px;
+ color:white;
 }
 #password:focus{
  border-color:var(--pink);
- box-shadow:0 0 20px #ff4f9a35;
+ box-shadow:0 0 22px #ff4d9935;
 }
 #error{
- min-height:25px;color:#ff9bc6;
- font-size:12px;margin-bottom:8px;
+ min-height:25px;
+ color:#ff9bc6;
+ font-size:12px;
 }
 .login-foot{
- margin-top:23px;font-size:9px!important;
- letter-spacing:3px;color:#a98299!important;
+ font-size:9px!important;
+ letter-spacing:3px;
+ margin-top:24px;
+ color:#a78398!important;
 }
 
-/* PAGE TWO - BIRTHDAY */
-#birthdayPage{position:relative;z-index:2}
+/* PAGE 2: BIRTHDAY */
+#page2{
+ position:relative;
+ z-index:2;
+}
 nav{
- position:sticky;top:0;z-index:15;
- padding:16px 20px;
- display:flex;justify-content:space-between;align-items:center;
- background:#09030ae8;backdrop-filter:blur(16px);
- border-bottom:1px solid #ff4f9a25;
+ position:sticky;
+ top:0;
+ z-index:20;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:15px 19px;
+ background:#08030ae8;
+ backdrop-filter:blur(15px);
+ border-bottom:1px solid #ff4d9928;
 }
 .brand{
- font-family:'Cormorant Garamond';font-size:24px;
+ font-family:'Cormorant Garamond',serif;
+ font-size:24px;
  color:var(--pink2);
 }
 .music-btn{
- background:#1b0b19;border:1px solid #ff76ad70;
- color:white;border-radius:40px;padding:9px 13px;font-size:11px;
+ background:#190b18;
+ border:1px solid #ff76ad70;
+ border-radius:30px;
+ color:white;
+ padding:9px 13px;
+ font-size:11px;
 }
 .hero{
- min-height:90svh;padding:60px 20px;
- background:radial-gradient(ellipse at center,#48102e88,transparent 70%);
+ min-height:88svh;
+ padding:55px 20px;
+ background:radial-gradient(ellipse at center,#48102e80,transparent 70%);
+}
+.hero-heart{
+ font-size:31px;
+ margin:22px;
+ animation:heartbeat 2s infinite;
 }
 .hero h1{
  font-size:clamp(55px,14vw,90px);
- line-height:.92;margin:23px 0;
+ line-height:.94;
+ margin:20px 0;
 }
 .hero p{
- max-width:330px;color:var(--muted);
- font-size:13px;line-height:2;
-}
-.hero-heart{
- font-size:30px;margin:18px;
- animation:heartbeat 2s infinite;
+ max-width:340px;
+ color:var(--muted);
+ font-size:13px;
+ line-height:2;
 }
 .scroll{
- margin-top:55px;font-size:10px;
- letter-spacing:3px;color:#d19bb8;
- animation:bob 2s infinite;
+ color:#d4a4bd;
+ font-size:10px;
+ letter-spacing:3px;
+ margin-top:48px;
+ animation:gentleFloat 2s infinite;
 }
-@keyframes bob{50%{transform:translateY(8px)}}
-
-section{padding:80px 20px;position:relative}
-.heading{text-align:center;margin-bottom:35px}
-.heading h2{font-size:43px;font-weight:500;margin-top:10px}
+section{padding:80px 20px}
+.heading{
+ text-align:center;
+ margin-bottom:32px;
+}
+.heading h2{
+ font-size:43px;
+ font-weight:500;
+ margin-top:10px;
+}
 .heading p{
- color:var(--muted);font-size:12px;line-height:1.9;margin-top:10px;
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.9;
+ margin-top:10px;
 }
 .poem-grid{
- display:grid;gap:16px;max-width:700px;margin:auto;
+ display:grid;
+ gap:16px;
+ max-width:700px;
+ margin:auto;
 }
 .poem{
- text-align:center;padding:26px 18px;
- border-radius:19px;
- border:1px solid #ff7cb32d;
- background:linear-gradient(145deg,#281020,#100811);
- box-shadow:0 10px 35px #0005;
- transition:.4s;
-}
-.poem:hover{transform:translateY(-5px);border-color:#ff8cbd90}
-.poem .verse{
- font-family:'Cormorant Garamond',serif;
- color:#ffd3e5;font-size:25px;line-height:1.55;
-}
-.poem .meaning{
- font-size:11px;color:#c6a2b6;
- line-height:1.9;margin-top:13px;font-style:italic;
-}
-.poem .tiny-heart{color:var(--pink);margin-top:12px}
-
-.wish-box{
- max-width:650px;margin:auto;
- padding:30px 23px;
+ padding:25px 18px;
+ border-radius:18px;
+ border:1px solid #ff78ae35;
  background:linear-gradient(145deg,#291020,#100811);
- border:1px solid #ff7cb344;border-radius:20px;
+ text-align:center;
+ box-shadow:0 12px 30px #0005;
+ transition:.35s;
+}
+.poem:hover{
+ transform:translateY(-5px);
+ border-color:#ff9bc6;
+}
+.verse{
+ font-family:'Cormorant Garamond',serif;
+ color:#ffd7e8;
+ font-size:25px;
+ line-height:1.6;
+}
+.meaning{
+ color:#cba9bc;
+ font-size:11px;
+ line-height:1.9;
+ margin-top:13px;
+ font-style:italic;
+}
+.heart-small{color:var(--pink);margin-top:12px}
+
+.wish-card{
+ max-width:650px;
+ margin:auto;
+ padding:30px 23px;
+ border-radius:20px;
+ border:1px solid #ff79ae40;
+ background:linear-gradient(145deg,#281020,#100811);
  text-align:center;
 }
-.wish-box h3{
- font-size:37px;color:var(--pink2);margin-bottom:15px;
-}
-.wish-box p{
- font-size:13px;line-height:2.1;color:#e6c6d7;
+.wish-card h3{
+ font-size:37px;
+ color:var(--pink2);
  margin-bottom:15px;
 }
-.wish-box p:last-child{margin-bottom:0}
-
+.wish-card p{
+ font-size:13px;
+ color:#e8c9d9;
+ line-height:2.1;
+ margin-bottom:14px;
+}
 .special{
- text-align:center;max-width:550px;margin:auto;
+ text-align:center;
+ max-width:550px;
+ margin:auto;
 }
-.special .flower{font-size:42px;margin:20px}
-.special h2{font-size:48px;color:var(--pink2)}
-.special p{font-size:13px;color:#d8b7c9;line-height:2;margin-top:15px}
+.special .flower{
+ font-size:43px;
+ margin:20px;
+}
+.special h2{
+ font-size:49px;
+ color:var(--pink2);
+}
+.special p{
+ color:#d9b7c9;
+ font-size:13px;
+ line-height:2.1;
+ margin-top:15px;
+}
 
-/* SURPRISE BOX */
+/* SURPRISE BOX AT END OF PAGE 2 */
 .surprise{
- text-align:center;padding:90px 20px 105px;
- background:radial-gradient(ellipse at center,#48102e99,transparent 70%);
+ text-align:center;
+ padding:90px 20px 105px;
+ background:radial-gradient(ellipse at center,#4a102f80,transparent 70%);
 }
-.surprise h2{font-size:45px;margin:17px 0}
-.surprise p{font-size:12px;color:var(--muted);line-height:1.9}
+.surprise h2{
+ font-size:45px;
+ margin:17px 0;
+}
+.surprise p{
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.9;
+}
 .gift{
- width:155px;height:125px;margin:35px auto 20px;
- position:relative;cursor:pointer;
+ width:155px;
+ height:130px;
+ position:relative;
+ margin:36px auto 23px;
+ cursor:pointer;
  animation:giftFloat 3s ease-in-out infinite;
- filter:drop-shadow(0 0 24px #ff4f9a50);
+ filter:drop-shadow(0 0 24px #ff4d9955);
 }
-.gift-body{
- position:absolute;bottom:0;left:0;width:155px;height:90px;
- border-radius:7px 7px 15px 15px;
- background:linear-gradient(135deg,#ff94c4,#d52079);
-}
-.gift-body:before{
- content:"";position:absolute;left:62px;top:0;
- width:30px;height:100%;background:#ffe4ef;
-}
-.gift-top{
- position:absolute;top:22px;left:-8px;width:171px;height:28px;
- background:linear-gradient(135deg,#ffc0dc,#ed438f);
- border-radius:7px;z-index:2;transition:.7s;
-}
-.gift-top:before{
- content:"";position:absolute;left:70px;top:0;
- width:30px;height:100%;background:#fff0f7;
-}
-.gift-bow{
- position:absolute;z-index:3;top:-7px;left:60px;
- color:#fff0f7;font-size:38px;
-}
-.gift.open .gift-top{transform:translateY(-85px) rotate(-13deg)}
 @keyframes giftFloat{
  50%{transform:translateY(-12px) rotate(3deg)}
 }
+.gift-body{
+ position:absolute;
+ bottom:0;
+ left:0;
+ width:155px;
+ height:90px;
+ background:linear-gradient(135deg,#ff91c2,#c51b6b);
+ border-radius:7px 7px 14px 14px;
+}
+.gift-body:before{
+ content:"";
+ position:absolute;
+ left:62px;
+ width:30px;
+ height:100%;
+ background:#ffe8f1;
+}
+.gift-lid{
+ position:absolute;
+ top:23px;
+ left:-8px;
+ width:171px;
+ height:28px;
+ background:linear-gradient(135deg,#ffc2dc,#ee4b95);
+ border-radius:7px;
+ z-index:2;
+ transition:.8s;
+}
+.gift-lid:before{
+ content:"";
+ position:absolute;
+ left:70px;
+ width:30px;
+ height:100%;
+ background:#fff0f7;
+}
+.gift-bow{
+ position:absolute;
+ top:-9px;
+ left:59px;
+ font-size:40px;
+ z-index:3;
+ color:#fff;
+}
+.gift.open .gift-lid{
+ transform:translateY(-85px) rotate(-15deg);
+}
 .gift-label{
- font-family:'Cormorant Garamond';
- font-size:23px;color:var(--pink2);
+ color:var(--pink2);
+ font-family:'Cormorant Garamond',serif;
+ font-size:24px;
 }
 footer{
- text-align:center;padding:25px;
- color:#99778e;font-size:10px;letter-spacing:1px;
+ text-align:center;
+ padding:24px;
+ color:#9e7c92;
+ font-size:10px;
 }
 
-/* PAGE THREE - NOTE */
-#notePage{
- position:relative;z-index:2;
+/* PAGE 3: FINAL NOTE */
+#page3{
  min-height:100svh;
  padding:30px 19px 70px;
- background:radial-gradient(ellipse at top,#541337,#1b0918 48%,#09030a 85%);
+ position:relative;
+ z-index:2;
+ background:radial-gradient(ellipse at top,#56153a,#1b0918 48%,#08030a 85%);
 }
-.note-content{max-width:650px;margin:auto;text-align:center}
-.note-heart{font-size:42px;margin:27px}
+.note-content{
+ max-width:650px;
+ width:100%;
+ margin:auto;
+ text-align:center;
+}
+.note-heart{
+ font-size:42px;
+ margin:27px;
+}
 .note-content h1{
  font-size:clamp(48px,12vw,72px);
- color:#ffb1d0;line-height:1;
+ line-height:1;
+ color:#ffb4d1;
 }
 .note-intro{
- color:#d4aec3;font-size:13px;line-height:2;
- max-width:390px;margin:23px auto;
+ max-width:390px;
+ margin:23px auto;
+ color:#d8b4c8;
+ font-size:13px;
+ line-height:2;
 }
 .note-paper{
- text-align:left;margin:25px auto;
+ text-align:left;
+ margin:25px auto;
  padding:26px 20px;
- border:1px solid #ff83b34c;
+ border:1px solid #ff83b34d;
  border-radius:19px;
  background:linear-gradient(145deg,#21101eeb,#100811ed);
- box-shadow:0 0 45px #ff4f9a12;
  color:#f2d9e5;
- font-size:13px;line-height:2.15;
+ font-size:13px;
+ line-height:2.15;
+ box-shadow:0 0 40px #ff4d9913;
 }
 .note-paper p{margin-bottom:17px}
 .note-paper p:last-child{margin-bottom:0}
 .note-sign{
- font-family:'Cormorant Garamond';
- font-size:31px;color:#ffb1d0;margin:28px 0;
+ font-family:'Cormorant Garamond',serif;
+ color:#ffb1d0;
+ font-size:32px;
+ margin:28px 0;
 }
 .back{
- margin-top:15px;background:transparent;
- border:1px solid #ff86b8;color:white;
- padding:13px 22px;border-radius:40px;
- font-size:10px;letter-spacing:1.5px;
+ margin-top:20px;
+ background:transparent;
+ border:1px solid #ff86b8;
+ border-radius:40px;
+ padding:13px 22px;
+ color:white;
+ font-size:10px;
+ letter-spacing:1.5px;
 }
 
 @media(min-width:700px){
@@ -360,39 +518,59 @@ footer{
 
 <body>
 
-<div id="sky"></div>
+<div id="background"></div>
 <div id="stars"></div>
-<div id="floaties"></div>
+<div id="floating"></div>
 <div id="petals"></div>
 
-<!-- PAGE 1 : LOGIN -->
-<div id="loginPage" class="page active center">
+<!-- ================= PAGE 1: LOGIN ================= -->
+<div id="page1" class="page active center">
  <div class="login-card">
-  <div class="lock-heart">♡</div>
+  <div class="lock-icon">♡</div>
   <div class="eyebrow">A secret little world</div>
-  <h1 class="serif glow">Only for<br><span class="pink">Hasbi Naz</span></h1>
-  <p>Ek chhoti si duniya hai, kuch pyaare ehsaas hain, aur ek surprise jo sirf tumhare liye hai.</p>
+
+  <h1 class="serif glow">
+   Only for<br>
+   <span class="pink">Hasbi Naz</span>
+  </h1>
+
+  <p>
+   Ek chhoti si duniya, kuch khoobsurat ehsaas,
+   aur ek surprise jo sirf tumhare liye hai.
+  </p>
 
   <label class="eyebrow" style="display:block;margin-top:25px">
    PASSWORD IS YOUR BIRTHDATE.
   </label>
 
-  <input id="password" type="text" inputmode="numeric"
-   maxlength="10" autocomplete="off" placeholder="DD-MM-YYYY">
+  <input
+   id="password"
+   type="text"
+   inputmode="numeric"
+   autocomplete="off"
+   maxlength="10"
+   placeholder="DD-MM-YYYY"
+  >
 
   <div id="error"></div>
-  <button class="btn" onclick="unlock()">OPEN MY LITTLE WORLD ♡</button>
+
+  <button class="btn" onclick="login()">
+   UNLOCK MY SURPRISE ♡
+  </button>
 
   <p class="login-foot">MADE WITH LOVE · JUST FOR YOU</p>
  </div>
 </div>
 
-<!-- PAGE 2 : SHAYARI AND WISHES -->
-<div id="birthdayPage" class="page">
+
+<!-- ================= PAGE 2: BIRTHDAY ================= -->
+<div id="page2" class="page">
 
  <nav>
-  <div class="brand">A little love ♡</div>
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♫ Music Off</button>
+  <div class="brand">With love ♡</div>
+  <button class="music-btn" onclick="toggleMusic()" id="musicBtn">
+   ♫ Music Off
+  </button>
  </nav>
 
  <audio id="music" loop preload="none">
@@ -400,17 +578,28 @@ footer{
  </audio>
 
  <section class="hero center">
-  <div class="eyebrow">19 November · Your beautiful day</div>
+  <div class="eyebrow">19 November · Your special day</div>
   <div class="hero-heart">💗</div>
-  <h1 class="serif glow">Happy Birthday<br><span class="pink">Hasbi Naz</span></h1>
-  <p>Aaj ka din utna hi khoobsurat ho jitni khoobsurat tumhari muskurahat hai. May life always be gentle and beautiful with you.</p>
-  <div class="scroll">A LITTLE SOMETHING FOR YOU ↓</div>
+
+  <h1 class="serif glow">
+   Happy Birthday<br>
+   <span class="pink">Hasbi Naz</span>
+  </h1>
+
+  <p>
+   Aaj ka din utna hi khoobsurat ho jitni khoobsurat tumhari muskurahat hai.
+   Meri dua hai tumhari zindagi hamesha khushiyon se bhari rahe.
+  </p>
+
+  <div class="scroll">SCROLL DOWN, MY CHUGU ↓</div>
  </section>
 
+
+ <!-- SHAYARI -->
  <section>
   <div class="heading">
-   <div class="eyebrow">Words that come from the heart</div>
-   <h2 class="serif">Meri <span class="pink">Chugu</span> ke naam</h2>
+   <div class="eyebrow">Words from my heart</div>
+   <h2 class="serif">For my <span class="pink">Chugu</span></h2>
    <div class="divider"></div>
    <p>Kuch alfaaz, kuch ehsaas... sirf tumhare liye.</p>
   </div>
@@ -422,8 +611,10 @@ footer{
      Tum muskura do toh bahaar aa jaaye,<br>
      Tum paas ho toh har khushi mil jaaye.
     </div>
-    <div class="meaning">Your smile feels like spring, and your presence feels like happiness.</div>
-    <div class="tiny-heart">♡</div>
+    <div class="meaning">
+     Your smile feels like spring, and your presence feels like happiness.
+    </div>
+    <div class="heart-small">♡</div>
    </div>
 
    <div class="poem">
@@ -431,8 +622,10 @@ footer{
      Na chaand chahiye, na sitaaron ki roshni,<br>
      Bas tum saath raho, yahi hai zindagi.
     </div>
-    <div class="meaning">I don't need the moon or stars; having you beside me is enough.</div>
-    <div class="tiny-heart">♡</div>
+    <div class="meaning">
+     I don't need the moon or stars; having you beside me is enough.
+    </div>
+    <div class="heart-small">♡</div>
    </div>
 
    <div class="poem">
@@ -440,8 +633,10 @@ footer{
      Teri hansi meri pehchaan ban jaaye,<br>
      Teri khushi meri jaan ban jaaye.
     </div>
-    <div class="meaning">May your laughter always be a part of my world.</div>
-    <div class="tiny-heart">♡</div>
+    <div class="meaning">
+     Your laughter is a beautiful part of my world.
+    </div>
+    <div class="heart-small">♡</div>
    </div>
 
    <div class="poem">
@@ -449,8 +644,10 @@ footer{
      Har dua mein tera naam rahe,<br>
      Tere labon pe sada muskaan rahe.
     </div>
-    <div class="meaning">May every prayer bring you happiness and every day give you a reason to smile.</div>
-    <div class="tiny-heart">♡</div>
+    <div class="meaning">
+     May every prayer bring you happiness and every day give you a reason to smile.
+    </div>
+    <div class="heart-small">♡</div>
    </div>
 
    <div class="poem">
@@ -458,8 +655,10 @@ footer{
      Tujhse milkar ye jaana humne,<br>
      Sukoon bhi kisi insaan mein hota hai.
     </div>
-    <div class="meaning">You taught me that sometimes a person can feel like home.</div>
-    <div class="tiny-heart">♡</div>
+    <div class="meaning">
+     You taught me that a person can feel like home.
+    </div>
+    <div class="heart-small">♡</div>
    </div>
 
    <div class="poem">
@@ -467,8 +666,10 @@ footer{
      Teri saadgi ka kya jawaab doon,<br>
      Tujhe dekhoon toh bas dekhta reh jaaun.
     </div>
-    <div class="meaning">There are no words for your simplicity; sometimes I just admire you quietly.</div>
-    <div class="tiny-heart">♡</div>
+    <div class="meaning">
+     Sometimes there are no words; I just admire you quietly.
+    </div>
+    <div class="heart-small">♡</div>
    </div>
 
    <div class="poem">
@@ -476,8 +677,10 @@ footer{
      Dooriyon se mohabbat kam nahi hoti,<br>
      Dil mein jagah ho toh kami nahi hoti.
     </div>
-    <div class="meaning">Distance cannot reduce what the heart truly feels.</div>
-    <div class="tiny-heart">♡</div>
+    <div class="meaning">
+     Distance cannot reduce what the heart truly feels.
+    </div>
+    <div class="heart-small">♡</div>
    </div>
 
    <div class="poem">
@@ -485,13 +688,17 @@ footer{
      Tere hone se roshan hai meri duniya,<br>
      Tu hi meri duaon ka haseen sa hissa.
     </div>
-    <div class="meaning">Your presence makes my world brighter, and you are a beautiful part of my prayers.</div>
-    <div class="tiny-heart">♡</div>
+    <div class="meaning">
+     Your presence makes my world brighter.
+    </div>
+    <div class="heart-small">♡</div>
    </div>
 
   </div>
  </section>
 
+
+ <!-- BIRTHDAY WISHES -->
  <section>
   <div class="heading">
    <div class="eyebrow">A birthday wish from me</div>
@@ -499,28 +706,36 @@ footer{
    <div class="divider"></div>
   </div>
 
-  <div class="wish-box">
+  <div class="wish-card">
    <h3 class="serif">Happy Birthday, Chugu! 🌷</h3>
+
    <p>
     Meri dua hai ke tumhari zindagi ka har din khushiyon se bhara ho.
-    Tumhare saare sapne poore hon, tumhe har woh cheez mile jo tumhare dil ko sukoon de.
+    Tumhare saare sapne poore hon aur tumhe har woh cheez mile
+    jo tumhare dil ko sukoon de.
    </p>
+
    <p>
     Jab kabhi mushkil waqt aaye toh tumhare andar use paar karne ki himmat ho.
     Jab kabhi udaas ho toh tumhe muskurane ki wajah mil jaaye.
    </p>
+
    <p>
-    Allah tumhe hamesha apni hifazat mein rakhe, tumhari har achhi dua qubool kare
-    aur tumhari zindagi ko khoobsurat lamhon se bhar de. Aameen. ❤️
+    Allah tumhe hamesha apni hifazat mein rakhe,
+    tumhari har achhi dua qubool kare aur tumhari zindagi
+    ko khoobsurat lamhon se bhar de. Aameen. ❤️
    </p>
   </div>
  </section>
 
+
+ <!-- CHUGU SPECIAL -->
  <section>
   <div class="special">
    <div class="eyebrow">A little reminder</div>
    <div class="flower">🌸</div>
    <h2 class="serif">My Chugu</h2>
+
    <p>
     Tumhe shayad andaaza na ho, lekin tumhari chhoti si smile,
     tumhari baatein aur tumhara bachpana bhi mere liye bahut khaas hai.
@@ -529,42 +744,65 @@ footer{
   </div>
  </section>
 
- <section class="surprise">
-  <div class="eyebrow">Something is still left</div>
-  <h2 class="serif glow">One last surprise,<br><span class="pink">my Chugu...</span></h2>
-  <p>Abhi mere dil ki kuch baatein kehni baaki hain.</p>
 
-  <div class="gift" id="gift" onclick="openSurprise()">
+ <!-- GIFT IS THE LAST THING ON PAGE 2 -->
+ <section class="surprise">
+  <div class="eyebrow">The final surprise</div>
+
+  <h2 class="serif glow">
+   One last thing,<br>
+   <span class="pink">my Chugu...</span>
+  </h2>
+
+  <p>
+   Mere dil ki kuch baatein abhi bhi baaki hain.
+   Ek aakhri surprise tumhara intezaar kar raha hai.
+  </p>
+
+  <div class="gift" id="gift" onclick="openFinalPage()">
    <div class="gift-bow">♡</div>
-   <div class="gift-top"></div>
+   <div class="gift-lid"></div>
    <div class="gift-body"></div>
   </div>
 
   <div class="gift-label">Open your little surprise ♡</div>
-  <p style="margin-top:12px">Tap the gift to read my heart.</p>
+  <p style="margin-top:12px">Tap the gift, Chugu.</p>
  </section>
 
  <footer>Made with love, just for you ♡</footer>
+
 </div>
 
-<!-- PAGE 3 : FINAL NOTE -->
-<div id="notePage" class="page">
+
+<!-- ================= PAGE 3: FINAL NOTE ================= -->
+<div id="page3" class="page">
+
  <div class="note-content">
-  <div class="eyebrow" style="margin-top:35px">A letter I wanted you to read</div>
+  <div class="eyebrow" style="margin-top:35px">
+   A letter from my heart
+  </div>
+
   <div class="note-heart">🥀</div>
-  <h1 class="serif glow">Kuch dil ki<br>baatein...</h1>
+
+  <h1 class="serif glow">
+   Kuch dil ki<br>
+   baatein...
+  </h1>
+
   <p class="note-intro">
    Chugu, ye woh baatein hain jo shayad main har baar tumse keh nahi pata.
    Aaj bas dil se padhna.
   </p>
 
   <div class="note-paper">
+
    <p>Sabse pehle toh Happy Birthday meri pyaari Chugu. ❤️</p>
 
    <p>
     Pata hai, bahut si galtiyan sabse hoti hain.
     Tumse bhi ho sakti hain, mujhse bhi hoti hain.
-    Lekin tumhare alawa mere paas aur hai hi kaun jisse main apni har baat kahun?
+    Lekin tumhare alawa mere paas aur hai hi kaun
+    jisse main apni har baat kahun?
     Kisse apni khushi baantun, kisse roothun aur kise manaun?
    </p>
 
@@ -605,8 +843,8 @@ footer{
 
    <p>
     Tumhari muskurahat mere liye bahut khaas hai.
-    Isliye nahi ke tum hamesha muskurati raho,
-    balki isliye ke tumhe muskurane ke liye kabhi apni khushi se samjhauta na karna pade.
+    Main chahta hoon tumhe muskurane ke liye kabhi
+    apni khushi se samjhauta na karna pade.
    </p>
 
    <p>
@@ -617,8 +855,7 @@ footer{
    </p>
 
    <p>
-    Aur ek baat yaad rakhna:
-    tumhe har kisi ke saamne khud ko saabit karne ki zaroorat nahi.
+    Tumhe har kisi ke saamne khud ko saabit karne ki zaroorat nahi.
     Tum jaisi ho, apne aap mein bahut khoobsurat ho.
     Apni value kabhi mat bhoolna.
    </p>
@@ -627,7 +864,7 @@ footer{
     Main nahi jaanta ke aane wala waqt humare liye kya lekar aayega,
     lekin aaj main bas itna kehna chahta hoon:
     tum mere liye bahut special ho.
-    Tumhari khushi, tumhari izzat aur tumhari feelings mere liye maayne rakhti hain.
+    Tumhari khushi aur tumhari feelings mere liye maayne rakhti hain.
    </p>
 
    <p>
@@ -640,144 +877,178 @@ footer{
     Janamdin bahut bahut mubarak ho, meri pyaari Hasbi Naz.
     Hamesha khush raho, hamesha abaad raho. 🌷
    </p>
+
   </div>
 
   <div class="note-sign">With all my heart, Chugu ♡</div>
+
   <p style="font-size:12px;color:#cba9bc;line-height:2">
    Ye chhota sa surprise yahin khatam hota hai,<br>
    lekin tumhare liye meri duayein kabhi khatam nahi hongi.
   </p>
 
-  <button class="back" onclick="backToBirthday()">BACK TO YOUR BIRTHDAY ♡</button>
+  <button class="back" onclick="backToPage2()">
+   BACK TO BIRTHDAY ♡
+  </button>
+
  </div>
 </div>
 
+
 <script>
-/* PAGE NAVIGATION */
-function showPage(id){
- document.querySelectorAll(".page").forEach(page=>{
+/* ==================================
+   THREE INDEPENDENT PAGES
+   ================================== */
+
+function showPage(pageId){
+ document.querySelectorAll(".page").forEach(function(page){
   page.classList.remove("active");
  });
- document.getElementById(id).classList.add("active");
- window.scrollTo({top:0,behavior:"instant"});
+
+ const nextPage=document.getElementById(pageId);
+
+ if(nextPage){
+  nextPage.classList.add("active");
+ }
+
+ window.scrollTo(0,0);
 }
 
-/* PASSWORD */
+/* PAGE 1 -> PAGE 2 */
 const correctPassword="19-11-2008";
-const password=document.getElementById("password");
+const passwordInput=document.getElementById("password");
 
-password.addEventListener("input",function(){
+passwordInput.addEventListener("input",function(){
  let digits=this.value.replace(/\D/g,"").slice(0,8);
- let value=digits;
+ let formatted=digits;
+
  if(digits.length>2){
-  value=digits.slice(0,2)+"-"+digits.slice(2);
+  formatted=digits.slice(0,2)+"-"+digits.slice(2);
  }
  if(digits.length>4){
-  value=digits.slice(0,2)+"-"+digits.slice(2,4)+"-"+digits.slice(4);
+  formatted=digits.slice(0,2)+"-"+digits.slice(2,4)+"-"+digits.slice(4);
  }
- this.value=value;
+
+ this.value=formatted;
 });
 
-function unlock(){
+function login(){
  const error=document.getElementById("error");
- if(password.value===correctPassword){
+
+ if(passwordInput.value===correctPassword){
   error.textContent="";
-  flowerShower(45);
-  showPage("birthdayPage");
+  flowerShower(40);
+  showPage("page2");
  }else{
-  error.textContent="Date sahi nahi hai, ek baar phir try karo ♡";
-  password.focus();
+  error.textContent="Birthday date sahi nahi hai. Try again ♡";
+  passwordInput.focus();
  }
 }
-password.addEventListener("keydown",e=>{
- if(e.key==="Enter")unlock();
+
+passwordInput.addEventListener("keydown",function(e){
+ if(e.key==="Enter")login();
 });
 
-/* GIFT REVEAL */
-let giftOpened=false;
-function openSurprise(){
- if(giftOpened)return;
- giftOpened=true;
+/* PAGE 2 -> PAGE 3 DIRECTLY */
+let giftClicked=false;
+
+function openFinalPage(){
+ if(giftClicked)return;
+
+ giftClicked=true;
+
  document.getElementById("gift").classList.add("open");
+
  flowerShower(100);
- setTimeout(()=>{
-  showPage("notePage");
-  flowerShower(40);
- },950);
-}
-function backToBirthday(){
- showPage("birthdayPage");
+
+ setTimeout(function(){
+  showPage("page3");
+  flowerShower(50);
+ },850);
 }
 
-/* STAR SKY */
-const starRoot=document.getElementById("stars");
-for(let i=0;i<95;i++){
- const s=document.createElement("span");
- s.className="star";
- s.style.left=Math.random()*100+"%";
- s.style.top=Math.random()*100+"%";
- const size=1+Math.random()*2.3;
- s.style.width=size+"px";
- s.style.height=size+"px";
- s.style.animationDelay=Math.random()*3+"s";
- s.style.animationDuration=(1.5+Math.random()*3)+"s";
- starRoot.appendChild(s);
+/* PAGE 3 -> PAGE 2 */
+function backToPage2(){
+ showPage("page2");
+ giftClicked=false;
+}
+
+/* STARS */
+const stars=document.getElementById("stars");
+
+for(let i=0;i<100;i++){
+ const star=document.createElement("span");
+ star.className="star";
+
+ star.style.left=Math.random()*100+"%";
+ star.style.top=Math.random()*100+"%";
+
+ const size=1+Math.random()*2.5;
+
+ star.style.width=size+"px";
+ star.style.height=size+"px";
+ star.style.animationDelay=Math.random()*3+"s";
+ star.style.animationDuration=(1.5+Math.random()*3)+"s";
+
+ stars.appendChild(star);
 }
 
 /* FLOATING HEARTS AND FLOWERS */
-const floatRoot=document.getElementById("floaties");
-const floatSymbols=["♡","✧","✿","❀","♥","🌸"];
-for(let i=0;i<25;i++){
- const f=document.createElement("span");
- f.className="float";
- f.textContent=floatSymbols[Math.floor(Math.random()*floatSymbols.length)];
- f.style.left=Math.random()*100+"%";
- f.style.fontSize=(12+Math.random()*18)+"px";
- f.style.animationDuration=(12+Math.random()*18)+"s";
- f.style.animationDelay=(-Math.random()*25)+"s";
- floatRoot.appendChild(f);
+const floating=document.getElementById("floating");
+const symbols=["♡","♥","✿","❀","✧","🌸"];
+
+for(let i=0;i<26;i++){
+ const item=document.createElement("span");
+
+ item.className="float";
+ item.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+
+ item.style.left=Math.random()*100+"%";
+ item.style.fontSize=(12+Math.random()*19)+"px";
+ item.style.animationDuration=(12+Math.random()*18)+"s";
+ item.style.animationDelay=(-Math.random()*25)+"s";
+
+ floating.appendChild(item);
 }
 
-/* PETAL SHOWER */
-function flowerShower(amount=35){
+/* FLOWER SHOWER */
+function flowerShower(amount){
  const root=document.getElementById("petals");
- const symbols=["🌸","✿","❀","♥","♡","✧"];
+ const choices=["🌸","✿","❀","♥","♡","✧"];
+
  for(let i=0;i<amount;i++){
-  setTimeout(()=>{
-   const p=document.createElement("span");
-   p.className="petal";
-   p.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-   p.style.left=Math.random()*100+"%";
-   p.style.fontSize=(13+Math.random()*17)+"px";
-   p.style.setProperty("--drift",(Math.random()*180-90)+"px");
-   p.style.animationDuration=(4+Math.random()*4)+"s";
-   root.appendChild(p);
-   setTimeout(()=>p.remove(),8500);
-  },i*28);
+  setTimeout(function(){
+   const petal=document.createElement("span");
+
+   petal.className="petal";
+   petal.textContent=choices[Math.floor(Math.random()*choices.length)];
+
+   petal.style.left=Math.random()*100+"%";
+   petal.style.fontSize=(13+Math.random()*18)+"px";
+   petal.style.setProperty("--drift",(Math.random()*180-90)+"px");
+   petal.style.animationDuration=(4+Math.random()*4)+"s";
+
+   root.appendChild(petal);
+
+   setTimeout(function(){
+    petal.remove();
+   },8500);
+
+  },i*25);
  }
 }
-
-/* LITTLE SPARKLES ON TOUCH */
-document.addEventListener("click",e=>{
- const el=document.createElement("span");
- el.className="sparkle";
- el.textContent="✧";
- el.style.left=e.clientX+"px";
- el.style.top=e.clientY+"px";
- document.body.appendChild(el);
- setTimeout(()=>el.remove(),850);
-});
 
 /* OPTIONAL PIANO MUSIC */
 const music=document.getElementById("music");
 const musicBtn=document.getElementById("musicBtn");
 let musicOn=false;
+
 function toggleMusic(){
  if(!musicOn){
-  music.play().then(()=>{
+  music.play().then(function(){
    musicOn=true;
    musicBtn.textContent="♫ Music On";
-  }).catch(()=>{
+  }).catch(function(){
    musicBtn.textContent="♫ Music unavailable";
   });
  }else{
@@ -787,5 +1058,6 @@ function toggleMusic(){
  }
 }
 </script>
+
 </body>
 </html>
