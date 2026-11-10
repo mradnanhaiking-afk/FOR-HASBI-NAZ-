@@ -47,7 +47,7 @@ button, input {
 
 .page.active {
   display: flex;
-  animation: pageIn 1s ease both;
+  animation: pageIn .7s ease both;
 }
 
 @keyframes pageIn {
@@ -55,7 +55,7 @@ button, input {
   to {opacity: 1; transform: translateY(0);}
 }
 
-/* LOGIN PAGE */
+/* PAGE 1 - LOGIN */
 
 #page1 {
   justify-content: center;
@@ -140,7 +140,7 @@ button, input {
   margin-top: 13px;
 }
 
-/* ROMANTIC PAGES */
+/* PAGE 2 AND PAGE 3 BACKGROUND */
 
 .romantic-page {
   justify-content: center;
@@ -263,30 +263,134 @@ button, input {
   animation: pageIn .8s ease both;
 }
 
-/* FINAL NOTE */
+.next-btn {
+  margin-top: 25px;
+}
 
-.note-card {
+/* PAGE 3 - REDESIGNED RESPONSIVE NOTE */
+
+#page3 {
+  display: none;
+  min-height: 100vh;
+  min-height: 100svh;
+  height: auto;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 75px 20px 55px;
+  overflow-x: hidden;
+  overflow-y: visible;
+  background:
+    radial-gradient(ellipse at 50% 0%, #380a29 0%, #160514 48%, #080008 100%);
+}
+
+#page3.active {
+  display: flex;
+}
+
+#page3 .content {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+#page3 .eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+#page3 .heading {
+  font-size: clamp(45px, 10vw, 70px);
+  line-height: 1.15;
+}
+
+#page3 .subtitle {
+  font-size: clamp(9px, 2.8vw, 12px);
+  line-height: 1.8;
+  letter-spacing: 1.5px;
+  padding: 0 5px;
+}
+
+#page3 .divider {
+  margin: 25px auto 28px;
+}
+
+#page3 .note-card {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 30px;
+  border: 1px solid rgba(255, 110, 180, .24);
+  border-radius: 20px;
+  background: rgba(35, 7, 27, .75);
+  box-shadow: 0 15px 50px rgba(0,0,0,.25);
+  backdrop-filter: blur(12px);
   text-align: left;
-  padding: 30px 25px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
-.note-card p {
-  font-size: clamp(18px, 4.5vw, 22px);
-  margin-bottom: 17px;
+#page3 .note-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(19px, 2.8vw, 23px);
+  line-height: 1.9;
+  letter-spacing: .15px;
+  color: #f8deeb;
+  margin-bottom: 21px;
 }
 
-.love-final {
+#page3 .note-card p:last-of-type {
+  margin-bottom: 15px;
+}
+
+#page3 .note-card .shayari {
+  text-align: center;
+  color: #ffadd2 !important;
+  line-height: 2;
+  margin: 25px 0;
+  font-size: clamp(18px, 2.7vw, 22px);
+}
+
+#page3 .signature {
+  text-align: center;
+  font-size: clamp(19px, 4vw, 23px);
+  line-height: 1.6;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
+
+#page3 .love-final {
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 7vw, 43px);
+  font-size: clamp(28px, 6vw, 44px);
+  font-weight: 600;
+  line-height: 1.5;
   color: #ff75b8;
+  text-shadow: 0 0 20px rgba(255, 37, 138, .65);
+  margin: 25px auto 5px;
+  overflow-wrap: anywhere;
+  padding: 0 3px;
+}
+
+#page3 .footer {
+  text-align: center;
+  color: #b77b9a;
+  font-size: 9px;
+  letter-spacing: 2px;
+  line-height: 1.8;
   margin-top: 30px;
-  text-shadow: 0 0 25px #ff258a;
+  padding-bottom: 10px;
 }
 
 /* MAGIC ANIMATION */
 
-#magicCanvas {
+#magicCanvas,
+#magicCanvasFinal {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -323,7 +427,7 @@ button, input {
   to {transform: translate(100px,80px) scale(1.4);}
 }
 
-/* MUSIC BUTTON */
+/* MUSIC */
 
 .music-btn {
   position: fixed;
@@ -341,12 +445,6 @@ button, input {
   backdrop-filter: blur(10px);
 }
 
-/* NEXT BUTTON */
-
-.next-btn {
-  margin-top: 25px;
-}
-
 .footer {
   color: #9b6682;
   font-size: 10px;
@@ -354,24 +452,95 @@ button, input {
   margin-top: 35px;
 }
 
-@media(max-width:480px) {
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 600px) {
   .romantic-page {
-    padding: 85px 17px 70px;
+    padding: 80px 16px 60px;
   }
-  .wish-card, .note-card {
-    padding: 23px 19px;
+
+  #page3 {
+    padding: 78px 14px 40px;
   }
-  .music-btn {
-    top: 12px;
-    right: 12px;
+
+  #page3 .content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #page3 .heading {
+    font-size: clamp(43px, 12vw, 58px);
+  }
+
+  #page3 .eyebrow {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+  }
+
+  #page3 .note-card {
+    padding: 23px 18px;
+    border-radius: 17px;
+  }
+
+  #page3 .note-card p {
+    font-size: 18px;
+    line-height: 1.85;
+    margin-bottom: 19px;
+  }
+
+  #page3 .note-card .shayari {
+    font-size: 17px;
+    line-height: 1.95;
+    margin: 23px 0;
+  }
+
+  #page3 .signature {
+    font-size: 19px;
+  }
+
+  #page3 .love-final {
+    font-size: clamp(26px, 8vw, 34px);
+    line-height: 1.5;
+    margin-top: 25px;
+  }
+
+  #page3 .footer {
+    font-size: 8px;
+    letter-spacing: 1.5px;
   }
 }
+
+@media (max-width: 360px) {
+  #page3 {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  #page3 .note-card {
+    padding: 21px 15px;
+  }
+
+  #page3 .note-card p {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  #page3 .note-card .shayari {
+    font-size: 16px;
+  }
+
+  #page3 .love-final {
+    font-size: 25px;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN SCREEN -->
+<!-- PAGE 1: LOGIN -->
+
 <section class="page active" id="page1">
   <div class="login-card">
     <div class="heart-icon">♡</div>
@@ -388,14 +557,21 @@ button, input {
       autocomplete="off"
     >
 
-    <button class="main-btn" onclick="unlock()">UNLOCK MY HEART ♡</button>
+    <button class="main-btn" onclick="unlock()">
+      UNLOCK MY HEART ♡
+    </button>
+
     <div class="error" id="error"></div>
   </div>
 </section>
 
-<!-- BIRTHDAY WISHES -->
+
+<!-- PAGE 2: BIRTHDAY WISHES -->
+
 <section class="page romantic-page" id="page2">
+
   <canvas id="magicCanvas"></canvas>
+
   <div class="light-trail trail-one"></div>
   <div class="light-trail trail-two"></div>
 
@@ -404,18 +580,24 @@ button, input {
   </button>
 
   <div class="content">
-    <div class="eyebrow">A special day • A special person</div>
+
+    <div class="eyebrow">
+      A special day • A special person
+    </div>
 
     <h1 class="heading">
       Happy Birthday<br>
       <span>Hasbi Naz</span>
     </h1>
 
-    <p class="subtitle">TODAY IS ALL ABOUT YOU ♡</p>
+    <p class="subtitle">
+      TODAY IS ALL ABOUT YOU ♡
+    </p>
 
     <div class="divider"></div>
 
     <div class="wish-card">
+
       <p>
         Some people make the world beautiful just by being in it.
         And you are one of those rare souls.
@@ -430,45 +612,66 @@ button, input {
         Tere chehre par hamesha muskurahat rahe.
       </p>
 
-      <div class="signature">With love, always ♡</div>
+      <div class="signature">
+        With love, always ♡
+      </div>
+
     </div>
 
     <div class="gift-section">
-      <p class="eyebrow">ONE LITTLE SURPRISE FOR YOU</p>
+
+      <p class="eyebrow">
+        ONE LITTLE SURPRISE FOR YOU
+      </p>
+
       <div class="gift" onclick="openGift()">🎁</div>
 
       <div class="gift-message" id="giftMessage">
         You are the most beautiful surprise<br>
         life could ever give. 🥀❤️
       </div>
+
     </div>
 
     <button class="main-btn next-btn" onclick="goToPage(3)">
       ONE LAST THING FOR YOU ♡
     </button>
 
-    <div class="footer">MADE WITH LOVE • JUST FOR YOU</div>
+    <div class="footer">
+      MADE WITH LOVE • JUST FOR YOU
+    </div>
+
   </div>
 </section>
 
-<!-- FINAL EMOTIONAL NOTE -->
+
+<!-- PAGE 3: FINAL NOTE - MOBILE OPTIMIZED -->
+
 <section class="page romantic-page" id="page3">
+
   <canvas id="magicCanvasFinal"></canvas>
+
   <div class="light-trail trail-one"></div>
   <div class="light-trail trail-two"></div>
 
   <div class="content">
-    <div class="eyebrow">A little something from my heart</div>
+
+    <div class="eyebrow">
+      A LITTLE SOMETHING FROM MY HEART
+    </div>
 
     <h1 class="heading">
       Just For <span>You</span>
     </h1>
 
-    <p class="subtitle">SOME FEELINGS ARE TOO BEAUTIFUL FOR WORDS</p>
+    <p class="subtitle">
+      SOME FEELINGS ARE TOO BEAUTIFUL FOR WORDS
+    </p>
 
     <div class="divider"></div>
 
     <div class="note-card">
+
       <p>
         Hasbi, kabhi kabhi sochta hoon ki kuch log hamari
         zindagi mein itne khaas kaise ban jaate hain.
@@ -501,197 +704,341 @@ button, input {
         aur shayad hamesha rahogi.
       </p>
 
-      <div class="signature">Forever wishing the best for you... 🥀</div>
+      <div class="signature">
+        Forever wishing the best for you... 🥀
+      </div>
 
-      <div class="love-final">I TOO LOVE YOU 🫠❤️‍🔥</div>
+      <div class="love-final">
+        I TOO LOVE YOU 🫠❤️‍🔥
+      </div>
+
     </div>
 
-    <div class="footer">ENDLESS LOVE • HASBI NAZ</div>
+    <div class="footer">
+      ENDLESS LOVE • HASBI NAZ
+    </div>
+
   </div>
+
 </section>
 
-<!-- MUSIC -->
+
+<!-- MUSIC FILE -->
+
 <audio id="music" loop preload="auto">
-  <source src="assets/Maula_Mere_Maula__Slowed___Reverb__-_Roop_Kumar_Rathod___Aankhein_Teri_Kitni_Haseen___Also_Holic(256k).mp3" type="audio/mpeg">
+  <source
+    src="assets/Maula_Mere_Maula__Slowed___Reverb__-_Roop_Kumar_Rathod___Aankhein_Teri_Kitni_Haseen___Also_Holic(256k).mp3"
+    type="audio/mpeg">
 </audio>
 
+
 <script>
+
 const passwordInput = document.getElementById("password");
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 
-let currentPage = 1;
 let animationStarted = false;
 
-/* AUTOMATIC HYPHEN FORMATTING */
+
+/* AUTO HYPHEN PASSWORD */
+
 passwordInput.addEventListener("input", function() {
+
   let digits = this.value.replace(/\D/g, "").slice(0, 8);
 
   if (digits.length > 4) {
+
     this.value =
       digits.slice(0, 2) + "-" +
       digits.slice(2, 4) + "-" +
       digits.slice(4);
+
   } else if (digits.length > 2) {
+
     this.value =
       digits.slice(0, 2) + "-" +
       digits.slice(2);
+
   } else {
+
     this.value = digits;
+
   }
 
   document.getElementById("error").textContent = "";
+
 });
 
-/* ENTER TO UNLOCK */
+
+/* ENTER KEY */
+
 passwordInput.addEventListener("keydown", function(event) {
+
   if (event.key === "Enter") {
     unlock();
   }
+
 });
 
-/* LOGIN */
+
+/* UNLOCK */
+
 function unlock() {
+
   if (passwordInput.value === "19-11-2008") {
+
     document.getElementById("error").textContent = "";
 
     goToPage(2);
 
     musicBtn.style.display = "block";
+
     startMusic();
+
     startMagic();
+
   } else {
+
     document.getElementById("error").textContent =
       "Wrong date! Try again, my dear ♡";
 
     passwordInput.focus();
+
   }
+
 }
 
+
 /* PAGE NAVIGATION */
+
 function goToPage(number) {
+
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
   });
 
-  document.getElementById("page" + number).classList.add("active");
+  const target = document.getElementById("page" + number);
 
-  currentPage = number;
+  target.classList.add("active");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
   if (number === 3) {
     startMagic();
   }
 
-  window.scrollTo({top: 0, behavior: "smooth"});
 }
+
 
 /* GIFT */
+
 function openGift() {
+
   document.getElementById("giftMessage").classList.add("show");
+
   document.querySelector(".gift").textContent = "💝";
+
 }
+
 
 /* MUSIC */
+
 async function startMusic() {
+
   try {
+
     await music.play();
+
     updateMusicButton();
+
   } catch (error) {
+
     musicBtn.textContent = "♫ TAP FOR MUSIC";
+
   }
+
 }
 
+
 function toggleMusic() {
+
   if (music.paused) {
+
     music.play()
       .then(updateMusicButton)
       .catch(() => {
         musicBtn.textContent = "♫ TAP FOR MUSIC";
       });
+
   } else {
+
     music.pause();
+
     updateMusicButton();
+
   }
+
 }
+
 
 function updateMusicButton() {
-  musicBtn.textContent = music.paused ? "♫ MUSIC OFF" : "♫ MUSIC ON";
+
+  musicBtn.textContent =
+    music.paused ? "♫ MUSIC OFF" : "♫ MUSIC ON";
+
 }
 
-/* MAGICAL PARTICLES */
+
+/* MAGIC PARTICLES ON BOTH ROMANTIC PAGES */
+
 function startMagic() {
+
   if (animationStarted) return;
+
   animationStarted = true;
 
-  const canvas = document.getElementById("magicCanvas");
-  const ctx = canvas.getContext("2d");
+  const canvases = [
+    document.getElementById("magicCanvas"),
+    document.getElementById("magicCanvasFinal")
+  ];
 
-  let width, height, particles = [];
+  const contexts = canvases.map(canvas => canvas.getContext("2d"));
 
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  }
+  let width = window.innerWidth;
+  let height = window.innerHeight;
 
-  resize();
-  window.addEventListener("resize", resize);
+  canvases.forEach(canvas => {
+    canvas.width = width;
+    canvas.height = height;
+  });
 
   class Particle {
+
     constructor() {
       this.reset();
     }
 
     reset() {
+
       this.x = Math.random() * width;
       this.y = Math.random() * height;
+
       this.size = Math.random() * 2.2 + .3;
+
       this.speedY = Math.random() * .45 + .1;
+
       this.speedX = (Math.random() - .5) * .4;
+
       this.alpha = Math.random() * .7 + .2;
+
       this.phase = Math.random() * Math.PI * 2;
+
     }
 
     update() {
+
       this.y -= this.speedY;
+
       this.x += this.speedX;
+
       this.phase += .025;
 
       if (this.y < -10) {
+
         this.y = height + 10;
+
         this.x = Math.random() * width;
+
       }
+
     }
 
-    draw() {
-      let glow = this.alpha * (.6 + Math.sin(this.phase) * .3);
+    draw(ctx) {
+
+      let glow =
+        this.alpha * (.6 + Math.sin(this.phase) * .3);
 
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+      ctx.arc(
+        this.x,
+        this.y,
+        this.size,
+        0,
+        Math.PI * 2
+      );
+
       ctx.fillStyle = `rgba(255,120,190,${glow})`;
+
       ctx.shadowBlur = 12;
+
       ctx.shadowColor = "#ff3f9b";
+
       ctx.fill();
+
       ctx.shadowBlur = 0;
+
     }
+
   }
+
+
+  let particles = [];
 
   for (let i = 0; i < 100; i++) {
     particles.push(new Particle());
   }
 
+
+  window.addEventListener("resize", function() {
+
+    width = window.innerWidth;
+
+    height = window.innerHeight;
+
+    canvases.forEach(canvas => {
+
+      canvas.width = width;
+
+      canvas.height = height;
+
+    });
+
+  });
+
+
   function animate() {
-    ctx.clearRect(0, 0, width, height);
+
+    contexts.forEach(ctx => {
+
+      ctx.clearRect(0, 0, width, height);
+
+    });
 
     particles.forEach(particle => {
+
       particle.update();
-      particle.draw();
+
+      contexts.forEach(ctx => {
+
+        particle.draw(ctx);
+
+      });
+
     });
 
     requestAnimationFrame(animate);
+
   }
 
   animate();
+
 }
+
 </script>
 
 </body>
