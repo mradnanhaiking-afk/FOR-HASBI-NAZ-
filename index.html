@@ -3,1108 +3,898 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080608">
-<title>For Hasbi Naz | A Story of You</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#090607">
+<title>For Hasbi Naz ❤️‍🔥</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
 :root{
-  --black:#080608;
-  --black2:#10090c;
-  --panel:#160b10;
-  --red:#8f1029;
-  --red2:#c21d3c;
-  --red3:#ed3454;
-  --gold:#c9a66b;
-  --gold-light:#f0d9a8;
-  --white:#f7eee9;
-  --muted:#b9a7a5;
-  --line:rgba(201,166,107,.24);
+ --bg:#090607;
+ --red:#a20f27;
+ --red2:#e32646;
+ --gold:#d7b778;
+ --cream:#f8e9e5;
+ --muted:#b9a5a6;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 html{scroll-behavior:smooth}
+
 body{
-  background:var(--black);
-  color:var(--white);
-  font-family:'DM Sans',sans-serif;
-  overflow:hidden;
+ background:var(--bg);
+ color:var(--cream);
+ font-family:'Montserrat',sans-serif;
+ overflow-x:hidden;
+ min-height:100vh;
 }
+
 button,input{font:inherit}
+
 button{cursor:pointer}
-::selection{background:#9b1734;color:white}
 
 .page{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  overflow-y:auto;
-  overflow-x:hidden;
-  display:none;
-  opacity:0;
-  background:
-    radial-gradient(ellipse at 50% 40%,#32101b 0%,#15090e 48%,#080608 100%);
-}
-.page.active{
-  display:block;
-  animation:pageReveal 1s cubic-bezier(.2,.7,.2,1) forwards;
-}
-@keyframes pageReveal{
-  from{opacity:0;transform:scale(1.025);filter:blur(5px)}
-  to{opacity:1;transform:scale(1);filter:blur(0)}
+ display:none;
+ min-height:100vh;
+ width:100%;
+ position:relative;
+ overflow:hidden;
+ animation:pageIn 1s ease both;
 }
 
-.center{
-  min-height:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:55px 22px;
-  position:relative;
-  z-index:2;
+.page.active{display:flex}
+
+@keyframes pageIn{
+ from{opacity:0;transform:translateY(15px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+.noise{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ z-index:20;
+ opacity:.07;
+ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+.ambient{
+ position:fixed;
+ width:400px;
+ height:400px;
+ border-radius:50%;
+ background:#8d1026;
+ filter:blur(150px);
+ opacity:.16;
+ pointer-events:none;
+ z-index:0;
+}
+
+.ambient.one{top:-180px;left:-160px}
+.ambient.two{bottom:-200px;right:-170px;background:#6d1728}
+
+.content{
+ width:min(900px,92%);
+ margin:auto;
+ text-align:center;
+ position:relative;
+ z-index:2;
+ padding:60px 0;
 }
 
 .eyebrow{
-  color:var(--gold);
-  font-size:9px;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  margin-bottom:20px;
+ color:var(--gold);
+ text-transform:uppercase;
+ letter-spacing:5px;
+ font-size:10px;
+ margin-bottom:24px;
 }
-h1,h2,.serif{
-  font-family:'Playfair Display',serif;
-  font-weight:400;
-}
+
 .heading{
-  font-size:clamp(37px,8vw,69px);
-  line-height:1.13;
-  letter-spacing:-1.5px;
+ font-family:'Cormorant Garamond',serif;
+ font-size:clamp(42px,9vw,78px);
+ font-weight:400;
+ line-height:1.05;
 }
-.gold{
-  color:var(--gold-light);
-  font-style:italic;
-}
-.red-text{color:#e13a56}
+
+.heading em{color:var(--red2);font-weight:500}
+
 .subtext{
-  color:#b9a5a4;
-  font-size:12px;
-  line-height:2;
-  max-width:360px;
-  margin-top:18px;
-  font-weight:300;
+ color:var(--muted);
+ font-size:12px;
+ letter-spacing:1px;
+ line-height:2;
+ margin:20px auto;
+ max-width:500px;
 }
-.kicker{
-  font-family:'Cormorant Garamond',serif;
-  color:#d6b8a9;
-  font-size:19px;
-  font-style:italic;
-  letter-spacing:.5px;
+
+.gold-line{
+ width:65px;
+ height:1px;
+ background:var(--gold);
+ margin:25px auto;
+ opacity:.7;
 }
 
 .primary-btn{
-  position:relative;
-  overflow:hidden;
-  margin-top:30px;
-  padding:15px 30px;
-  color:#f8e8d7;
-  border:1px solid #a84b5c;
-  background:linear-gradient(120deg,#721024,#310a14);
-  font-size:9px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  transition:.4s;
-  box-shadow:0 10px 40px #8b102733;
+ border:1px solid rgba(215,183,120,.6);
+ color:var(--cream);
+ background:linear-gradient(120deg,#5c0b1c,#1b090e);
+ padding:15px 30px;
+ border-radius:3px;
+ letter-spacing:3px;
+ text-transform:uppercase;
+ font-size:10px;
+ transition:.4s;
+ box-shadow:0 0 30px #8c102522;
 }
-.primary-btn:before{
-  content:"";
-  position:absolute;
-  top:0;left:-120%;
-  width:80%;height:100%;
-  background:linear-gradient(90deg,transparent,#ffffff24,transparent);
-  transform:skewX(-25deg);
-  transition:.7s;
-}
-.primary-btn:hover:before{left:140%}
+
 .primary-btn:hover{
-  border-color:var(--gold);
-  box-shadow:0 0 35px #b51b3b55;
-  transform:translateY(-2px);
+ background:#8d1026;
+ box-shadow:0 0 35px #e3264644;
+ transform:translateY(-3px);
 }
-.primary-btn:active{transform:scale(.97)}
 
 .music-btn{
-  position:fixed;
-  z-index:100;
-  top:17px;
-  right:15px;
-  border:1px solid #8f4a56;
-  color:var(--gold-light);
-  background:#10080ce8;
-  backdrop-filter:blur(12px);
-  border-radius:40px;
-  padding:10px 15px;
-  font-size:9px;
-  letter-spacing:1.5px;
-  display:none;
-}
-.music-dot{
-  display:inline-block;
-  width:6px;height:6px;
-  border-radius:50%;
-  background:#d6a76c;
-  margin-right:7px;
-  box-shadow:0 0 9px #d6a76c;
+ position:fixed;
+ right:15px;
+ top:15px;
+ z-index:30;
+ border:1px solid #d7b77866;
+ color:var(--gold);
+ background:#10090bdc;
+ padding:10px 14px;
+ border-radius:30px;
+ font-size:9px;
+ letter-spacing:1px;
 }
 
-/* GLOBAL ATMOSPHERE */
-.ambient{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
-}
-.orb{
-  position:absolute;
-  width:280px;height:280px;
-  border-radius:50%;
-  background:#9c1233;
-  filter:blur(115px);
-  opacity:.19;
-  animation:orbFloat 10s ease-in-out infinite alternate;
-}
-.orb.one{top:-160px;left:-120px}
-.orb.two{bottom:-170px;right:-100px;animation-delay:-5s}
-@keyframes orbFloat{
-  from{transform:translate(0,0) scale(.8);opacity:.1}
-  to{transform:translate(45px,35px) scale(1.3);opacity:.25}
-}
-.grain{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  opacity:.11;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
-}
-.corner{
-  position:absolute;
-  width:45px;height:45px;
-  border-color:#c9a66b66;
-  border-style:solid;
-  pointer-events:none;
-}
-.corner.tl{top:18px;left:18px;border-width:1px 0 0 1px}
-.corner.tr{top:18px;right:18px;border-width:1px 1px 0 0}
-.corner.bl{bottom:18px;left:18px;border-width:0 0 1px 1px}
-.corner.br{bottom:18px;right:18px;border-width:0 1px 1px 0}
-.footer-mark{
-  margin-top:42px;
-  color:#866c6b;
-  font-size:8px;
-  letter-spacing:4px;
+/* PASSWORD PAGE */
+
+#login{
+ background:
+ radial-gradient(ellipse at 50% 45%,#44101d 0%,#16090e 42%,#090607 78%);
+ align-items:center;
+ justify-content:center;
 }
 
-/* PAGE 1 - PASSWORD */
-#page1{
-  background:
-    linear-gradient(130deg,#080608d9,#17070df2),
-    radial-gradient(ellipse at 50% 45%,#65142b,#10070b 70%);
-}
 .login-card{
-  width:min(100%,410px);
-  padding:48px 28px 40px;
-  position:relative;
-  border:1px solid #a76b694c;
-  background:linear-gradient(145deg,#ffffff0b,#ffffff02);
-  backdrop-filter:blur(20px);
-  box-shadow:0 35px 100px #0009,inset 0 0 50px #a11b3510;
+ width:min(420px,90%);
+ padding:48px 27px;
+ border:1px solid #d7b77838;
+ background:linear-gradient(145deg,#ffffff08,#ffffff02);
+ backdrop-filter:blur(15px);
+ box-shadow:0 25px 100px #0009,inset 0 0 35px #b21c2a0b;
+ position:relative;
 }
+
+.login-card:before,.login-card:after{
+ content:"";
+ position:absolute;
+ width:35px;height:35px;
+ border-color:var(--gold);
+ opacity:.65;
+}
+
 .login-card:before{
-  content:"";
-  position:absolute;
-  inset:8px;
-  border:1px solid #c9a66b25;
-  pointer-events:none;
+ top:8px;left:8px;
+ border-top:1px solid;border-left:1px solid;
 }
-.monogram{
-  width:58px;height:58px;
-  display:grid;place-items:center;
-  margin:0 auto 25px;
-  border:1px solid #c9a66b77;
-  border-radius:50%;
-  color:var(--gold-light);
-  font-family:'Cormorant Garamond',serif;
-  font-size:26px;
-  font-style:italic;
-  box-shadow:0 0 35px #c9a66b18;
+
+.login-card:after{
+ bottom:8px;right:8px;
+ border-bottom:1px solid;border-right:1px solid;
 }
-.login-card .heading{font-size:43px}
+
+.small-heart{
+ color:var(--red2);
+ font-size:30px;
+ display:block;
+ margin-bottom:18px;
+ animation:heartBeat 2s infinite;
+}
+
+@keyframes heartBeat{
+ 0%,100%{transform:scale(1)}
+ 10%,30%{transform:scale(1.16)}
+ 20%,40%{transform:scale(1)}
+}
+
 .password-input{
-  display:block;
-  width:100%;
-  margin-top:31px;
-  padding:16px 10px;
-  background:#080608b8;
-  border:1px solid #713344;
-  outline:none;
-  color:white;
-  text-align:center;
-  font-size:18px;
-  letter-spacing:5px;
-  transition:.3s;
+ width:100%;
+ margin:28px 0 18px;
+ padding:16px;
+ color:white;
+ text-align:center;
+ background:#090607aa;
+ border:1px solid #d7b77855;
+ outline:none;
+ letter-spacing:5px;
+ font-size:19px;
 }
-.password-input:focus{
-  border-color:var(--gold);
-  box-shadow:0 0 25px #b98b5120;
-}
-.password-input::placeholder{
-  color:#7e6a6d;
-  font-size:12px;
-  letter-spacing:3px;
-}
-.hint{
-  margin-top:13px;
-  color:#947f80;
-  font-size:10px;
-  letter-spacing:.5px;
-}
+
+.password-input:focus{border-color:var(--red2)}
+
 .error{
-  min-height:18px;
-  margin-top:10px;
-  color:#ff748a;
-  font-size:11px;
+ color:#ff667d;
+ font-size:11px;
+ min-height:18px;
+ margin-top:15px;
 }
 
-/* PAGE 2 - HEART */
-#page2{
-  background:radial-gradient(ellipse at center,#4b1020 0%,#1a0910 52%,#080608 100%);
-}
-.heart-stage{
-  width:260px;height:260px;
-  margin:22px auto 8px;
-  position:relative;
-  display:grid;
-  place-items:center;
-  cursor:pointer;
-}
-.heart-symbol{
-  position:relative;
-  z-index:3;
-  color:#d51e42;
-  font-size:115px;
-  line-height:1;
-  text-shadow:0 0 20px #f12b50,0 0 55px #b20d32;
-  animation:heartPulse 1.7s ease-in-out infinite;
-  transition:1s;
-}
-@keyframes heartPulse{
-  0%,100%{transform:scale(1)}
-  12%{transform:scale(1.13)}
-  25%{transform:scale(1)}
-  38%{transform:scale(1.08)}
-}
-.heart-orbit{
-  position:absolute;
-  width:160px;height:160px;
-  border:1px solid #e6a0a044;
-  border-radius:50%;
-  animation:orbitPulse 3s ease-out infinite;
-}
-.heart-orbit:nth-child(2){animation-delay:1s}
-.heart-orbit:nth-child(3){animation-delay:2s}
-@keyframes orbitPulse{
-  0%{transform:scale(.65);opacity:.8}
-  100%{transform:scale(1.7);opacity:0}
-}
-.heart-stage.lit .heart-symbol{
-  animation:heartGlow 1.6s ease forwards;
-}
-@keyframes heartGlow{
-  0%{transform:scale(1)}
-  35%{transform:scale(1.5);filter:drop-shadow(0 0 40px #ff315c)}
-  100%{transform:scale(1.08)}
-}
-.heart-flash{
-  position:absolute;
-  width:10px;height:10px;
-  border-radius:50%;
-  background:white;
-  box-shadow:0 0 20px 10px #ff5275,0 0 70px 30px #c4153b;
-  opacity:0;
-  z-index:4;
-}
-.heart-stage.lit .heart-flash{
-  animation:heartFlash 1.4s ease forwards;
-}
-@keyframes heartFlash{
-  0%{opacity:0;transform:scale(.2)}
-  35%{opacity:1;transform:scale(2)}
-  100%{opacity:0;transform:scale(12)}
+/* HEART PAGE */
+
+#heartPage{
+ align-items:center;
+ justify-content:center;
+ background:radial-gradient(circle,#35101b,#10090c 55%,#090607);
 }
 
-/* PAGE 3 - BIRTHDAY CAKE */
-#page3{
-  background:
-    radial-gradient(ellipse at 50% 70%,#49101d 0%,#18090e 60%,#080608 100%);
+.heart-wrap{
+ position:relative;
+ width:220px;
+ height:220px;
+ margin:35px auto;
+ display:grid;
+ place-items:center;
 }
-.cake-wrap{
-  width:min(100%,370px);
-  height:355px;
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-  position:relative;
-  margin:18px auto 0;
+
+.heart{
+ width:95px;
+ height:95px;
+ position:relative;
+ background:linear-gradient(135deg,#ff526c,#8f0924);
+ transform:rotate(-45deg);
+ box-shadow:0 0 35px #ff294d99,0 0 90px #c20b3555;
+ animation:heartBeat 2s infinite;
+ cursor:pointer;
 }
-.cake-wrap:after{
-  content:"";
-  position:absolute;
-  bottom:0;
-  width:310px;height:22px;
-  border-radius:50%;
-  background:radial-gradient(ellipse,#c9a66b88,transparent 70%);
-  filter:blur(9px);
+
+.heart:before,.heart:after{
+ content:"";
+ position:absolute;
+ width:95px;
+ height:95px;
+ border-radius:50%;
+ background:inherit;
 }
+
+.heart:before{top:-47px;left:0}
+.heart:after{left:47px;top:0}
+
+.heart-glow{
+ position:absolute;
+ width:180px;
+ height:180px;
+ border:1px solid #e3264644;
+ border-radius:50%;
+ animation:ring 3s infinite;
+}
+
+.heart-glow:nth-child(2){animation-delay:1s}
+.heart-glow:nth-child(3){animation-delay:2s}
+
+@keyframes ring{
+ 0%{transform:scale(.65);opacity:.8}
+ 100%{transform:scale(1.6);opacity:0}
+}
+
+/* CAKE PAGE */
+
+#cakePage{
+ align-items:center;
+ justify-content:center;
+ background:radial-gradient(ellipse at center,#36101a,#0b0709 72%);
+}
+
+.cake-scene{
+ width:290px;
+ height:300px;
+ margin:20px auto 25px;
+ position:relative;
+ display:flex;
+ justify-content:center;
+ align-items:flex-end;
+}
+
 .cake{
-  width:280px;
-  position:relative;
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  filter:drop-shadow(0 22px 22px #0009);
-  animation:cakeReveal 1.8s cubic-bezier(.2,.8,.2,1) both;
+ position:relative;
+ width:250px;
+ height:185px;
 }
-@keyframes cakeReveal{
-  from{transform:translateY(100px) scale(.8);opacity:0}
-  to{transform:translateY(0) scale(1);opacity:1}
+
+.cake-layer{
+ position:absolute;
+ left:50%;
+ transform:translateX(-50%);
+ border-radius:12px 12px 18px 18px;
+ background:linear-gradient(90deg,#651020,#b82742 35%,#751326 75%,#450b18);
+ box-shadow:inset 0 -8px 0 #3a0812,0 10px 20px #0008;
+ border-bottom:4px solid #d7b778;
 }
-.tier{
-  position:relative;
-  border-radius:10px 10px 13px 13px;
-  border-bottom:8px solid #681525;
-  background:
-    linear-gradient(90deg,#822034 0%,#d98e8e 24%,#f0c9b8 52%,#d17b83 78%,#812036 100%);
-  box-shadow:inset 0 8px 12px #fff4,inset 0 -10px 10px #4b0c1b44;
+
+.cake-layer:before{
+ content:"";
+ position:absolute;
+ left:0;right:0;top:0;
+ height:20px;
+ border-radius:50%;
+ background:linear-gradient(90deg,#e7b9a8,#fff0d8,#c98980);
 }
-.tier:before{
-  content:"";
-  position:absolute;
-  top:-7px;left:0;right:0;
-  height:20px;
-  border-radius:50%;
-  background:linear-gradient(90deg,#d99896,#ffe4d2,#d18a8a);
-  border-bottom:2px solid #9d4651;
+
+.layer-bottom{width:250px;height:75px;bottom:0}
+.layer-middle{width:195px;height:65px;bottom:65px}
+.layer-top{width:135px;height:55px;bottom:120px}
+
+.icing{
+ position:absolute;
+ left:0;right:0;top:9px;
+ height:22px;
+ border-radius:50%;
+ background:linear-gradient(90deg,#e8b8aa,#fff0dc,#d99b9b);
 }
-.tier:after{
-  content:"";
-  position:absolute;
-  top:9px;left:0;right:0;
-  height:18px;
-  background:radial-gradient(ellipse at 50% 0%,#fff0e2 0 48%,transparent 52%);
-  background-size:36px 19px;
+
+.icing:after{
+ content:"";
+ position:absolute;
+ top:12px;left:15%;
+ width:9px;height:18px;
+ border-radius:0 0 10px 10px;
+ background:#f3d5c6;
+ box-shadow:32px 4px #f3d5c6,65px -1px #f3d5c6,100px 5px #f3d5c6,145px 0 #f3d5c6;
 }
-.tier-top{width:105px;height:62px;z-index:3}
-.tier-mid{width:185px;height:82px;margin-top:-3px;z-index:2}
-.tier-bottom{width:270px;height:99px;margin-top:-3px;z-index:1}
-.tier-gold{
-  position:absolute;
-  bottom:13px;left:0;right:0;
-  height:3px;
-  background:linear-gradient(90deg,#75451e,#ffe7a2,#ad7937);
-  box-shadow:0 0 8px #e9c77a55;
+
+.cake-topper{
+ position:absolute;
+ bottom:172px;
+ left:50%;
+ transform:translateX(-50%);
+ color:var(--gold);
+ font-family:'Great Vibes',cursive;
+ font-size:25px;
+ white-space:nowrap;
 }
-.cake-berry{
-  position:absolute;
-  z-index:5;
-  font-size:18px;
-  top:24px;
-}
-.cake-berry.left{left:18px}
-.cake-berry.right{right:18px}
-.cake-berry.center{left:50%;transform:translateX(-50%);top:27px}
+
 .candle{
-  position:absolute;
-  z-index:6;
-  width:8px;height:40px;
-  top:-43px;left:50%;
-  transform:translateX(-50%);
-  border-radius:5px;
-  background:repeating-linear-gradient(45deg,#f6dca2 0 5px,#9e2036 5px 10px);
+ position:absolute;
+ bottom:173px;
+ left:50%;
+ transform:translateX(-50%);
+ width:8px;height:42px;
+ border-radius:3px;
+ background:repeating-linear-gradient(45deg,#f7dca2 0 5px,#a21b34 5px 10px);
+ z-index:4;
 }
+
 .flame{
-  position:absolute;
-  top:-17px;left:-3px;
-  width:14px;height:19px;
-  border-radius:50% 50% 45% 45%;
-  background:radial-gradient(ellipse at 50% 65%,#fff 0 10%,#ffe9a0 35%,#ff8b28 75%);
-  box-shadow:0 0 18px 8px #ff9c3866;
-  animation:flameFlicker .6s infinite alternate;
-}
-@keyframes flameFlicker{
-  from{transform:rotate(-8deg) scale(.9)}
-  to{transform:rotate(8deg) scale(1.12)}
-}
-.plate{
-  width:305px;height:15px;
-  border-radius:50%;
-  margin-top:-2px;
-  background:linear-gradient(#f5d79a,#9a672d 55%,#4a281a);
-  box-shadow:0 8px 25px #0009;
+ position:absolute;
+ width:13px;height:19px;
+ top:-20px;left:-2px;
+ background:radial-gradient(ellipse at 50% 70%,#fff7c5 0%,#ffbb48 45%,#f04b19 75%);
+ border-radius:50% 50% 40% 40%;
+ filter:drop-shadow(0 0 10px #ff9b32);
+ animation:flicker .4s infinite alternate;
 }
 
-/* PAGE 4 - SHAYARI */
-#page4{
-  background:#08090d;
+@keyframes flicker{
+ from{transform:rotate(-5deg) scale(.9)}
+ to{transform:rotate(5deg) scale(1.1)}
 }
-.rain-bg{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  background:
-    radial-gradient(ellipse at 76% 30%,#69172a55,transparent 42%),
-    linear-gradient(145deg,#111722,#180b12 58%,#07080b);
+
+.strawberry{
+ position:absolute;
+ z-index:3;
+ font-size:22px;
 }
-.rain-bg:before{
-  content:"";
-  position:absolute;
-  inset:-40%;
-  background-image:repeating-linear-gradient(
-    105deg,
-    transparent 0 17px,
-    #b6c9e52b 18px,
-    transparent 20px 34px
-  );
-  animation:rainMove .45s linear infinite;
-  transform:rotate(4deg);
+
+.s1{bottom:20px;left:24px}
+.s2{bottom:20px;right:25px}
+.s3{bottom:90px;left:75px}
+.s4{bottom:90px;right:75px}
+
+.cake-glow{
+ position:absolute;
+ bottom:0;
+ width:270px;
+ height:30px;
+ background:#d9234b;
+ filter:blur(40px);
+ opacity:.3;
 }
-@keyframes rainMove{
-  from{transform:translateY(-45px) rotate(4deg)}
-  to{transform:translateY(45px) rotate(4deg)}
+
+/* RAINY SHAYARI PAGE */
+
+#poetryPage{
+ background:linear-gradient(180deg,#090a12,#171018 65%,#090607);
+ align-items:center;
 }
-.rain-window{
-  position:absolute;
-  top:7%;right:5%;
-  width:35%;height:55%;
-  border:2px solid #d3b2a522;
-  background:linear-gradient(130deg,#9b304018,#e3b47b0b);
-  box-shadow:0 0 75px #b52b4933,inset 0 0 50px #c3b1bc11;
+
+.rain{
+ position:absolute;
+ inset:0;
+ overflow:hidden;
+ pointer-events:none;
 }
-.rain-window:before{
-  content:"";
-  position:absolute;
-  left:50%;top:0;bottom:0;
-  width:2px;background:#d3b2a522;
+
+.rain span{
+ position:absolute;
+ top:-30px;
+ width:1px;
+ height:65px;
+ background:linear-gradient(transparent,#b4d6ff77);
+ animation:rainFall linear infinite;
 }
-.rain-window:after{
-  content:"";
-  position:absolute;
-  top:50%;left:0;right:0;
-  height:2px;background:#d3b2a522;
+
+@keyframes rainFall{
+ to{transform:translateY(110vh)}
 }
-.city{
-  position:absolute;
-  bottom:0;left:0;right:0;
-  height:34%;
-  background:
-    radial-gradient(ellipse at 15% 70%,#e44b5c44,transparent 12%),
-    radial-gradient(ellipse at 72% 62%,#d9a45b38,transparent 16%),
-    linear-gradient(transparent,#080609);
+
+.window-glow{
+ position:absolute;
+ top:5%;right:8%;
+ width:180px;height:260px;
+ background:linear-gradient(90deg,#d88c5d22,#e6b67a0c);
+ filter:blur(35px);
 }
+
+.poetry-card{
+ max-width:650px;
+ width:100%;
+ padding:35px 25px;
+ margin:20px auto;
+ background:linear-gradient(140deg,#ffffff0c,#ffffff02);
+ border:1px solid #d7b7783a;
+ backdrop-filter:blur(8px);
+ box-shadow:0 20px 70px #0008;
+ position:relative;
+}
+
+.poetry-card p{
+ font-family:'Cormorant Garamond',serif;
+ font-size:clamp(23px,5vw,34px);
+ line-height:1.6;
+ font-style:italic;
+ color:#f4dfd8;
+}
+
+.poetry-card small{
+ display:block;
+ color:var(--gold);
+ letter-spacing:3px;
+ font-size:9px;
+ margin-bottom:22px;
+ text-transform:uppercase;
+}
+
 .petals{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:2;
-}
-.petal{
-  position:absolute;
-  top:-35px;
-  opacity:0;
-  font-size:17px;
-  animation:petalDrift linear infinite;
-}
-@keyframes petalDrift{
-  0%{transform:translate3d(0,-30px,0) rotate(0);opacity:0}
-  10%{opacity:.7}
-  90%{opacity:.6}
-  100%{transform:translate3d(75px,110vh,0) rotate(420deg);opacity:0}
-}
-.poetry-wrap{
-  width:min(100%,560px);
-  position:relative;
-  z-index:3;
-}
-.poetry-top{
-  color:var(--gold);
-  letter-spacing:5px;
-  text-transform:uppercase;
-  font-size:9px;
-  margin-bottom:16px;
-}
-.poetry-title{
-  font-size:clamp(38px,8vw,57px);
-  margin-bottom:25px;
-}
-.poem-card{
-  position:relative;
-  padding:35px 24px 30px;
-  background:linear-gradient(145deg,#100b10eF,#0b080beF);
-  border:1px solid #c9a66b44;
-  box-shadow:0 25px 90px #000a,inset 0 0 35px #a21a3510;
-  margin:14px 0;
-  backdrop-filter:blur(13px);
-  overflow:hidden;
-}
-.poem-card:before{
-  content:"“";
-  position:absolute;
-  top:-26px;left:12px;
-  font-family:'Cormorant Garamond',serif;
-  font-size:110px;
-  color:#bd263e26;
-}
-.poem-number{
-  color:#b98b5a;
-  letter-spacing:4px;
-  font-size:8px;
-  margin-bottom:17px;
-}
-.poem{
-  position:relative;
-  z-index:1;
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(22px,5.5vw,29px);
-  line-height:1.65;
-  color:#f2e3dc;
-  font-weight:400;
-  white-space:pre-line;
-}
-.poem-divider{
-  width:45px;height:1px;
-  margin:22px auto 0;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-}
-.poem-caption{
-  color:#b89d9b;
-  font-size:10px;
-  letter-spacing:1px;
-  margin-top:15px;
-  font-style:italic;
+ position:absolute;
+ top:-20px;
+ left:10%;
+ font-size:17px;
+ animation:petalFall 8s linear infinite;
+ opacity:.8;
 }
 
-/* PAGE 5 - PHOTOS */
-#page5{
-  background:
-    radial-gradient(ellipse at 50% 0%,#3a0e1c 0%,#14090e 48%,#080608 100%);
-}
-.gallery-intro{
-  max-width:600px;
-  margin-bottom:28px;
-}
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:20px;
-  width:min(100%,760px);
-  margin:0 auto;
-  text-align:left;
-}
-.memory-card{
-  position:relative;
-  padding:9px;
-  border:1px solid #b68b6445;
-  background:linear-gradient(145deg,#1c1015,#0c080b);
-  box-shadow:0 16px 45px #0008;
-  transition:transform .5s,border-color .5s,box-shadow .5s;
-  overflow:hidden;
-}
-.memory-card:hover{
-  transform:translateY(-7px);
-  border-color:#d7b77d99;
-  box-shadow:0 22px 55px #000a,0 0 25px #9e1a3422;
-}
-.photo-frame{
-  position:relative;
-  width:100%;
-  aspect-ratio:4/5;
-  background:
-    radial-gradient(ellipse at 50% 35%,#571b2a,#170b10 75%);
-  overflow:hidden;
-  display:grid;
-  place-items:center;
-}
-.photo-frame img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform .8s;
-}
-.memory-card:hover .photo-frame img{transform:scale(1.055)}
-.photo-placeholder{
-  color:#b9998f;
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:17px;
-  letter-spacing:1px;
-}
-.photo-index{
-  position:absolute;
-  top:12px;left:12px;
-  z-index:2;
-  padding:6px 9px;
-  color:#f5dfbd;
-  background:#080608bb;
-  border:1px solid #c9a66b55;
-  font-size:8px;
-  letter-spacing:2px;
-}
-.memory-copy{padding:17px 10px 13px}
-.memory-love-line{
-  font-family:'Cormorant Garamond',serif;
-  color:#f2d9d3;
-  font-size:21px;
-  line-height:1.35;
-  font-style:italic;
-}
-.memory-quote{
-  margin-top:12px;
-  padding-top:11px;
-  border-top:1px solid #b88c6438;
-  color:#bda8a4;
-  font-size:10px;
-  line-height:1.8;
-  letter-spacing:.3px;
-}
-.memory-quote:before{
-  content:"✦ ";
-  color:var(--gold);
+@keyframes petalFall{
+ 0%{transform:translateY(-30px) rotate(0);opacity:0}
+ 15%{opacity:.8}
+ 100%{transform:translate(90px,110vh) rotate(400deg);opacity:0}
 }
 
-/* PAGE 6 - WISHES */
-#wishPage{}
-.wish-box{
-  width:min(100%,480px);
-  padding:37px 27px;
-  margin-top:27px;
-  border:1px solid #b68c6250;
-  background:linear-gradient(145deg,#ffffff0b,#ffffff02);
-  box-shadow:0 25px 70px #0008,inset 0 0 35px #8f102014;
-}
-.wish-text{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(22px,5vw,27px);
-  line-height:1.75;
-  color:#f0ded5;
-}
-.gift-icon{
-  font-size:75px;
-  margin-top:28px;
-  display:inline-block;
-  filter:drop-shadow(0 0 20px #c41b40);
-  animation:giftFloat 2.8s ease-in-out infinite;
-}
-@keyframes giftFloat{
-  0%,100%{transform:translateY(0) rotate(-4deg)}
-  50%{transform:translateY(-13px) rotate(4deg)}
+/* GALLERY */
+
+#galleryPage{
+ background:radial-gradient(circle at top,#32101a,#090607 65%);
 }
 
-/* PAGE 7 - FINAL */
-#page7{
-  background:
-    radial-gradient(ellipse at 50% 42%,#551021 0%,#210910 48%,#080608 100%);
-}
-.final-card{
-  width:min(100%,570px);
-  padding:42px 25px;
-  border:1px solid #c9a66b44;
-  background:linear-gradient(145deg,#ffffff09,#ffffff02);
-  box-shadow:0 25px 90px #0009;
-  position:relative;
-}
-.final-heart{
-  color:#d92145;
-  font-size:68px;
-  margin:22px 0;
-  filter:drop-shadow(0 0 22px #e01d48);
-  animation:heartPulse 1.7s infinite;
-}
-.final-note{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(21px,5vw,26px);
-  line-height:1.85;
-  color:#f0dfd8;
-}
-.signature{
-  margin-top:25px;
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  color:var(--gold-light);
-  font-size:23px;
-}
-.love-line{
-  margin-top:30px;
-  font-family:'Playfair Display',serif;
-  font-size:clamp(25px,7vw,39px);
-  color:#f0c6c6;
-  text-shadow:0 0 30px #d92348a8;
-  animation:loveGlow 3s ease-in-out infinite alternate;
-}
-@keyframes loveGlow{
-  from{text-shadow:0 0 10px #d9234844}
-  to{text-shadow:0 0 35px #ef315eaa}
+.gallery{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:18px;
+ margin:35px auto;
+ max-width:700px;
 }
 
-/* SCROLL REVEAL */
-.reveal{
-  opacity:0;
-  transform:translateY(25px);
-  transition:opacity .9s ease,transform .9s ease;
-}
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
+.photo-card{
+ background:#ffffff08;
+ border:1px solid #d7b77835;
+ padding:9px;
+ text-align:left;
+ transition:.4s;
 }
 
-@media(max-width:520px){
-  .center{padding:65px 19px 45px}
-  .login-card{padding:42px 22px 34px}
-  .login-card .heading{font-size:38px}
-  .gallery-grid{gap:12px}
-  .memory-card{padding:6px}
-  .memory-copy{padding:13px 7px 10px}
-  .memory-love-line{font-size:18px}
-  .memory-quote{font-size:9px}
-  .photo-frame{aspect-ratio:3/4}
-  .poem-card{padding:30px 17px 25px}
-  .cake-wrap{transform:scale(.91);transform-origin:bottom center;margin-top:0}
+.photo-card:hover{
+ transform:translateY(-7px);
+ border-color:#d7b77899;
 }
-@media(max-width:360px){
-  .gallery-grid{grid-template-columns:1fr}
-  .photo-frame{aspect-ratio:4/5}
+
+.photo-card img{
+ width:100%;
+ height:220px;
+ object-fit:cover;
+ display:block;
+ background:linear-gradient(135deg,#32101a,#10090c);
 }
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    scroll-behavior:auto!important;
-  }
+
+.photo-card p{
+ font-family:'Cormorant Garamond',serif;
+ font-size:20px;
+ color:#f0d9d1;
+ padding:13px 5px 5px;
+ line-height:1.35;
+}
+
+/* WISHES */
+
+#wishesPage{
+ background:radial-gradient(ellipse at center,#3b101d,#090607 75%);
+ align-items:center;
+}
+
+.wish{
+ max-width:650px;
+ margin:30px auto;
+ padding:35px 25px;
+ border-top:1px solid #d7b77866;
+ border-bottom:1px solid #d7b77866;
+}
+
+.wish p{
+ font-family:'Cormorant Garamond',serif;
+ font-size:clamp(22px,5vw,32px);
+ line-height:1.7;
+}
+
+/* FINAL NOTE */
+
+#finalPage{
+ background:
+ radial-gradient(ellipse at top,#35101a,#10090d 55%,#090607);
+}
+
+.note{
+ max-width:680px;
+ margin:30px auto;
+ padding:30px 24px;
+ text-align:left;
+ background:linear-gradient(145deg,#ffffff0b,#ffffff02);
+ border:1px solid #d7b7783d;
+ box-shadow:0 25px 90px #0008;
+}
+
+.note p{
+ font-family:'Cormorant Garamond',serif;
+ font-size:21px;
+ line-height:1.85;
+ color:#f1ded9;
+ margin-bottom:17px;
+}
+
+.note .opening{
+ font-family:'Great Vibes',cursive;
+ font-size:35px;
+ color:var(--gold);
+ line-height:1.4;
+}
+
+.note .signature{
+ text-align:center;
+ font-family:'Great Vibes',cursive;
+ font-size:39px;
+ color:#ff7187;
+ margin-top:35px;
+}
+
+.particle{
+ position:fixed;
+ bottom:-20px;
+ z-index:1;
+ pointer-events:none;
+ animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+ to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+.footer{
+ color:#8e777a;
+ font-size:9px;
+ letter-spacing:3px;
+ margin-top:35px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+ .content{padding:75px 0}
+ .gallery{gap:10px}
+ .photo-card img{height:165px}
+ .photo-card p{font-size:17px}
+ .login-card{padding:40px 20px}
+ .note{padding:25px 18px}
+ .note p{font-size:19px}
+ .cake-scene{transform:scale(.88);margin:5px auto}
+ .music-btn{top:10px;right:10px}
 }
 </style>
 </head>
 
 <body>
 
+<div class="noise"></div>
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+
 <audio id="music" loop preload="auto"></audio>
-<button class="music-btn" id="musicBtn">
-  <span class="music-dot"></span><span id="musicLabel">TAP TO PLAY</span>
-</button>
+<button class="music-btn" id="musicBtn">♫ TAP TO PLAY</button>
 
-<!-- 01 / PASSWORD -->
-<section class="page active" id="page1">
-  <div class="ambient">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-    <div class="grain"></div>
-  </div>
-  <div class="corner tl"></div><div class="corner tr"></div>
-  <div class="corner bl"></div><div class="corner br"></div>
+<!-- PAGE 1: PASSWORD -->
 
-  <div class="center">
-    <div class="login-card reveal visible">
-      <div class="monogram">H</div>
-      <div class="eyebrow">A private little universe</div>
-      <h1 class="heading">A Story <span class="gold">Of You.</span></h1>
-      <p class="subtext">Not everything beautiful needs an explanation. Some surprises are meant for one special person.</p>
+<section class="page active" id="login">
+ <div class="login-card content">
+  <span class="small-heart">♥</span>
+  <div class="eyebrow">A little surprise awaits</div>
+  <h1 class="heading">For <em>Hasbi</em><br>Naz.</h1>
+  <div class="gold-line"></div>
+  <p class="subtext">
+   Some moments are too precious to be opened without a little secret.
+   Enter your special date.
+  </p>
 
-      <input
-        class="password-input"
-        id="password"
-        type="text"
-        inputmode="numeric"
-        maxlength="10"
-        placeholder="DD-MM-YYYY"
-        autocomplete="off"
-      >
+  <input class="password-input" id="password"
+   type="text" inputmode="numeric" maxlength="10"
+   placeholder="DD-MM-YYYY" autocomplete="off">
 
-      <div class="hint">ENTER THE DATE THAT MAKES THIS DAY SPECIAL</div>
-      <div class="error" id="error"></div>
-
-      <button class="primary-btn" id="unlockBtn">Enter Your World &nbsp; ✦</button>
-    </div>
-    <div class="footer-mark">CREATED WITH A LITTLE EXTRA LOVE</div>
-  </div>
+  <button class="primary-btn" onclick="unlock()">Unlock My Surprise</button>
+  <div class="error" id="error"></div>
+  <div class="footer">MADE WITH LOVE · JUST FOR YOU</div>
+ </div>
 </section>
 
-<!-- 02 / HEART -->
-<section class="page" id="page2">
-  <div class="ambient">
-    <div class="orb one"></div><div class="orb two"></div>
-    <div class="grain"></div>
-  </div>
-  <div class="center">
-    <div class="eyebrow">Before the story begins</div>
-    <h1 class="heading">A Heart Full Of <span class="gold">Feelings.</span></h1>
-    <p class="subtext">Some feelings are impossible to put into words. This little heart holds a few of them.</p>
+<!-- PAGE 2: HEART -->
 
-    <div class="heart-stage" id="heartStage">
-      <div class="heart-orbit"></div>
-      <div class="heart-orbit"></div>
-      <div class="heart-orbit"></div>
-      <div class="heart-symbol">♥</div>
-      <div class="heart-flash"></div>
-    </div>
+<section class="page" id="heartPage">
+ <div class="content">
+  <div class="eyebrow">A heartbeat for someone special</div>
+  <h1 class="heading">A little piece<br>of <em>my heart.</em></h1>
+  <p class="subtext">There's something waiting inside this glowing heart. Touch it to discover.</p>
 
-    <button class="primary-btn" id="heartBtn">Touch The Heart &nbsp; ♡</button>
-    <div class="footer-mark">A SMALL MOMENT, A BIG FEELING</div>
+  <div class="heart-wrap" onclick="goTo('cakePage')">
+   <div class="heart-glow"></div>
+   <div class="heart-glow"></div>
+   <div class="heart-glow"></div>
+   <div class="heart"></div>
   </div>
+
+  <button class="primary-btn" onclick="goTo('cakePage')">Open My Heart</button>
+ </div>
 </section>
 
-<!-- 03 / CAKE -->
-<section class="page" id="page3">
-  <div class="ambient">
-    <div class="orb one"></div><div class="orb two"></div>
-    <div class="grain"></div>
-  </div>
-  <div class="center">
-    <div class="eyebrow">Today is all about you</div>
-    <h1 class="heading">Happy Birthday <span class="gold">Hasbi Naz.</span></h1>
-    <p class="subtext">May your day be as beautiful as the happiness you bring into the world.</p>
+<!-- PAGE 3: CAKE -->
 
-    <div class="cake-wrap">
-      <div class="cake">
-        <div class="tier tier-top">
-          <span class="candle"><span class="flame"></span></span>
-          <span class="cake-berry left">🍓</span>
-          <span class="cake-berry right">🍓</span>
-        </div>
-        <div class="tier tier-mid">
-          <span class="tier-gold"></span>
-          <span class="cake-berry center">🍓</span>
-        </div>
-        <div class="tier tier-bottom">
-          <span class="tier-gold"></span>
-          <span class="cake-berry left">🍓</span>
-          <span class="cake-berry right">🍓</span>
-        </div>
-        <div class="plate"></div>
-      </div>
-    </div>
+<section class="page" id="cakePage">
+ <div class="content">
+  <div class="eyebrow">Today is all about you</div>
+  <h1 class="heading">Happy Birthday<br><em>Hasbi Naz!</em></h1>
+  <p class="subtext">A beautiful day deserves a beautiful celebration.</p>
 
-    <h2 class="serif gold" style="font-size:30px;margin-top:15px">Make a beautiful wish.</h2>
-    <button class="primary-btn" id="cakeBtn">Let The Words Begin &nbsp; ✦</button>
+  <div class="cake-scene">
+   <div class="cake-glow"></div>
+   <div class="cake">
+    <div class="cake-layer layer-bottom"><div class="icing"></div></div>
+    <div class="cake-layer layer-middle"><div class="icing"></div></div>
+    <div class="cake-layer layer-top"><div class="icing"></div></div>
+    <span class="strawberry s1">🍓</span>
+    <span class="strawberry s2">🍓</span>
+    <span class="strawberry s3">🍓</span>
+    <span class="strawberry s4">🍓</span>
+    <div class="cake-topper">For You</div>
+    <div class="candle"><div class="flame"></div></div>
+   </div>
   </div>
+
+  <p class="subtext">May your every wish find its way to you. ✨</p>
+  <button class="primary-btn" onclick="goTo('poetryPage')">Continue The Surprise</button>
+ </div>
 </section>
 
-<!-- 04 / THREE SHAYARIS -->
-<section class="page" id="page4">
-  <div class="rain-bg">
-    <div class="rain-window"></div>
-    <div class="city"></div>
+<!-- PAGE 4: SHAYARI -->
+
+<section class="page" id="poetryPage">
+ <div class="rain" id="rain"></div>
+ <div class="window-glow"></div>
+
+ <div class="content">
+  <div class="eyebrow">Words that remind me of you</div>
+  <h1 class="heading">A little <em>poetry.</em></h1>
+  <div class="gold-line"></div>
+
+  <div class="poetry-card">
+   <span class="petals">🌹</span>
+   <small>01 · A thought</small>
+   <p>
+    Likhna Hai Mujhe Bhi Kuch Ghera Sa,<br>
+    Jise Pdh Koi Bhi Ske Par Samajh Sirf Tum Sako!!
+   </p>
   </div>
-  <div class="petals" id="petals"></div>
-  <div class="grain"></div>
 
-  <div class="center">
-    <div class="poetry-wrap">
-      <div class="poetry-top">Written somewhere between heartbeats</div>
-      <h1 class="heading poetry-title">Words I Couldn't <span class="gold">Say.</span></h1>
-
-      <article class="poem-card reveal">
-        <div class="poem-number">01 &nbsp; / &nbsp; THE UNWRITTEN FEELING</div>
-        <div class="poem">
-Likhna Hai Mujhe Bhi Kuch Ghera Sa,
-Jise Pdh Koi Bhi Ske Par Samajh Sirf Tum Sako!!
-        </div>
-        <div class="poem-divider"></div>
-        <div class="poem-caption">Some words are meant to be understood by only one heart.</div>
-      </article>
-
-      <article class="poem-card reveal">
-        <div class="poem-number">02 &nbsp; / &nbsp; THE BEAUTIFUL MYSTERY</div>
-        <div class="poem">
-Koi itna pyara kaise ho sakta hai phir saare ka saara kaise ho sakta hai
-
-Tujhse jab mil kar bhi udasi kam nahi hoti tere bagair guzara kaise ho sakta hai
-        </div>
-        <div class="poem-divider"></div>
-        <div class="poem-caption">Some people become a feeling that words can never fully describe.</div>
-      </article>
-
-      <article class="poem-card reveal">
-        <div class="poem-number">03 &nbsp; / &nbsp; THE MOONLIGHT</div>
-        <div class="poem">
-In English we say:- She is beautiful.!!
-
-But in urdu we say:
-
-"Rehne do in zulfon ko apne chehre pr yun hi, Yeh chaand badlon me zyada haseen lagta hai.
-        </div>
-        <div class="poem-divider"></div>
-        <div class="poem-caption">Some beauty feels like moonlight hidden behind clouds.</div>
-      </article>
-
-      <p class="kicker" style="margin-top:25px">Every line has a little piece of a feeling.</p>
-      <button class="primary-btn" id="poetryBtn">Keep This Memory &nbsp; ♡</button>
-    </div>
+  <div class="poetry-card">
+   <span class="petals">🌹</span>
+   <small>02 · A feeling</small>
+   <p>
+    Koi itna pyara kaise ho sakta hai phir saare ka saara kaise ho sakta hai Tujhse jab mil kar bhi udasi kam nahi hoti tere bagair guzara kaise ho sakta hai
+   </p>
   </div>
+
+  <div class="poetry-card">
+   <span class="petals">🌹</span>
+   <small>03 · In another language</small>
+   <p>
+    In English we say:- She is beautiful.!!<br><br>
+    But in urdu we say:<br><br>
+    "Rehne do in zulfon ko apne chehre pr yun hi,
+    Yeh chaand badlon me zyada haseen lagta hai.
+   </p>
+  </div>
+
+  <button class="primary-btn" onclick="goTo('galleryPage')">Our Little Memories</button>
+ </div>
 </section>
 
-<!-- 05 / PHOTO GALLERY -->
-<section class="page" id="page5">
-  <div class="ambient">
-    <div class="orb one"></div><div class="orb two"></div>
-    <div class="grain"></div>
+<!-- PAGE 5: GALLERY -->
+
+<section class="page" id="galleryPage">
+ <div class="content">
+  <div class="eyebrow">Little moments, endless memories</div>
+  <h1 class="heading">Beautiful <em>memories.</em></h1>
+  <p class="subtext">Every picture has a story, and every story has a special place.</p>
+
+  <div class="gallery">
+
+   <div class="photo-card">
+    <img src="assets/photo-1.jpg" alt="Memory one"
+     onerror="this.style.display='none'">
+    <p>"Some moments become memories that never fade."</p>
+   </div>
+
+   <div class="photo-card">
+    <img src="assets/photo-2.jpg" alt="Memory two"
+     onerror="this.style.display='none'">
+    <p>"A little smile can make an ordinary day magical."</p>
+   </div>
+
+   <div class="photo-card">
+    <img src="assets/photo-3.jpg" alt="Memory three"
+     onerror="this.style.display='none'">
+    <p>"The most beautiful things are often the simplest."</p>
+   </div>
+
+   <div class="photo-card">
+    <img src="assets/photo-4.jpg" alt="Memory four"
+     onerror="this.style.display='none'">
+    <p>"Some memories deserve to be kept forever."</p>
+   </div>
+
   </div>
-  <div class="center">
-    <div class="gallery-intro">
-      <div class="eyebrow">A collection of little moments</div>
-      <h1 class="heading">Beautiful <span class="gold">Memories.</span></h1>
-      <p class="subtext">A picture may last a second, but the feeling behind it can stay forever.</p>
-    </div>
 
-    <div class="gallery-grid">
-
-      <article class="memory-card reveal">
-        <div class="photo-frame">
-          <span class="photo-index">MEMORY 01</span>
-          <img src="assets/photo-1.jpg" alt="Memory one"
-               onerror="this.style.display='none'">
-          <span class="photo-placeholder">Your photo goes here</span>
-        </div>
-        <div class="memory-copy">
-          <div class="memory-love-line">"Somewhere in this world, you are someone's favourite view."</div>
-          <div class="memory-quote">The most beautiful moments are the ones the heart never forgets.</div>
-        </div>
-      </article>
-
-      <article class="memory-card reveal">
-        <div class="photo-frame">
-          <span class="photo-index">MEMORY 02</span>
-          <img src="assets/photo-2.jpg" alt="Memory two"
-               onerror="this.style.display='none'">
-          <span class="photo-placeholder">Your photo goes here</span>
-        </div>
-        <div class="memory-copy">
-          <div class="memory-love-line">"If beauty had a favourite form, it would look a little like you."</div>
-          <div class="memory-quote">Some smiles make an ordinary day feel extraordinary.</div>
-        </div>
-      </article>
-
-      <article class="memory-card reveal">
-        <div class="photo-frame">
-          <span class="photo-index">MEMORY 03</span>
-          <img src="assets/photo-3.jpg" alt="Memory three"
-               onerror="this.style.display='none'">
-          <span class="photo-placeholder">Your photo goes here</span>
-        </div>
-        <div class="memory-copy">
-          <div class="memory-love-line">"A thousand little details, and somehow you remain the most beautiful."</div>
-          <div class="memory-quote">The heart keeps the memories that the eyes never want to lose.</div>
-        </div>
-      </article>
-
-      <article class="memory-card reveal">
-        <div class="photo-frame">
-          <span class="photo-index">MEMORY 04</span>
-          <img src="assets/photo-4.jpg" alt="Memory four"
-               onerror="this.style.display='none'">
-          <span class="photo-placeholder">Your photo goes here</span>
-        </div>
-        <div class="memory-copy">
-          <div class="memory-love-line">"Even a thousand stars cannot compete with one special soul."</div>
-          <div class="memory-quote">Some people turn simple moments into forever memories.</div>
-        </div>
-      </article>
-
-    </div>
-
-    <p class="kicker" style="margin-top:30px">A few pictures. A thousand unspoken feelings.</p>
-    <button class="primary-btn" id="galleryBtn">One More Surprise &nbsp; ✦</button>
-  </div>
+  <button class="primary-btn" onclick="goTo('wishesPage')">A Wish For You</button>
+ </div>
 </section>
 
-<!-- 06 / WISHES -->
-<section class="page" id="page6">
-  <div class="ambient">
-    <div class="orb one"></div><div class="orb two"></div>
-    <div class="grain"></div>
+<!-- PAGE 6: WISHES -->
+
+<section class="page" id="wishesPage">
+ <div class="content">
+  <div class="eyebrow">A thousand wishes for you</div>
+  <h1 class="heading">May life be<br><em>kind to you.</em></h1>
+
+  <div class="wish">
+   <p>
+    May Allah fill your life with happiness, peace, good health
+    and countless reasons to smile. May every prayer that is
+    good for you find its beautiful answer.
+   </p>
   </div>
-  <div class="center">
-    <div class="eyebrow">A wish from the heart</div>
-    <h1 class="heading">For All The <span class="gold">Days Ahead.</span></h1>
 
-    <div class="wish-box reveal">
-      <div class="wish-text">
-        May happiness find you in unexpected places.
+  <p class="subtext">
+   Keep shining, keep smiling, and never stop believing in
+   the beautiful things waiting ahead of you. ❤️
+  </p>
 
-        May peace stay close to your heart.
-
-        May every dream you hold quietly become a beautiful reality.
-
-        And may life always give you reasons to smile, even on the simplest days.
-      </div>
-    </div>
-
-    <div class="gift-icon" id="giftIcon">🎁</div>
-    <p class="subtext">There's one last little message, made only for you.</p>
-    <button class="primary-btn" id="giftBtn">Open Your Final Surprise &nbsp; ♡</button>
-  </div>
+  <button class="primary-btn" onclick="goTo('finalPage')">One Last Thing...</button>
+ </div>
 </section>
 
-<!-- 07 / FINAL NOTE -->
-<section class="page" id="page7">
-  <div class="ambient">
-    <div class="orb one"></div><div class="orb two"></div>
-    <div class="grain"></div>
+<!-- PAGE 7: FINAL NOTE -->
+
+<section class="page" id="finalPage">
+ <div class="content">
+  <div class="eyebrow">Something from my heart</div>
+  <h1 class="heading">Just for <em>you.</em></h1>
+
+  <div class="note">
+
+   <p class="opening">Hii heelooooo... 🫠❤️</p>
+   <p class="opening">Me huu Adnan... 🙃</p>
+   <p class="opening">Suruaat kaha se karu... 🤔</p>
+   <p class="opening">To meri biwi jaan... ❤️‍🔥</p>
+
+   <div class="gold-line"></div>
+
+   <p>
+    Theek hai, to kehna ye hai ki hum dono ke beech jo bhi
+    galtiyan hoti hain, un sab ke liye main maafi maangta hoon.
+    Kabhi-kabhi main tum par itna chillata hoon, itna ladta hoon,
+    aur mujhe khud samajh nahi aata ki main kya keh raha hoon.
+    Lekin iska matlab ye nahi ki meri galti sahi ho jaati hai.
+    Mujhe apne gusse aur apne lafzon ko behtar banana hai.
+   </p>
+
+   <p>
+    Main tumhe apni zindagi ka ek bahut khaas hissa maanta hoon
+    aur aage ke safar mein tumhara saath chahta hoon. Mujhe
+    umeed hai ki hum ek doosre ko samjhenge, ek doosre ki baat
+    sunenge aur har mushkil ko milkar suljhane ki koshish karenge.
+   </p>
+
+   <p>
+    Kabhi tumhari kuch baatein mujhe bahut hurt kar deti hain
+    aur kabhi meri baatein tumhe. Main chahta hoon ki hum dono
+    ek doosre ke emotions ki kadar karein. Main apni feelings
+    tumse honestly share karna chahta hoon, lekin tumhari
+    freedom, tumhare dreams aur tumhari khushi bhi mere liye
+    utni hi important hain.
+   </p>
+
+   <p>
+    Kabhi-kabhi mujhe jealousy bhi hoti hai, aur shayad main
+    apni feelings ko theek se express nahi kar pata. Lekin main
+    ye bhi samajhta hoon ki pyaar sirf expectations ka naam
+    nahi hai. Pyaar mein trust, respect aur ek doosre ko samajhna
+    bhi zaroori hai.
+   </p>
+
+   <p>
+    Main chahta hoon ki humare beech itni understanding ho
+    ki hum bina dare apni har baat keh sakein. Narazgi ho to
+    baat karke door karein, galti ho to maafi maangein, aur
+    khushi mile to use saath celebrate karein.
+   </p>
+
+   <p>
+    Tumhari muskurahat bani rahe, tumhare sapne poore hon,
+    tumhe zindagi mein woh sab mile jo tumhare liye behtar ho.
+    Allah tumhe hamesha khush, mehfooz aur kamyaab rakhe.
+   </p>
+
+   <p>
+    Aur haan, aaj ka din sirf tumhara hai. Isliye aaj saari
+    tension side mein rakhna aur khoob saara smile karna.
+    You deserve beautiful moments, beautiful memories
+    and all the happiness in the world. 🥺❤️
+   </p>
+
+   <div class="gold-line"></div>
+
+   <p style="text-align:center;color:#d7b778">
+    Happy Birthday, Hasbi Naz. ❤️‍🔥
+   </p>
+
+   <p class="signature">I TOO LOVE YOU 🫠❤️‍🔥</p>
+
   </div>
-  <div class="corner tl"></div><div class="corner tr"></div>
-  <div class="corner bl"></div><div class="corner br"></div>
 
-  <div class="center">
-    <div class="final-card reveal visible">
-      <div class="eyebrow">The last page, but not the last feeling</div>
-      <h1 class="heading">Dear <span class="gold">Hasbi Naz.</span></h1>
-      <div class="final-heart">♥</div>
-
-      <div class="final-note">
-        Happy Birthday. ❤️
-
-        I hope this little world made you smile.
-        May your life always be surrounded by kindness,
-        beautiful memories and endless happiness.
-
-        Never forget how special you are.
-        Keep shining in your own beautiful way.
-
-        And if words could ever explain everything,
-        this little surprise would still have a thousand
-        more things left to say.
-      </div>
-
-      <div class="signature">Made with love, just for you.</div>
-      <div class="love-line">I TOO LOVE YOU 🫠❤️‍🔥</div>
-    </div>
-    <div class="footer-mark">A LITTLE UNIVERSE THAT BELONGS TO YOU</div>
-  </div>
+  <div class="footer">A LITTLE SURPRISE · MADE WITH LOVE</div>
+ </div>
 </section>
 
 <script>
-/* =========================================
-   MUSIC - MP3 IS IN THE REPOSITORY ROOT
-========================================= */
+/* MUSIC */
 
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
-const musicLabel = document.getElementById("musicLabel");
 
 const musicFile =
 "Piya_Ghar_Aaya_-_Nusrat_Fateh_Ali_Khan_x_Asad_s___Mix___Master_°_The_Alone_Vibes_Bass_Boosted_Remix(256k).mp3";
@@ -1113,178 +903,134 @@ music.src = "./" + encodeURIComponent(musicFile);
 music.load();
 
 async function playMusic(){
-  try{
-    await music.play();
-    musicLabel.textContent = "MUSIC ON";
-  }catch(error){
-    musicLabel.textContent = "TAP TO PLAY";
-  }
+ try{
+  await music.play();
+  musicBtn.textContent="♫ MUSIC ON";
+ }catch(error){
+  musicBtn.textContent="♫ TAP TO PLAY";
+ }
 }
 
 music.addEventListener("error",()=>{
-  musicLabel.textContent = "MUSIC ERROR";
+ musicBtn.textContent="♫ MUSIC ERROR";
 });
 
 musicBtn.addEventListener("click",()=>{
-  if(music.paused){
-    playMusic();
-  }else{
-    music.pause();
-    musicLabel.textContent = "MUSIC OFF";
-  }
+ if(music.paused){
+  playMusic();
+ }else{
+  music.pause();
+  musicBtn.textContent="♫ MUSIC OFF";
+ }
 });
 
-/* =========================================
-   PAGE TRANSITIONS
-========================================= */
+/* PASSWORD AUTO FORMAT */
 
-const pages = [...document.querySelectorAll(".page")];
+const passwordInput=document.getElementById("password");
 
-function goToPage(number){
-  pages.forEach(page=>page.classList.remove("active"));
+passwordInput.addEventListener("input",function(){
+ let digits=this.value.replace(/\D/g,"").slice(0,8);
 
-  const nextPage = document.getElementById("page"+number);
-  nextPage.classList.add("active");
+ if(digits.length>4){
+  digits=digits.slice(0,2)+"-"+digits.slice(2,4)+"-"+digits.slice(4);
+ }else if(digits.length>2){
+  digits=digits.slice(0,2)+"-"+digits.slice(2);
+ }
 
-  musicBtn.style.display = number === 1 ? "none" : "block";
+ this.value=digits;
+});
 
-  nextPage.scrollTop = 0;
-  revealElements(nextPage);
+passwordInput.addEventListener("keydown",function(e){
+ if(e.key==="Enter")unlock();
+});
+
+function unlock(){
+ const value=passwordInput.value;
+ const error=document.getElementById("error");
+
+ if(value==="19-11-2008"){
+  error.textContent="";
+  playMusic();
+  goTo("heartPage");
+  startParticles();
+ }else{
+  error.textContent="Not quite... Try the special date again. ❤️";
+  passwordInput.style.borderColor="#ff526c";
+  setTimeout(()=>{
+   passwordInput.style.borderColor="";
+  },1000);
+ }
 }
 
-/* =========================================
-   PASSWORD WITH AUTOMATIC HYPHENS
-========================================= */
+/* PAGE TRANSITIONS */
 
-const password = document.getElementById("password");
-const error = document.getElementById("error");
+function goTo(pageId){
+ const current=document.querySelector(".page.active");
+ const next=document.getElementById(pageId);
 
-password.addEventListener("input",()=>{
-  let digits = password.value.replace(/\D/g,"").slice(0,8);
+ if(!next || current===next)return;
 
-  if(digits.length > 4){
-    digits = digits.slice(0,2)+"-"+digits.slice(2,4)+"-"+digits.slice(4);
-  }else if(digits.length > 2){
-    digits = digits.slice(0,2)+"-"+digits.slice(2);
-  }
+ current.style.opacity="0";
+ current.style.transform="translateY(-10px)";
 
-  password.value = digits;
-  error.textContent = "";
-});
-
-document.getElementById("unlockBtn").addEventListener("click",()=>{
-  if(password.value === "19-11-2008"){
-    playMusic();
-    goToPage(2);
-  }else{
-    error.textContent = "Not quite right. Try the special date again.";
-    password.focus();
-  }
-});
-
-password.addEventListener("keydown",event=>{
-  if(event.key === "Enter"){
-    document.getElementById("unlockBtn").click();
-  }
-});
-
-/* =========================================
-   HEART INTERACTION
-========================================= */
-
-let heartActivated = false;
-
-document.getElementById("heartBtn").addEventListener("click",()=>{
-  if(heartActivated)return;
-  heartActivated = true;
-
-  document.getElementById("heartStage").classList.add("lit");
-  document.getElementById("heartBtn").textContent = "A little piece of my heart ♥";
-
-  setTimeout(()=>goToPage(3),1700);
-});
-
-document.getElementById("heartStage").addEventListener("click",()=>{
-  document.getElementById("heartBtn").click();
-});
-
-/* =========================================
-   CAKE TO SHAYARI
-========================================= */
-
-document.getElementById("cakeBtn").addEventListener("click",()=>{
-  goToPage(4);
-  createPetals();
-});
-
-/* =========================================
-   RAINY SCENE PETALS
-========================================= */
-
-let petalsCreated = false;
-
-function createPetals(){
-  if(petalsCreated)return;
-  petalsCreated = true;
-
-  const container = document.getElementById("petals");
-
-  for(let i=0;i<22;i++){
-    const petal = document.createElement("span");
-    petal.className = "petal";
-    petal.textContent = i%3===0 ? "🌹" : "✿";
-    petal.style.left = Math.random()*100+"%";
-    petal.style.animationDuration = (9+Math.random()*10)+"s";
-    petal.style.animationDelay = (Math.random()*10)+"s";
-    petal.style.fontSize = (11+Math.random()*12)+"px";
-    container.appendChild(petal);
-  }
+ setTimeout(()=>{
+  current.classList.remove("active");
+  current.style.opacity="";
+  current.style.transform="";
+  next.classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+ },350);
 }
 
-/* =========================================
-   SHAYARI TO GALLERY
-========================================= */
+/* RAIN */
 
-document.getElementById("poetryBtn").addEventListener("click",()=>{
-  goToPage(5);
-});
+const rain=document.getElementById("rain");
 
-/* =========================================
-   GALLERY TO WISHES
-========================================= */
-
-document.getElementById("galleryBtn").addEventListener("click",()=>{
-  goToPage(6);
-});
-
-/* =========================================
-   GIFT TO FINAL NOTE
-========================================= */
-
-document.getElementById("giftBtn").addEventListener("click",()=>{
-  const gift = document.getElementById("giftIcon");
-  gift.style.transform = "scale(1.4) rotate(12deg)";
-  gift.style.transition = "1s";
-
-  setTimeout(()=>goToPage(7),850);
-});
-
-/* =========================================
-   REVEAL ANIMATIONS
-========================================= */
-
-function revealElements(root){
-  const items = root.querySelectorAll(".reveal");
-
-  items.forEach((item,index)=>{
-    item.classList.remove("visible");
-    setTimeout(()=>{
-      item.classList.add("visible");
-    },120+index*170);
-  });
+for(let i=0;i<65;i++){
+ const drop=document.createElement("span");
+ drop.style.left=Math.random()*100+"%";
+ drop.style.animationDuration=(.7+Math.random()*1.3)+"s";
+ drop.style.animationDelay=Math.random()*3+"s";
+ drop.style.opacity=.2+Math.random()*.5;
+ rain.appendChild(drop);
 }
 
-revealElements(document.getElementById("page1"));
+/* FLOATING PARTICLES */
+
+let particleInterval=null;
+
+function startParticles(){
+ if(particleInterval)return;
+
+ particleInterval=setInterval(()=>{
+  if(!document.querySelector(".page.active"))return;
+
+  const particle=document.createElement("div");
+  particle.className="particle";
+  particle.textContent=Math.random()>.5?"♥":"✦";
+
+  particle.style.left=Math.random()*100+"%";
+  particle.style.fontSize=(9+Math.random()*13)+"px";
+  particle.style.color=Math.random()>.5?"#e32646":"#d7b778";
+  particle.style.animationDuration=(7+Math.random()*7)+"s";
+
+  document.body.appendChild(particle);
+
+  setTimeout(()=>particle.remove(),15000);
+ },650);
+}
+
+/* CAKE CANDLE */
+
+const candle=document.querySelector(".flame");
+
+document.querySelector(".cake-scene").addEventListener("click",()=>{
+ candle.style.display="none";
+
+ setTimeout(()=>{
+  candle.style.display="block";
+ },1800);
+});
 </script>
 
 </body>
