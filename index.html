@@ -31,7 +31,6 @@ body{
 }
 
 button,input{font:inherit}
-
 button{cursor:pointer}
 
 .page{
@@ -221,6 +220,131 @@ button{cursor:pointer}
  font-size:11px;
  min-height:18px;
  margin-top:15px;
+}
+
+/* NEW QUESTION PAGE */
+
+#questionPage{
+ align-items:center;
+ justify-content:center;
+ background:
+ radial-gradient(ellipse at 50% 45%,#44101d 0%,#16090e 48%,#090607 82%);
+}
+
+.question-card{
+ width:min(470px,91%);
+ padding:45px 25px;
+ border:1px solid #d7b77844;
+ background:linear-gradient(145deg,#ffffff0c,#ffffff02);
+ backdrop-filter:blur(16px);
+ box-shadow:0 25px 100px #0009,inset 0 0 35px #b21c2a0b;
+ position:relative;
+}
+
+.question-card:before,.question-card:after{
+ content:"";
+ position:absolute;
+ width:30px;height:30px;
+ border-color:var(--gold);
+ opacity:.65;
+}
+
+.question-card:before{
+ top:8px;left:8px;
+ border-top:1px solid;border-left:1px solid;
+}
+
+.question-card:after{
+ bottom:8px;right:8px;
+ border-bottom:1px solid;border-right:1px solid;
+}
+
+.question-heart{
+ font-size:38px;
+ color:var(--red2);
+ margin-bottom:22px;
+ animation:heartBeat 2s infinite;
+}
+
+.question-title{
+ font-family:'Cormorant Garamond',serif;
+ font-size:clamp(32px,7vw,48px);
+ line-height:1.25;
+ font-weight:500;
+ color:var(--cream);
+ margin-bottom:30px;
+}
+
+.question-title em{color:var(--red2)}
+
+.question-options{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:13px;
+ margin-top:20px;
+}
+
+.answer-btn{
+ min-width:115px;
+ padding:14px 23px;
+ border:1px solid #d7b77877;
+ background:linear-gradient(135deg,#4b0b19,#16090d);
+ color:#fff0eb;
+ font-size:11px;
+ letter-spacing:2px;
+ transition:.35s;
+ border-radius:3px;
+}
+
+.answer-btn:hover{
+ background:#a20f27;
+ border-color:var(--gold);
+ transform:translateY(-3px);
+ box-shadow:0 0 25px #e3264644;
+}
+
+.answer-btn.yes{
+ border-color:#e3264677;
+}
+
+.answer-btn.no{
+ border-color:#d7b77866;
+}
+
+.answer-btn.sohar{
+ width:100%;
+ max-width:310px;
+ padding:17px 14px;
+ color:var(--gold);
+ border-color:#d7b77899;
+ letter-spacing:1px;
+ font-size:10px;
+}
+
+.question-response{
+ min-height:35px;
+ margin-top:25px;
+ color:var(--gold);
+ font-family:'Cormorant Garamond',serif;
+ font-size:25px;
+ font-style:italic;
+ line-height:1.4;
+}
+
+/* EXIT SCREEN */
+
+#exitPage{
+ align-items:center;
+ justify-content:center;
+ background:radial-gradient(circle,#35101b,#090607 75%);
+}
+
+.exit-text{
+ font-family:'Cormorant Garamond',serif;
+ font-size:clamp(38px,8vw,65px);
+ color:var(--gold);
+ font-style:italic;
 }
 
 /* HEART PAGE */
@@ -617,6 +741,8 @@ button{cursor:pointer}
  .note p{font-size:19px}
  .cake-scene{transform:scale(.88);margin:5px auto}
  .music-btn{top:10px;right:10px}
+ .question-card{padding:40px 19px}
+ .answer-btn{min-width:105px}
 }
 </style>
 </head>
@@ -653,7 +779,41 @@ button{cursor:pointer}
  </div>
 </section>
 
-<!-- PAGE 2: HEART -->
+<!-- PAGE 2: NEW QUESTION -->
+
+<section class="page" id="questionPage">
+ <div class="content">
+  <div class="question-card">
+   <div class="question-heart">♥</div>
+   <div class="eyebrow">One little question</div>
+
+   <h1 class="question-title">
+    Tum Adnan se<br>
+    <em>pyar</em> krti ho ya nahi? 🤔
+   </h1>
+
+   <div class="gold-line"></div>
+
+   <div class="question-options" id="questionOptions">
+    <button class="answer-btn yes" onclick="answerYes()">YES ❤️</button>
+    <button class="answer-btn no" onclick="answerNo()">NO 🥀</button>
+   </div>
+
+   <div class="question-response" id="questionResponse"></div>
+  </div>
+ </div>
+</section>
+
+<!-- EXIT PAGE -->
+
+<section class="page" id="exitPage">
+ <div class="content">
+  <div class="question-heart">♥</div>
+  <h1 class="exit-text">Adnan ko kahu 🤔</h1>
+ </div>
+</section>
+
+<!-- PAGE 3: HEART -->
 
 <section class="page" id="heartPage">
  <div class="content">
@@ -672,7 +832,7 @@ button{cursor:pointer}
  </div>
 </section>
 
-<!-- PAGE 3: CAKE -->
+<!-- PAGE 4: CAKE -->
 
 <section class="page" id="cakePage">
  <div class="content">
@@ -700,7 +860,7 @@ button{cursor:pointer}
  </div>
 </section>
 
-<!-- PAGE 4: SHAYARI -->
+<!-- PAGE 5: SHAYARI -->
 
 <section class="page" id="poetryPage">
  <div class="rain" id="rain"></div>
@@ -743,7 +903,7 @@ button{cursor:pointer}
  </div>
 </section>
 
-<!-- PAGE 5: GALLERY -->
+<!-- PAGE 6: GALLERY -->
 
 <section class="page" id="galleryPage">
  <div class="content">
@@ -783,7 +943,7 @@ button{cursor:pointer}
  </div>
 </section>
 
-<!-- PAGE 6: WISHES -->
+<!-- PAGE 7: WISHES -->
 
 <section class="page" id="wishesPage">
  <div class="content">
@@ -807,7 +967,7 @@ button{cursor:pointer}
  </div>
 </section>
 
-<!-- PAGE 7: FINAL NOTE -->
+<!-- PAGE 8: FINAL NOTE -->
 
 <section class="page" id="finalPage">
  <div class="content">
@@ -951,7 +1111,7 @@ function unlock(){
  if(value==="19-11-2008"){
   error.textContent="";
   playMusic();
-  goTo("heartPage");
+  goTo("questionPage");
   startParticles();
  }else{
   error.textContent="Not quite... Try the special date again. ❤️";
@@ -960,6 +1120,62 @@ function unlock(){
    passwordInput.style.borderColor="";
   },1000);
  }
+}
+
+/* NEW QUESTION PAGE LOGIC */
+
+let yesAttempts=0;
+const questionResponse=document.getElementById("questionResponse");
+const questionOptions=document.getElementById("questionOptions");
+
+function answerYes(){
+
+ yesAttempts++;
+
+ questionResponse.textContent="Nahi, tum nahi krti ho! 😏";
+
+ if(yesAttempts>=3){
+  setTimeout(()=>{
+   questionResponse.textContent="Achha, ab sach sach batao... 🫠";
+   questionOptions.innerHTML=`
+    <button class="answer-btn yes" onclick="answerFinalYes()">YES ❤️</button>
+    <button class="answer-btn no" onclick="answerNo()">NO 🥀</button>
+    <button class="answer-btn sohar" onclick="answerSohar()">
+     Me to usko apna sohar manti hu 🫠❤️‍🔥
+    </button>
+   `;
+  },1100);
+ }else{
+  setTimeout(()=>{
+   questionResponse.textContent="";
+  },1300);
+ }
+}
+
+function answerFinalYes(){
+ questionResponse.textContent="Nahi nahi, dobara socho! 😏";
+}
+
+function answerNo(){
+ questionResponse.textContent="";
+ goTo("exitPage");
+
+ setTimeout(()=>{
+  try{
+   window.close();
+  }catch(error){}
+
+  /* Browser may block window.close().
+     Fallback: leave the visitor on the exit screen. */
+ },1800);
+}
+
+function answerSohar(){
+ questionResponse.textContent="Hehe... mujhe pata tha! 🫠❤️‍🔥";
+
+ setTimeout(()=>{
+  goTo("heartPage");
+ },1000);
 }
 
 /* PAGE TRANSITIONS */
