@@ -53,6 +53,7 @@ button, input { font: inherit; }
 }
 
 /* LOGIN PAGE */
+
 #page1 {
   justify-content: center;
   align-items: center;
@@ -133,19 +134,19 @@ button, input { font: inherit; }
   margin-top: 13px;
 }
 
-/* HEART INTRO PAGE */
+/* HEART INTRO */
+
 #page2 {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 45%, #470a31 0%, #1b0619 48%, #080008 100%);
+  background: radial-gradient(circle at 50% 45%, #470a31 0%, #1b0619 48%, #080008 100%);
 }
 
 .intro-glow {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   background: rgba(255, 30, 135, .13);
   filter: blur(65px);
@@ -172,125 +173,157 @@ button, input { font: inherit; }
 }
 
 .big-heart {
-  font-size: clamp(100px, 28vw, 160px);
+  font-size: clamp(115px, 30vw, 175px);
   line-height: 1;
   color: #ff3f9b;
   filter:
     drop-shadow(0 0 15px #ff168d)
     drop-shadow(0 0 40px rgba(255, 20, 130, .8));
-  transform: scale(.85);
-  transition: transform .4s;
+  transition: .3s;
+  position: relative;
+  z-index: 2;
 }
 
 #page2.heart-hit .big-heart {
-  animation: heartImpact .75s ease;
+  animation: heartImpact .7s ease;
 }
 
 @keyframes heartImpact {
-  0% { transform: scale(.85); }
-  25% { transform: scale(1.35); }
-  45% { transform: scale(.92); }
-  65% { transform: scale(1.16); }
+  0% { transform: scale(1); }
+  25% { transform: scale(1.25); }
+  45% { transform: scale(.93); }
+  65% { transform: scale(1.12); }
   100% { transform: scale(1); }
 }
 
-.arrow {
+/* CLICKABLE ARROW — BOTTOM LEFT */
+
+.arrow-launch-area {
   position: absolute;
-  z-index: 5;
-  top: 5%;
-  right: -170px;
-  width: 145px;
-  height: 5px;
-  border-radius: 10px;
-  opacity: 0;
-  background: linear-gradient(90deg, #ffb5d8, #ff238d);
-  box-shadow: 0 0 12px #ff3f9b, 0 0 25px #ff238d;
-  transform: rotate(135deg);
-  transform-origin: center;
+  z-index: 8;
+  left: 15px;
+  bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+  transition: opacity .3s;
 }
 
-.arrow::after {
-  content: "";
+.arrow-label {
+  color: #ffd4e8;
+  font-size: 10px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  padding-left: 3px;
+  text-shadow: 0 0 12px #ff3f9b;
+  animation: labelGlow 1.8s infinite alternate;
+}
+
+@keyframes labelGlow {
+  from { opacity: .55; }
+  to { opacity: 1; }
+}
+
+.arrow {
+  position: relative;
+  width: 130px;
+  height: 44px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  transform: rotate(-45deg);
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 0 8px #ff3f9b);
+  animation: arrowIdle 1.8s ease-in-out infinite alternate;
+}
+
+.arrow-shaft {
   position: absolute;
-  right: -2px;
-  top: -8px;
+  left: 0;
+  top: 20px;
+  width: 112px;
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff9bc9, #fff0f8);
+  box-shadow: 0 0 12px #ff3f9b;
+}
+
+.arrow-head {
+  position: absolute;
+  right: 7px;
+  top: 11px;
   width: 0;
   height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 22px solid #ff8bc2;
-  filter: drop-shadow(0 0 7px #ff3f9b);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 25px solid #ffb5d8;
+  filter: drop-shadow(0 0 8px #ff3f9b);
 }
 
-#page2.active .arrow {
-  animation: arrowFlight 1.45s cubic-bezier(.2,.75,.25,1) .35s forwards;
+.arrow-feather {
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 22px;
+  height: 12px;
+  border-top: 3px solid #ff9bc9;
+  border-bottom: 3px solid #ff9bc9;
+  transform: skewY(-25deg);
 }
 
-@keyframes arrowFlight {
+@keyframes arrowIdle {
+  from { transform: rotate(-45deg) translateY(0); }
+  to { transform: rotate(-45deg) translateY(-5px); }
+}
+
+/* ARROW FLIGHT */
+
+.arrow-launch-area.launched {
+  animation: hideArrowLabel .15s forwards;
+}
+
+@keyframes hideArrowLabel {
+  to { opacity: 0; }
+}
+
+.arrow.launched {
+  position: fixed;
+  z-index: 20;
+  left: 15px;
+  bottom: 22px;
+  width: 130px;
+  height: 44px;
+  animation: shootArrow 1.05s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes shootArrow {
   0% {
-    opacity: 0;
-    right: -170px;
-    top: 5%;
-    transform: rotate(135deg) scale(.7);
+    left: 15px;
+    bottom: 22px;
+    transform: rotate(-45deg) scale(1);
   }
-  15% { opacity: 1; }
+
   100% {
-    opacity: 1;
-    right: calc(50% - 70px);
-    top: calc(50% - 5px);
-    transform: rotate(135deg) scale(1);
+    left: calc(50% - 65px);
+    bottom: calc(50% - 22px);
+    transform: rotate(-45deg) scale(1);
   }
 }
 
-.start-prompt {
-  opacity: 0;
-  transform: translateY(18px);
-  margin-top: 45px;
-  transition: opacity .8s ease, transform .8s ease;
-}
-
-#page2.ready .start-prompt {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.start-prompt p {
-  color: #ffd4e8;
-  font-size: 11px;
-  letter-spacing: 4px;
-  margin-bottom: 18px;
-}
-
-.start-heart-btn {
-  border: 1px solid rgba(255, 130, 190, .55);
-  color: #fff1f8;
-  background: rgba(255, 50, 145, .12);
-  border-radius: 50px;
-  padding: 15px 30px;
-  font-size: 12px;
-  letter-spacing: 3px;
-  cursor: pointer;
-  box-shadow: 0 0 25px rgba(255, 50, 145, .2);
-  animation: promptPulse 2s infinite;
-}
-
-@keyframes promptPulse {
-  50% { box-shadow: 0 0 35px rgba(255, 50, 145, .65); }
-}
-
-#page2:not(.ready) .start-heart-btn {
-  pointer-events: none;
-}
+.arrow:disabled { cursor: default; }
 
 /* CINEMATIC TRANSITION */
+
 #transition {
   position: fixed;
   inset: 0;
   z-index: 100;
   pointer-events: none;
   opacity: 0;
-  background:
-    radial-gradient(circle, #ff4ba5 0%, #6e0b48 25%, #170414 65%, #080008 100%);
+  background: radial-gradient(circle, #ff4ba5 0%, #6e0b48 25%, #170414 65%, #080008 100%);
 }
 
 #transition.play {
@@ -305,6 +338,7 @@ button, input { font: inherit; }
 }
 
 /* ROMANTIC PAGES */
+
 .romantic-page {
   justify-content: center;
   align-items: center;
@@ -389,6 +423,7 @@ button, input { font: inherit; }
 }
 
 /* GIFT */
+
 .gift-section { margin: 40px auto 0; }
 
 .gift {
@@ -423,6 +458,7 @@ button, input { font: inherit; }
 .next-btn { margin-top: 25px; }
 
 /* FINAL NOTE */
+
 #page4 {
   display: none;
   min-height: 100vh;
@@ -535,6 +571,7 @@ button, input { font: inherit; }
 }
 
 /* MAGIC PARTICLES */
+
 #magicCanvas, #magicCanvasFinal {
   position: fixed;
   inset: 0;
@@ -570,6 +607,7 @@ button, input { font: inherit; }
 }
 
 /* MUSIC */
+
 .music-btn {
   position: fixed;
   z-index: 10;
@@ -594,6 +632,7 @@ button, input { font: inherit; }
 }
 
 /* MOBILE */
+
 @media (max-width: 600px) {
   .romantic-page { padding: 80px 16px 60px; }
 
@@ -639,6 +678,42 @@ button, input { font: inherit; }
   }
 
   .music-btn { top: 12px; right: 12px; }
+
+  .arrow-launch-area {
+    left: 8px;
+    bottom: 20px;
+  }
+
+  .arrow {
+    width: 115px;
+  }
+
+  .arrow.launched {
+    width: 115px;
+  }
+
+  .arrow-shaft { width: 98px; }
+
+  .arrow-head { right: 5px; }
+
+  .arrow-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  @keyframes shootArrow {
+    0% {
+      left: 8px;
+      bottom: 20px;
+      transform: rotate(-45deg) scale(1);
+    }
+
+    100% {
+      left: calc(50% - 57px);
+      bottom: calc(50% - 22px);
+      transform: rotate(-45deg) scale(1);
+    }
+  }
 }
 
 @media (max-width: 360px) {
@@ -672,6 +747,7 @@ button, input { font: inherit; }
 <body>
 
 <!-- PAGE 1: PASSWORD -->
+
 <section class="page active" id="page1">
   <div class="login-card">
     <div class="heart-icon">♡</div>
@@ -700,28 +776,43 @@ button, input { font: inherit; }
   </div>
 </section>
 
-<!-- PAGE 2: HEART AND ARROW INTRO -->
+<!-- PAGE 2: HEART + CLICKABLE ARROW -->
+
 <section class="page" id="page2">
   <div class="intro-glow"></div>
 
   <div class="heart-stage">
+
     <div class="big-heart" id="bigHeart">♥</div>
 
-    <div class="arrow" id="arrow"></div>
+    <div class="arrow-launch-area" id="arrowLaunchArea">
 
-    <div class="start-prompt" id="startPrompt">
-      <p>YOUR HEART HAS BEEN FOUND</p>
-      <button class="start-heart-btn" onclick="startBirthday()">
-        TAP HERE TO START ♡
+      <div class="arrow-label" id="arrowLabel">
+        TAP HERE TO START
+      </div>
+
+      <button
+        class="arrow"
+        id="arrow"
+        aria-label="Shoot the arrow into the heart to start"
+        onclick="launchArrow()"
+      >
+        <span class="arrow-feather"></span>
+        <span class="arrow-shaft"></span>
+        <span class="arrow-head"></span>
       </button>
+
     </div>
+
   </div>
 </section>
 
-<!-- CINEMATIC TRANSITION LAYER -->
+<!-- CINEMATIC TRANSITION -->
+
 <div id="transition"></div>
 
 <!-- PAGE 3: BIRTHDAY WISHES -->
+
 <section class="page romantic-page" id="page3">
   <canvas id="magicCanvas"></canvas>
   <div class="light-trail trail-one"></div>
@@ -780,7 +871,8 @@ button, input { font: inherit; }
   </div>
 </section>
 
-<!-- PAGE 4: FINAL EMOTIONAL NOTE -->
+<!-- PAGE 4: FINAL NOTE -->
+
 <section class="page romantic-page" id="page4">
   <canvas id="magicCanvasFinal"></canvas>
   <div class="light-trail trail-one"></div>
@@ -842,6 +934,7 @@ button, input { font: inherit; }
 </section>
 
 <!-- BACKGROUND MUSIC -->
+
 <audio id="music" loop preload="auto">
   <source
     src="assets/Maula_Mere_Maula__Slowed___Reverb__-_Roop_Kumar_Rathod___Aankhein_Teri_Kitni_Haseen___Also_Holic(256k).mp3"
@@ -854,9 +947,10 @@ const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 
 let animationStarted = false;
-let introTimer = null;
+let arrowLaunched = false;
 
-/* AUTOMATIC PASSWORD HYPHENS */
+/* PASSWORD AUTO FORMATTING */
+
 passwordInput.addEventListener("input", function() {
   let digits = this.value.replace(/\D/g, "").slice(0, 8);
 
@@ -877,100 +971,106 @@ passwordInput.addEventListener("input", function() {
 });
 
 /* ENTER KEY */
+
 passwordInput.addEventListener("keydown", function(event) {
   if (event.key === "Enter") unlock();
 });
 
 /* PASSWORD UNLOCK */
+
 function unlock() {
   if (passwordInput.value === "19-11-2008") {
     document.getElementById("error").textContent = "";
 
+    arrowLaunched = false;
+
+    const arrow = document.getElementById("arrow");
+    const launchArea = document.getElementById("arrowLaunchArea");
+
+    arrow.classList.remove("launched");
+    arrow.disabled = false;
+    launchArea.classList.remove("launched");
+
     goToPage(2);
-
     musicBtn.style.display = "block";
-
     startMusic();
 
-    startHeartIntro();
   } else {
     document.getElementById("error").textContent =
-      "Wrong date! Try again, my dear ♡";
+      "Wrong date! Try again ♡";
 
     passwordInput.focus();
   }
 }
 
-/* HEART AND ARROW INTRO */
-function startHeartIntro() {
+/* CLICK ARROW TO SHOOT */
+
+function launchArrow() {
+  if (arrowLaunched) return;
+
+  arrowLaunched = true;
+
+  const arrow = document.getElementById("arrow");
+  const launchArea = document.getElementById("arrowLaunchArea");
   const intro = document.getElementById("page2");
-  const heart = document.getElementById("bigHeart");
 
-  intro.classList.remove("ready", "heart-hit");
+  arrow.disabled = true;
 
-  clearTimeout(introTimer);
+  // Remove the label and move the arrow to a fixed layer.
+  launchArea.classList.add("launched");
 
-  // Arrow reaches the heart, then the heart reacts.
-  introTimer = setTimeout(() => {
-    intro.classList.add("heart-hit");
-  }, 1800);
+  // Move the arrow itself, not the label container.
+  arrow.classList.add("launched");
 
-  // Reveal the tap instruction after the arrow impact.
+  // Arrow reaches the heart. Only half its length enters.
   setTimeout(() => {
-    intro.classList.add("ready");
-  }, 2400);
-}
+    intro.classList.add("heart-hit");
+  }, 950);
 
-/* TAP TO ENTER BIRTHDAY PAGE */
-function startBirthday() {
-  const intro = document.getElementById("page2");
-  const transition = document.getElementById("transition");
+  // Pause briefly after the impact, then transition.
+  setTimeout(() => {
+    const transition = document.getElementById("transition");
 
-  if (!intro.classList.contains("ready")) return;
-
-  transition.classList.remove("play");
-  void transition.offsetWidth;
-  transition.classList.add("play");
-
-  intro.style.pointerEvents = "none";
+    transition.classList.remove("play");
+    void transition.offsetWidth;
+    transition.classList.add("play");
+  }, 1500);
 
   setTimeout(() => {
     goToPage(3);
     startMagic();
-  }, 650);
+  }, 2050);
 
   setTimeout(() => {
+    intro.classList.remove("heart-hit");
     transition.classList.remove("play");
-    intro.style.pointerEvents = "";
-  }, 1600);
+  }, 2800);
 }
 
 /* PAGE NAVIGATION */
+
 function goToPage(number) {
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
   });
 
-  const target = document.getElementById("page" + number);
-  target.classList.add("active");
+  document.getElementById("page" + number).classList.add("active");
 
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
-
-  if (number === 3 || number === 4) {
-    startMagic();
-  }
 }
 
 /* GIFT */
+
 function openGift() {
   document.getElementById("giftMessage").classList.add("show");
   document.querySelector(".gift").textContent = "💝";
 }
 
 /* MUSIC */
+
 async function startMusic() {
   try {
     await music.play();
@@ -998,7 +1098,8 @@ function updateMusicButton() {
     music.paused ? "♫ MUSIC OFF" : "♫ MUSIC ON";
 }
 
-/* MAGICAL PARTICLES ON BIRTHDAY AND NOTE PAGES */
+/* MAGICAL PARTICLES */
+
 function startMagic() {
   if (animationStarted) return;
   animationStarted = true;
