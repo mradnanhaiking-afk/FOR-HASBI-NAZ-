@@ -22,9 +22,7 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   min-height: 100vh;
@@ -34,35 +32,32 @@ body {
   overflow-x: hidden;
 }
 
-button, input {
-  font: inherit;
-}
+button, input { font: inherit; }
 
 .page {
   display: none;
   min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   position: relative;
 }
 
 .page.active {
   display: flex;
-  animation: pageIn .7s ease both;
+  animation: pageIn 1s ease both;
 }
 
 @keyframes pageIn {
-  from {opacity: 0; transform: translateY(15px);}
-  to {opacity: 1; transform: translateY(0);}
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* PAGE 1 - LOGIN */
-
+/* LOGIN PAGE */
 #page1 {
   justify-content: center;
   align-items: center;
   padding: 25px;
-  background:
-    radial-gradient(ellipse at 50% 40%, #3b0927 0%, #160414 45%, #080008 100%);
+  background: radial-gradient(ellipse at 50% 40%, #3b0927 0%, #160414 45%, #080008 100%);
 }
 
 .login-card {
@@ -129,9 +124,7 @@ button, input {
   transition: .3s;
 }
 
-.main-btn:active {
-  transform: scale(.96);
-}
+.main-btn:active { transform: scale(.96); }
 
 .error {
   color: #ff85ad;
@@ -140,14 +133,183 @@ button, input {
   margin-top: 13px;
 }
 
-/* PAGE 2 AND PAGE 3 BACKGROUND */
+/* HEART INTRO PAGE */
+#page2 {
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 45%, #470a31 0%, #1b0619 48%, #080008 100%);
+}
 
+.intro-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 30, 135, .13);
+  filter: blur(65px);
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from { transform: scale(.8); opacity: .5; }
+  to { transform: scale(1.3); opacity: 1; }
+}
+
+.heart-stage {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+}
+
+.big-heart {
+  font-size: clamp(100px, 28vw, 160px);
+  line-height: 1;
+  color: #ff3f9b;
+  filter:
+    drop-shadow(0 0 15px #ff168d)
+    drop-shadow(0 0 40px rgba(255, 20, 130, .8));
+  transform: scale(.85);
+  transition: transform .4s;
+}
+
+#page2.heart-hit .big-heart {
+  animation: heartImpact .75s ease;
+}
+
+@keyframes heartImpact {
+  0% { transform: scale(.85); }
+  25% { transform: scale(1.35); }
+  45% { transform: scale(.92); }
+  65% { transform: scale(1.16); }
+  100% { transform: scale(1); }
+}
+
+.arrow {
+  position: absolute;
+  z-index: 5;
+  top: 5%;
+  right: -170px;
+  width: 145px;
+  height: 5px;
+  border-radius: 10px;
+  opacity: 0;
+  background: linear-gradient(90deg, #ffb5d8, #ff238d);
+  box-shadow: 0 0 12px #ff3f9b, 0 0 25px #ff238d;
+  transform: rotate(135deg);
+  transform-origin: center;
+}
+
+.arrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: -8px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 22px solid #ff8bc2;
+  filter: drop-shadow(0 0 7px #ff3f9b);
+}
+
+#page2.active .arrow {
+  animation: arrowFlight 1.45s cubic-bezier(.2,.75,.25,1) .35s forwards;
+}
+
+@keyframes arrowFlight {
+  0% {
+    opacity: 0;
+    right: -170px;
+    top: 5%;
+    transform: rotate(135deg) scale(.7);
+  }
+  15% { opacity: 1; }
+  100% {
+    opacity: 1;
+    right: calc(50% - 70px);
+    top: calc(50% - 5px);
+    transform: rotate(135deg) scale(1);
+  }
+}
+
+.start-prompt {
+  opacity: 0;
+  transform: translateY(18px);
+  margin-top: 45px;
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+#page2.ready .start-prompt {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.start-prompt p {
+  color: #ffd4e8;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+.start-heart-btn {
+  border: 1px solid rgba(255, 130, 190, .55);
+  color: #fff1f8;
+  background: rgba(255, 50, 145, .12);
+  border-radius: 50px;
+  padding: 15px 30px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(255, 50, 145, .2);
+  animation: promptPulse 2s infinite;
+}
+
+@keyframes promptPulse {
+  50% { box-shadow: 0 0 35px rgba(255, 50, 145, .65); }
+}
+
+#page2:not(.ready) .start-heart-btn {
+  pointer-events: none;
+}
+
+/* CINEMATIC TRANSITION */
+#transition {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle, #ff4ba5 0%, #6e0b48 25%, #170414 65%, #080008 100%);
+}
+
+#transition.play {
+  animation: cinematicReveal 1.5s ease-in-out forwards;
+}
+
+@keyframes cinematicReveal {
+  0% { opacity: 0; transform: scale(.2); }
+  35% { opacity: 1; transform: scale(1.15); }
+  65% { opacity: 1; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(2.5); }
+}
+
+/* ROMANTIC PAGES */
 .romantic-page {
   justify-content: center;
   align-items: center;
   padding: 75px 20px 100px;
-  background:
-    radial-gradient(ellipse at 50% 0%, #380a29 0%, #160514 48%, #080008 100%);
+  background: radial-gradient(ellipse at 50% 0%, #380a29 0%, #160514 48%, #080008 100%);
   overflow: hidden;
 }
 
@@ -227,10 +389,7 @@ button, input {
 }
 
 /* GIFT */
-
-.gift-section {
-  margin: 40px auto 0;
-}
+.gift-section { margin: 40px auto 0; }
 
 .gift {
   font-size: 75px;
@@ -242,12 +401,10 @@ button, input {
 }
 
 @keyframes giftPulse {
-  50% {transform: scale(1.09);}
+  50% { transform: scale(1.09); }
 }
 
-.gift:active {
-  transform: scale(1.2);
-}
+.gift:active { transform: scale(1.2); }
 
 .gift-message {
   display: none;
@@ -263,13 +420,10 @@ button, input {
   animation: pageIn .8s ease both;
 }
 
-.next-btn {
-  margin-top: 25px;
-}
+.next-btn { margin-top: 25px; }
 
-/* PAGE 3 - RESPONSIVE NOTE */
-
-#page3 {
+/* FINAL NOTE */
+#page4 {
   display: none;
   min-height: 100vh;
   min-height: 100svh;
@@ -280,15 +434,12 @@ button, input {
   padding: 75px 20px 55px;
   overflow-x: hidden;
   overflow-y: visible;
-  background:
-    radial-gradient(ellipse at 50% 0%, #380a29 0%, #160514 48%, #080008 100%);
+  background: radial-gradient(ellipse at 50% 0%, #380a29 0%, #160514 48%, #080008 100%);
 }
 
-#page3.active {
-  display: flex;
-}
+#page4.active { display: flex; }
 
-#page3 .content {
+#page4 .content {
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
@@ -297,30 +448,28 @@ button, input {
   text-align: center;
 }
 
-#page3 .eyebrow {
+#page4 .eyebrow {
   font-size: 10px;
   letter-spacing: 3px;
   line-height: 1.8;
   margin-bottom: 18px;
 }
 
-#page3 .heading {
+#page4 .heading {
   font-size: clamp(45px, 10vw, 70px);
   line-height: 1.15;
 }
 
-#page3 .subtitle {
+#page4 .subtitle {
   font-size: clamp(9px, 2.8vw, 12px);
   line-height: 1.8;
   letter-spacing: 1.5px;
   padding: 0 5px;
 }
 
-#page3 .divider {
-  margin: 25px auto 28px;
-}
+#page4 .divider { margin: 25px auto 28px; }
 
-#page3 .note-card {
+#page4 .note-card {
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
@@ -335,7 +484,7 @@ button, input {
   word-wrap: break-word;
 }
 
-#page3 .note-card p {
+#page4 .note-card p {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(19px, 2.8vw, 23px);
   line-height: 1.9;
@@ -344,11 +493,9 @@ button, input {
   margin-bottom: 21px;
 }
 
-#page3 .note-card p:last-of-type {
-  margin-bottom: 15px;
-}
+#page4 .note-card p:last-of-type { margin-bottom: 15px; }
 
-#page3 .note-card .shayari {
+#page4 .note-card .shayari {
   text-align: center;
   color: #ffadd2 !important;
   line-height: 2;
@@ -356,7 +503,7 @@ button, input {
   font-size: clamp(18px, 2.7vw, 22px);
 }
 
-#page3 .signature {
+#page4 .signature {
   text-align: center;
   font-size: clamp(19px, 4vw, 23px);
   line-height: 1.6;
@@ -364,7 +511,7 @@ button, input {
   margin-bottom: 12px;
 }
 
-#page3 .love-final {
+#page4 .love-final {
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(28px, 6vw, 44px);
@@ -377,7 +524,7 @@ button, input {
   padding: 0 3px;
 }
 
-#page3 .footer {
+#page4 .footer {
   text-align: center;
   color: #b77b9a;
   font-size: 9px;
@@ -387,10 +534,8 @@ button, input {
   padding-bottom: 10px;
 }
 
-/* MAGIC ANIMATION */
-
-#magicCanvas,
-#magicCanvasFinal {
+/* MAGIC PARTICLES */
+#magicCanvas, #magicCanvasFinal {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -411,10 +556,7 @@ button, input {
   animation: drift 12s ease-in-out infinite alternate;
 }
 
-.trail-one {
-  top: 5%;
-  left: -100px;
-}
+.trail-one { top: 5%; left: -100px; }
 
 .trail-two {
   bottom: 0;
@@ -423,12 +565,11 @@ button, input {
 }
 
 @keyframes drift {
-  from {transform: translate(0,0) scale(.8);}
-  to {transform: translate(100px,80px) scale(1.4);}
+  from { transform: translate(0,0) scale(.8); }
+  to { transform: translate(100px,80px) scale(1.4); }
 }
 
 /* MUSIC */
-
 .music-btn {
   position: fixed;
   z-index: 10;
@@ -445,8 +586,6 @@ button, input {
   backdrop-filter: blur(10px);
 }
 
-/* FOOTER */
-
 .footer {
   color: #9b6682;
   font-size: 10px;
@@ -454,116 +593,92 @@ button, input {
   margin-top: 35px;
 }
 
-/* MOBILE RESPONSIVE */
-
+/* MOBILE */
 @media (max-width: 600px) {
+  .romantic-page { padding: 80px 16px 60px; }
 
-  .romantic-page {
-    padding: 80px 16px 60px;
-  }
+  #page4 { padding: 78px 14px 40px; }
 
-  #page3 {
-    padding: 78px 14px 40px;
-  }
+  #page4 .content { width: 100%; max-width: 100%; }
 
-  #page3 .content {
-    width: 100%;
-    max-width: 100%;
-  }
+  #page4 .heading { font-size: clamp(43px, 12vw, 58px); }
 
-  #page3 .heading {
-    font-size: clamp(43px, 12vw, 58px);
-  }
-
-  #page3 .eyebrow {
+  #page4 .eyebrow {
     font-size: 9px;
     letter-spacing: 2.5px;
   }
 
-  #page3 .note-card {
+  #page4 .note-card {
     padding: 23px 18px;
     border-radius: 17px;
   }
 
-  #page3 .note-card p {
+  #page4 .note-card p {
     font-size: 18px;
     line-height: 1.85;
     margin-bottom: 19px;
   }
 
-  #page3 .note-card .shayari {
+  #page4 .note-card .shayari {
     font-size: 17px;
     line-height: 1.95;
     margin: 23px 0;
   }
 
-  #page3 .signature {
-    font-size: 19px;
-  }
+  #page4 .signature { font-size: 19px; }
 
-  #page3 .love-final {
+  #page4 .love-final {
     font-size: clamp(26px, 8vw, 34px);
     line-height: 1.5;
     margin-top: 25px;
   }
 
-  #page3 .footer {
+  #page4 .footer {
     font-size: 8px;
     letter-spacing: 1.5px;
   }
 
+  .music-btn { top: 12px; right: 12px; }
 }
 
 @media (max-width: 360px) {
-
-  #page3 {
+  #page4 {
     padding-left: 11px;
     padding-right: 11px;
   }
 
-  #page3 .note-card {
-    padding: 21px 15px;
-  }
+  #page4 .note-card { padding: 21px 15px; }
 
-  #page3 .note-card p {
+  #page4 .note-card p {
     font-size: 17px;
     line-height: 1.8;
   }
 
-  #page3 .note-card .shayari {
-    font-size: 16px;
-  }
+  #page4 .note-card .shayari { font-size: 16px; }
 
-  #page3 .love-final {
-    font-size: 25px;
-  }
-
+  #page4 .love-final { font-size: 25px; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1: LOGIN -->
-
+<!-- PAGE 1: PASSWORD -->
 <section class="page active" id="page1">
-
   <div class="login-card">
-
     <div class="heart-icon">♡</div>
-
     <h1>For Hasbi Naz</h1>
-
     <p>A LITTLE SURPRISE MADE WITH LOVE</p>
 
-    <!-- BIRTHDAY PASSWORD HINT -->
-    <p style="
-      margin-top:-15px;
-      color:#ff9bc9;
-      font-size:12px;
-      letter-spacing:1px;
-    ">
+    <p style="margin-top:-15px;color:#ff9bc9;font-size:12px;letter-spacing:1px;">
       Your special day is the key to this surprise ♡
     </p>
 
@@ -582,18 +697,33 @@ button, input {
     </button>
 
     <div class="error" id="error"></div>
-
   </div>
-
 </section>
 
+<!-- PAGE 2: HEART AND ARROW INTRO -->
+<section class="page" id="page2">
+  <div class="intro-glow"></div>
 
-<!-- PAGE 2: BIRTHDAY WISHES -->
+  <div class="heart-stage">
+    <div class="big-heart" id="bigHeart">♥</div>
 
-<section class="page romantic-page" id="page2">
+    <div class="arrow" id="arrow"></div>
 
+    <div class="start-prompt" id="startPrompt">
+      <p>YOUR HEART HAS BEEN FOUND</p>
+      <button class="start-heart-btn" onclick="startBirthday()">
+        TAP HERE TO START ♡
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CINEMATIC TRANSITION LAYER -->
+<div id="transition"></div>
+
+<!-- PAGE 3: BIRTHDAY WISHES -->
+<section class="page romantic-page" id="page3">
   <canvas id="magicCanvas"></canvas>
-
   <div class="light-trail trail-one"></div>
   <div class="light-trail trail-two"></div>
 
@@ -602,24 +732,18 @@ button, input {
   </button>
 
   <div class="content">
-
-    <div class="eyebrow">
-      A special day • A special person
-    </div>
+    <div class="eyebrow">A special day • A special person</div>
 
     <h1 class="heading">
       Happy Birthday<br>
       <span>Hasbi Naz</span>
     </h1>
 
-    <p class="subtitle">
-      TODAY IS ALL ABOUT YOU ♡
-    </p>
+    <p class="subtitle">TODAY IS ALL ABOUT YOU ♡</p>
 
     <div class="divider"></div>
 
     <div class="wish-card">
-
       <p>
         Some people make the world beautiful just by being in it.
         And you are one of those rare souls.
@@ -634,17 +758,11 @@ button, input {
         Tere chehre par hamesha muskurahat rahe.
       </p>
 
-      <div class="signature">
-        With love, always ♡
-      </div>
-
+      <div class="signature">With love, always ♡</div>
     </div>
 
     <div class="gift-section">
-
-      <p class="eyebrow">
-        ONE LITTLE SURPRISE FOR YOU
-      </p>
+      <p class="eyebrow">ONE LITTLE SURPRISE FOR YOU</p>
 
       <div class="gift" onclick="openGift()">🎁</div>
 
@@ -652,49 +770,34 @@ button, input {
         You are the most beautiful surprise<br>
         life could ever give. 🥀❤️
       </div>
-
     </div>
 
-    <button class="main-btn next-btn" onclick="goToPage(3)">
+    <button class="main-btn next-btn" onclick="goToPage(4)">
       ONE LAST THING FOR YOU ♡
     </button>
 
-    <div class="footer">
-      MADE WITH LOVE • JUST FOR YOU
-    </div>
-
+    <div class="footer">MADE WITH LOVE • JUST FOR YOU</div>
   </div>
-
 </section>
 
-
-<!-- PAGE 3: FINAL EMOTIONAL NOTE -->
-
-<section class="page romantic-page" id="page3">
-
+<!-- PAGE 4: FINAL EMOTIONAL NOTE -->
+<section class="page romantic-page" id="page4">
   <canvas id="magicCanvasFinal"></canvas>
-
   <div class="light-trail trail-one"></div>
   <div class="light-trail trail-two"></div>
 
   <div class="content">
-
-    <div class="eyebrow">
-      A LITTLE SOMETHING FROM MY HEART
-    </div>
+    <div class="eyebrow">A LITTLE SOMETHING FROM MY HEART</div>
 
     <h1 class="heading">
       Just For <span>You</span>
     </h1>
 
-    <p class="subtitle">
-      SOME FEELINGS ARE TOO BEAUTIFUL FOR WORDS
-    </p>
+    <p class="subtitle">SOME FEELINGS ARE TOO BEAUTIFUL FOR WORDS</p>
 
     <div class="divider"></div>
 
     <div class="note-card">
-
       <p>
         Hasbi, kabhi kabhi sochta hoon ki kuch log hamari
         zindagi mein itne khaas kaise ban jaate hain.
@@ -731,90 +834,56 @@ button, input {
         Forever wishing the best for you... 🥀
       </div>
 
-      <div class="love-final">
-        I TOO LOVE YOU 🫠❤️‍🔥
-      </div>
-
+      <div class="love-final">I TOO LOVE YOU 🫠❤️‍🔥</div>
     </div>
 
-    <div class="footer">
-      ENDLESS LOVE • HASBI NAZ
-    </div>
-
+    <div class="footer">ENDLESS LOVE • HASBI NAZ</div>
   </div>
-
 </section>
 
-
-<!-- MUSIC FILE -->
-
+<!-- BACKGROUND MUSIC -->
 <audio id="music" loop preload="auto">
-
   <source
     src="assets/Maula_Mere_Maula__Slowed___Reverb__-_Roop_Kumar_Rathod___Aankhein_Teri_Kitni_Haseen___Also_Holic(256k).mp3"
     type="audio/mpeg">
-
 </audio>
 
-
 <script>
-
 const passwordInput = document.getElementById("password");
-
 const music = document.getElementById("music");
-
 const musicBtn = document.getElementById("musicBtn");
 
 let animationStarted = false;
+let introTimer = null;
 
-
-/* AUTO HYPHEN PASSWORD */
-
+/* AUTOMATIC PASSWORD HYPHENS */
 passwordInput.addEventListener("input", function() {
-
   let digits = this.value.replace(/\D/g, "").slice(0, 8);
 
   if (digits.length > 4) {
-
     this.value =
       digits.slice(0, 2) + "-" +
       digits.slice(2, 4) + "-" +
       digits.slice(4);
-
   } else if (digits.length > 2) {
-
     this.value =
       digits.slice(0, 2) + "-" +
       digits.slice(2);
-
   } else {
-
     this.value = digits;
-
   }
 
   document.getElementById("error").textContent = "";
-
 });
-
 
 /* ENTER KEY */
-
 passwordInput.addEventListener("keydown", function(event) {
-
-  if (event.key === "Enter") {
-    unlock();
-  }
-
+  if (event.key === "Enter") unlock();
 });
 
-
-/* UNLOCK */
-
+/* PASSWORD UNLOCK */
 function unlock() {
-
   if (passwordInput.value === "19-11-2008") {
-
     document.getElementById("error").textContent = "";
 
     goToPage(2);
@@ -823,30 +892,66 @@ function unlock() {
 
     startMusic();
 
-    startMagic();
-
+    startHeartIntro();
   } else {
-
     document.getElementById("error").textContent =
       "Wrong date! Try again, my dear ♡";
 
     passwordInput.focus();
-
   }
-
 }
 
+/* HEART AND ARROW INTRO */
+function startHeartIntro() {
+  const intro = document.getElementById("page2");
+  const heart = document.getElementById("bigHeart");
+
+  intro.classList.remove("ready", "heart-hit");
+
+  clearTimeout(introTimer);
+
+  // Arrow reaches the heart, then the heart reacts.
+  introTimer = setTimeout(() => {
+    intro.classList.add("heart-hit");
+  }, 1800);
+
+  // Reveal the tap instruction after the arrow impact.
+  setTimeout(() => {
+    intro.classList.add("ready");
+  }, 2400);
+}
+
+/* TAP TO ENTER BIRTHDAY PAGE */
+function startBirthday() {
+  const intro = document.getElementById("page2");
+  const transition = document.getElementById("transition");
+
+  if (!intro.classList.contains("ready")) return;
+
+  transition.classList.remove("play");
+  void transition.offsetWidth;
+  transition.classList.add("play");
+
+  intro.style.pointerEvents = "none";
+
+  setTimeout(() => {
+    goToPage(3);
+    startMagic();
+  }, 650);
+
+  setTimeout(() => {
+    transition.classList.remove("play");
+    intro.style.pointerEvents = "";
+  }, 1600);
+}
 
 /* PAGE NAVIGATION */
-
 function goToPage(number) {
-
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
   });
 
   const target = document.getElementById("page" + number);
-
   target.classList.add("active");
 
   window.scrollTo({
@@ -854,78 +959,48 @@ function goToPage(number) {
     behavior: "smooth"
   });
 
-  if (number === 3) {
+  if (number === 3 || number === 4) {
     startMagic();
   }
-
 }
-
 
 /* GIFT */
-
 function openGift() {
-
   document.getElementById("giftMessage").classList.add("show");
-
   document.querySelector(".gift").textContent = "💝";
-
 }
-
 
 /* MUSIC */
-
 async function startMusic() {
-
   try {
-
     await music.play();
-
     updateMusicButton();
-
   } catch (error) {
-
     musicBtn.textContent = "♫ TAP FOR MUSIC";
-
   }
-
 }
 
-
 function toggleMusic() {
-
   if (music.paused) {
-
     music.play()
       .then(updateMusicButton)
       .catch(() => {
         musicBtn.textContent = "♫ TAP FOR MUSIC";
       });
-
   } else {
-
     music.pause();
-
     updateMusicButton();
-
   }
-
 }
-
 
 function updateMusicButton() {
-
   musicBtn.textContent =
     music.paused ? "♫ MUSIC OFF" : "♫ MUSIC ON";
-
 }
 
-
-/* MAGIC PARTICLES ON BOTH ROMANTIC PAGES */
-
+/* MAGICAL PARTICLES ON BIRTHDAY AND NOTE PAGES */
 function startMagic() {
-
   if (animationStarted) return;
-
   animationStarted = true;
 
   const canvases = [
@@ -943,77 +1018,45 @@ function startMagic() {
     canvas.height = height;
   });
 
-
   class Particle {
-
     constructor() {
       this.reset();
     }
 
     reset() {
-
       this.x = Math.random() * width;
       this.y = Math.random() * height;
-
       this.size = Math.random() * 2.2 + .3;
-
       this.speedY = Math.random() * .45 + .1;
-
       this.speedX = (Math.random() - .5) * .4;
-
       this.alpha = Math.random() * .7 + .2;
-
       this.phase = Math.random() * Math.PI * 2;
-
     }
 
     update() {
-
       this.y -= this.speedY;
-
       this.x += this.speedX;
-
       this.phase += .025;
 
       if (this.y < -10) {
-
         this.y = height + 10;
-
         this.x = Math.random() * width;
-
       }
-
     }
 
     draw(ctx) {
-
       let glow =
         this.alpha * (.6 + Math.sin(this.phase) * .3);
 
       ctx.beginPath();
-
-      ctx.arc(
-        this.x,
-        this.y,
-        this.size,
-        0,
-        Math.PI * 2
-      );
-
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255,120,190,${glow})`;
-
       ctx.shadowBlur = 12;
-
       ctx.shadowColor = "#ff3f9b";
-
       ctx.fill();
-
       ctx.shadowBlur = 0;
-
     }
-
   }
-
 
   let particles = [];
 
@@ -1021,52 +1064,34 @@ function startMagic() {
     particles.push(new Particle());
   }
 
-
   window.addEventListener("resize", function() {
-
     width = window.innerWidth;
-
     height = window.innerHeight;
 
     canvases.forEach(canvas => {
-
       canvas.width = width;
-
       canvas.height = height;
-
     });
-
   });
 
-
   function animate() {
-
     contexts.forEach(ctx => {
-
       ctx.clearRect(0, 0, width, height);
-
     });
 
     particles.forEach(particle => {
-
       particle.update();
 
       contexts.forEach(ctx => {
-
         particle.draw(ctx);
-
       });
-
     });
 
     requestAnimationFrame(animate);
-
   }
 
   animate();
-
 }
-
 </script>
 
 </body>
