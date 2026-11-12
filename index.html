@@ -556,11 +556,7 @@ button{cursor:pointer}
  height:100%;
  object-fit:contain;
  display:block;
-
- /* Helps blend black backgrounds.
-    True transparency requires a video with alpha channel. */
  mix-blend-mode:screen;
-
  filter:
   drop-shadow(0 0 10px #e3264655)
   drop-shadow(0 0 20px #d7b77822);
@@ -1172,19 +1168,44 @@ musicBtn.addEventListener("click",()=>{
 
 const passwordInput=document.getElementById("password");
 
-passwordInput.addEventListener("input",function(){
- let digits=this.value.replace(/\D/g,"").slice(0,8);
+function formatPassword(digits){
+ digits=digits.slice(0,8);
 
- if(digits.length>4){
-  digits=digits.slice(0,2)+"-"+digits.slice(2,4)+"-"+digits.slice(4);
- }else if(digits.length>2){
-  digits=digits.slice(0,2)+"-"+digits.slice(2);
+ if(digits.length>=4){
+  return digits.slice(0,2)+"-"+digits.slice(2,4)+"-"+digits.slice(4);
  }
 
- this.value=digits;
+ if(digits.length>=2){
+  return digits.slice(0,2)+"-"+digits.slice(2);
+ }
+
+ return digits;
+}
+
+passwordInput.addEventListener("input",function(){
+ const digits=this.value.replace(/\D/g,"").slice(0,8);
+ this.value=formatPassword(digits);
 });
 
+/* Backspace works naturally even when the cursor is after an automatic hyphen */
+
 passwordInput.addEventListener("keydown",function(e){
+ if(e.key==="Backspace"){
+  const start=this.selectionStart;
+  const end=this.selectionEnd;
+
+  if(start===end && start>0 && this.value[start-1]==="-"){
+   e.preventDefault();
+
+   const digits=this.value.replace(/\D/g,"");
+   const digitPosition=this.value.slice(0,start-1).replace(/\D/g,"").length;
+   const updatedDigits=digits.slice(0,digitPosition-1)+digits.slice(digitPosition);
+
+   this.value=formatPassword(updatedDigits);
+   this.setSelectionRange(this.value.length,this.value.length);
+  }
+ }
+
  if(e.key==="Enter")unlock();
 });
 
@@ -1272,7 +1293,7 @@ function playCakeVideos(){
     result.catch(()=>{});
    }
   }
- }
+ });
 }
 
 function pauseCakeVideos(){
