@@ -19,7 +19,6 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-
 html{scroll-behavior:smooth}
 
 body{
@@ -222,7 +221,7 @@ button{cursor:pointer}
  margin-top:15px;
 }
 
-/* NEW QUESTION PAGE */
+/* QUESTION PAGE */
 
 #questionPage{
  align-items:center;
@@ -327,7 +326,7 @@ button{cursor:pointer}
  line-height:1.4;
 }
 
-/* EXIT SCREEN */
+/* EXIT PAGE */
 
 #exitPage{
  align-items:center;
@@ -409,8 +408,8 @@ button{cursor:pointer}
 }
 
 .cake-scene{
- width:min(650px,96vw);
- height:330px;
+ width:min(700px,98vw);
+ height:350px;
  margin:20px auto 25px;
  position:relative;
  display:flex;
@@ -519,58 +518,78 @@ button{cursor:pointer}
 .cake-glow{
  position:absolute;
  bottom:0;
- width:270px;
- height:30px;
+ width:300px;
+ height:35px;
  background:#d9234b;
- filter:blur(40px);
- opacity:.3;
+ filter:blur(45px);
+ opacity:.32;
  z-index:1;
 }
 
-/* BUBU & DUDU DANCERS */
+/* REAL VIDEO DANCERS */
 
 .dancer{
  position:absolute;
- bottom:5px;
- width:125px;
- height:155px;
+ bottom:0;
+ width:155px;
+ height:205px;
  display:flex;
  align-items:center;
  justify-content:center;
  z-index:5;
+ pointer-events:none;
  transform-origin:bottom center;
 }
 
-.dancer.bubu{left:5%;animation:bubuDance 1.1s ease-in-out infinite}
-.dancer.dudu{right:5%;animation:duduDance 1.1s ease-in-out infinite .2s}
-
-.dancer-character{
- font-size:105px;
- line-height:1;
- filter:drop-shadow(0 0 13px #e3264655);
- user-select:none;
+.dancer.bubu{
+ left:3%;
+ animation:bubuDance 2.2s ease-in-out infinite;
 }
 
-.bubu .dancer-character{
- filter:drop-shadow(0 0 15px #d7b77877);
+.dancer.dudu{
+ right:3%;
+ animation:duduDance 2.2s ease-in-out infinite .25s;
 }
 
-.dudu .dancer-character{
- filter:drop-shadow(0 0 15px #ff6b9c77);
+.dancer video{
+ width:100%;
+ height:100%;
+ object-fit:contain;
+ display:block;
+
+ /* Helps blend black backgrounds.
+    True transparency requires a video with alpha channel. */
+ mix-blend-mode:screen;
+
+ filter:
+  drop-shadow(0 0 10px #e3264655)
+  drop-shadow(0 0 20px #d7b77822);
+}
+
+.dancer.bubu video{
+ filter:
+  drop-shadow(0 0 12px #d7b77877)
+  drop-shadow(0 0 24px #e3264633);
+}
+
+.dancer.dudu video{
+ filter:
+  drop-shadow(0 0 12px #ff6b9c77)
+  drop-shadow(0 0 24px #e3264633);
 }
 
 @keyframes bubuDance{
- 0%,100%{transform:translateY(0) rotate(-8deg)}
- 25%{transform:translateY(-15px) rotate(8deg)}
- 50%{transform:translateY(-3px) rotate(-5deg)}
- 75%{transform:translateY(-18px) rotate(9deg)}
+ 0%,100%{transform:translateY(0) rotate(-2deg)}
+ 25%{transform:translateY(-7px) rotate(2deg)}
+ 50%{transform:translateY(-2px) rotate(-1deg)}
+ 75%{transform:translateY(-8px) rotate(2deg)}
 }
 
 @keyframes duduDance{
- 0%,100%{transform:translateY(-3px) rotate(8deg)}
- 25%{transform:translateY(-18px) rotate(-9deg)}
- 50%{transform:translateY(0) rotate(6deg)}
- 75%{transform:translateY(-14px) rotate(-8deg)}
+ 0%,100%{transform:translateY(-2px) rotate(2deg)}
+ 25%{transform:translateY(-8px) rotate(-2deg)}
+ 50%{transform:translateY(0) rotate(1deg)}
+ 75%{transform:translateY(-7px) rotate(-2deg)}
 }
 
 .dancer-floor{
@@ -772,23 +791,27 @@ button{cursor:pointer}
  .login-card{padding:40px 20px}
  .note{padding:25px 18px}
  .note p{font-size:19px}
+
  .cake-scene{
   width:100%;
   height:275px;
   margin:5px auto 15px;
  }
+
  .cake{
   transform:scale(.78);
   transform-origin:bottom center;
  }
+
  .dancer{
-  width:85px;
-  height:115px;
-  bottom:3px;
+  width:105px;
+  height:145px;
+  bottom:0;
  }
- .dancer-character{font-size:69px}
+
  .dancer.bubu{left:0}
  .dancer.dudu{right:0}
+
  .dancer-floor{width:65px}
  .dance-note{font-size:14px}
  .music-btn{top:10px;right:10px}
@@ -797,8 +820,10 @@ button{cursor:pointer}
 }
 
 @media(max-width:360px){
- .dancer-character{font-size:58px}
- .dancer{width:68px}
+ .dancer{
+  width:82px;
+  height:125px;
+ }
  .cake{transform:scale(.70)}
  .cake-scene{height:250px}
 }
@@ -837,7 +862,7 @@ button{cursor:pointer}
  </div>
 </section>
 
-<!-- PAGE 2: NEW QUESTION -->
+<!-- PAGE 2: QUESTION -->
 
 <section class="page" id="questionPage">
  <div class="content">
@@ -900,11 +925,20 @@ button{cursor:pointer}
 
   <div class="cake-scene">
 
-   <!-- LEFT DANCER: BUBU -->
+   <!-- LEFT VIDEO: BUBU -->
 
    <div class="dancer bubu">
     <span class="dance-note note-left">♫</span>
-    <span class="dancer-character">🧸</span>
+    <video
+     id="bubuVideo"
+     autoplay
+     muted
+     loop
+     playsinline
+     preload="auto"
+     disablepictureinpicture>
+     <source src="https://mradnanhaiking-afk.github.io/FOR-HASBI-NAZ-/WhatsApp%20Video%202026-11-12%20at%204.12.37%20PM.mp4" type="video/mp4">
+    </video>
     <div class="dancer-floor"></div>
    </div>
 
@@ -926,11 +960,20 @@ button{cursor:pointer}
     <div class="candle"><div class="flame"></div></div>
    </div>
 
-   <!-- RIGHT DANCER: DUDU -->
+   <!-- RIGHT VIDEO: DUDU -->
 
    <div class="dancer dudu">
     <span class="dance-note note-right">♪</span>
-    <span class="dancer-character">🐼</span>
+    <video
+     id="duduVideo"
+     autoplay
+     muted
+     loop
+     playsinline
+     preload="auto"
+     disablepictureinpicture>
+     <source src="https://mradnanhaiking-afk.github.io/FOR-HASBI-NAZ-/WhatsApp%20Video%202026-11-12%20at%204.12.46%20PM.mp4" type="video/mp4">
+    </video>
     <div class="dancer-floor"></div>
    </div>
 
@@ -1163,14 +1206,13 @@ function unlock(){
  }
 }
 
-/* NEW QUESTION PAGE LOGIC */
+/* QUESTION PAGE LOGIC */
 
 let yesAttempts=0;
 const questionResponse=document.getElementById("questionResponse");
 const questionOptions=document.getElementById("questionOptions");
 
 function answerYes(){
-
  yesAttempts++;
 
  questionResponse.textContent="Nahi, tum nahi krti ho! 😏";
@@ -1205,9 +1247,6 @@ function answerNo(){
   try{
    window.close();
   }catch(error){}
-
-  /* Browser may block window.close().
-     Fallback: leave the visitor on the exit screen. */
  },1800);
 }
 
@@ -1217,6 +1256,29 @@ function answerSohar(){
  setTimeout(()=>{
   goTo("heartPage");
  },1000);
+}
+
+/* VIDEO PLAYBACK */
+
+const bubuVideo=document.getElementById("bubuVideo");
+const duduVideo=document.getElementById("duduVideo");
+
+function playCakeVideos(){
+ [bubuVideo,duduVideo].forEach(video=>{
+  if(video){
+   video.muted=true;
+   const result=video.play();
+   if(result && typeof result.catch==="function"){
+    result.catch(()=>{});
+   }
+  }
+ }
+}
+
+function pauseCakeVideos(){
+ [bubuVideo,duduVideo].forEach(video=>{
+  if(video)video.pause();
+ });
 }
 
 /* PAGE TRANSITIONS */
@@ -1235,7 +1297,14 @@ function goTo(pageId){
   current.style.opacity="";
   current.style.transform="";
   next.classList.add("active");
+
   window.scrollTo({top:0,behavior:"smooth"});
+
+  if(pageId==="cakePage"){
+   playCakeVideos();
+  }else{
+   pauseCakeVideos();
+  }
  },350);
 }
 
