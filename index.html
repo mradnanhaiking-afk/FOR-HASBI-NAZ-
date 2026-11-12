@@ -304,13 +304,8 @@ button{cursor:pointer}
  box-shadow:0 0 25px #e3264644;
 }
 
-.answer-btn.yes{
- border-color:#e3264677;
-}
-
-.answer-btn.no{
- border-color:#d7b77866;
-}
+.answer-btn.yes{border-color:#e3264677}
+.answer-btn.no{border-color:#d7b77866}
 
 .answer-btn.sohar{
  width:100%;
@@ -409,12 +404,13 @@ button{cursor:pointer}
 #cakePage{
  align-items:center;
  justify-content:center;
- background:radial-gradient(ellipse at center,#36101a,#0b0709 72%);
+ background:
+ radial-gradient(ellipse at center,#36101a,#0b0709 72%);
 }
 
 .cake-scene{
- width:290px;
- height:300px;
+ width:min(650px,96vw);
+ height:330px;
  margin:20px auto 25px;
  position:relative;
  display:flex;
@@ -422,10 +418,13 @@ button{cursor:pointer}
  align-items:flex-end;
 }
 
+/* CAKE */
+
 .cake{
  position:relative;
  width:250px;
  height:185px;
+ z-index:3;
 }
 
 .cake-layer{
@@ -525,6 +524,86 @@ button{cursor:pointer}
  background:#d9234b;
  filter:blur(40px);
  opacity:.3;
+ z-index:1;
+}
+
+/* BUBU & DUDU DANCERS */
+
+.dancer{
+ position:absolute;
+ bottom:5px;
+ width:125px;
+ height:155px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ z-index:5;
+ transform-origin:bottom center;
+}
+
+.dancer.bubu{left:5%;animation:bubuDance 1.1s ease-in-out infinite}
+.dancer.dudu{right:5%;animation:duduDance 1.1s ease-in-out infinite .2s}
+
+.dancer-character{
+ font-size:105px;
+ line-height:1;
+ filter:drop-shadow(0 0 13px #e3264655);
+ user-select:none;
+}
+
+.bubu .dancer-character{
+ filter:drop-shadow(0 0 15px #d7b77877);
+}
+
+.dudu .dancer-character{
+ filter:drop-shadow(0 0 15px #ff6b9c77);
+}
+
+@keyframes bubuDance{
+ 0%,100%{transform:translateY(0) rotate(-8deg)}
+ 25%{transform:translateY(-15px) rotate(8deg)}
+ 50%{transform:translateY(-3px) rotate(-5deg)}
+ 75%{transform:translateY(-18px) rotate(9deg)}
+}
+
+@keyframes duduDance{
+ 0%,100%{transform:translateY(-3px) rotate(8deg)}
+ 25%{transform:translateY(-18px) rotate(-9deg)}
+ 50%{transform:translateY(0) rotate(6deg)}
+ 75%{transform:translateY(-14px) rotate(-8deg)}
+}
+
+.dancer-floor{
+ position:absolute;
+ bottom:0;
+ left:50%;
+ transform:translateX(-50%);
+ width:95px;
+ height:13px;
+ border-radius:50%;
+ border:1px solid #d7b77899;
+ box-shadow:0 0 18px #e3264655;
+ animation:floorGlow 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes floorGlow{
+ from{opacity:.35;transform:translateX(-50%) scale(.85)}
+ to{opacity:1;transform:translateX(-50%) scale(1.1)}
+}
+
+.dance-note{
+ position:absolute;
+ font-size:19px;
+ color:var(--gold);
+ animation:noteFloat 2s ease-in-out infinite;
+}
+
+.note-left{left:0;top:10px}
+.note-right{right:0;top:0;animation-delay:.8s}
+
+@keyframes noteFloat{
+ 0%,100%{transform:translateY(0) rotate(-10deg);opacity:.5}
+ 50%{transform:translateY(-18px) rotate(12deg);opacity:1}
 }
 
 /* RAINY SHAYARI PAGE */
@@ -693,10 +772,35 @@ button{cursor:pointer}
  .login-card{padding:40px 20px}
  .note{padding:25px 18px}
  .note p{font-size:19px}
- .cake-scene{transform:scale(.88);margin:5px auto}
+ .cake-scene{
+  width:100%;
+  height:275px;
+  margin:5px auto 15px;
+ }
+ .cake{
+  transform:scale(.78);
+  transform-origin:bottom center;
+ }
+ .dancer{
+  width:85px;
+  height:115px;
+  bottom:3px;
+ }
+ .dancer-character{font-size:69px}
+ .dancer.bubu{left:0}
+ .dancer.dudu{right:0}
+ .dancer-floor{width:65px}
+ .dance-note{font-size:14px}
  .music-btn{top:10px;right:10px}
  .question-card{padding:40px 19px}
  .answer-btn{min-width:105px}
+}
+
+@media(max-width:360px){
+ .dancer-character{font-size:58px}
+ .dancer{width:68px}
+ .cake{transform:scale(.70)}
+ .cake-scene{height:250px}
 }
 </style>
 </head>
@@ -795,18 +899,41 @@ button{cursor:pointer}
   <p class="subtext">A beautiful day deserves a beautiful celebration.</p>
 
   <div class="cake-scene">
+
+   <!-- LEFT DANCER: BUBU -->
+
+   <div class="dancer bubu">
+    <span class="dance-note note-left">♫</span>
+    <span class="dancer-character">🧸</span>
+    <div class="dancer-floor"></div>
+   </div>
+
    <div class="cake-glow"></div>
+
+   <!-- CENTRE CAKE -->
+
    <div class="cake">
     <div class="cake-layer layer-bottom"><div class="icing"></div></div>
     <div class="cake-layer layer-middle"><div class="icing"></div></div>
     <div class="cake-layer layer-top"><div class="icing"></div></div>
+
     <span class="strawberry s1">🍓</span>
     <span class="strawberry s2">🍓</span>
     <span class="strawberry s3">🍓</span>
     <span class="strawberry s4">🍓</span>
+
     <div class="cake-topper">For You</div>
     <div class="candle"><div class="flame"></div></div>
    </div>
+
+   <!-- RIGHT DANCER: DUDU -->
+
+   <div class="dancer dudu">
+    <span class="dance-note note-right">♪</span>
+    <span class="dancer-character">🐼</span>
+    <div class="dancer-floor"></div>
+   </div>
+
   </div>
 
   <p class="subtext">May your every wish find its way to you. ✨</p>
