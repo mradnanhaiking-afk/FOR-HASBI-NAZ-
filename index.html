@@ -700,6 +700,225 @@ button{cursor:pointer}
  100%{transform:translate(90px,110vh) rotate(400deg);opacity:0}
 }
 
+/* NEW PAGE: ROMANTIC COMPLIMENTS */
+
+#complimentPage{
+ align-items:center;
+ background:
+ radial-gradient(ellipse at 15% 20%,#79112755,transparent 42%),
+ radial-gradient(ellipse at 85% 75%,#9d183533,transparent 45%),
+ linear-gradient(145deg,#090607,#17080e 48%,#090607);
+ isolation:isolate;
+}
+
+#complimentPage:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-1;
+ pointer-events:none;
+ background:
+ radial-gradient(circle at 50% 50%,transparent 20%,#0008 100%);
+}
+
+.compliment-glow{
+ position:absolute;
+ width:260px;
+ height:260px;
+ border-radius:50%;
+ filter:blur(100px);
+ pointer-events:none;
+ opacity:.35;
+ animation:glowDrift 9s ease-in-out infinite alternate;
+}
+
+.compliment-glow.g1{
+ background:#d21c43;
+ top:8%;
+ left:-100px;
+}
+
+.compliment-glow.g2{
+ background:#9b6a32;
+ bottom:5%;
+ right:-100px;
+ animation-delay:2s;
+}
+
+@keyframes glowDrift{
+ from{transform:translate(0,0) scale(.8)}
+ to{transform:translate(70px,45px) scale(1.25)}
+}
+
+.compliment-particles{
+ position:absolute;
+ inset:0;
+ overflow:hidden;
+ pointer-events:none;
+ z-index:0;
+}
+
+.compliment-particles span{
+ position:absolute;
+ bottom:-30px;
+ color:#e8b9a0;
+ opacity:0;
+ text-shadow:0 0 12px #e32646;
+ animation:complimentFloat linear infinite;
+}
+
+@keyframes complimentFloat{
+ 0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}
+ 15%{opacity:.65}
+ 80%{opacity:.5}
+ 100%{transform:translate3d(55px,-110vh,0) rotate(260deg);opacity:0}
+}
+
+.compliment-content{
+ width:min(850px,92%);
+ padding:85px 0 65px;
+ position:relative;
+ z-index:2;
+ margin:auto;
+ text-align:center;
+}
+
+.compliment-heading{
+ font-family:'Cormorant Garamond',serif;
+ font-weight:400;
+ font-size:clamp(43px,9vw,76px);
+ line-height:1.05;
+}
+
+.compliment-heading em{
+ color:#e32646;
+}
+
+.compliment-intro{
+ color:#c5aeb0;
+ font-size:11px;
+ letter-spacing:2px;
+ line-height:2;
+ margin:18px auto 35px;
+}
+
+.compliment-grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:19px;
+ width:100%;
+ margin:35px auto 40px;
+}
+
+.compliment-card{
+ min-height:245px;
+ padding:30px 21px;
+ position:relative;
+ overflow:hidden;
+ border:1px solid #d7b77855;
+ border-radius:5px;
+ background:linear-gradient(145deg,#ffffff13,#ffffff04 55%,#a20f2710);
+ backdrop-filter:blur(18px);
+ -webkit-backdrop-filter:blur(18px);
+ box-shadow:0 18px 55px #0007,inset 0 0 35px #ffffff06;
+ animation:cardAppear .9s ease both,cardFloat 6s ease-in-out infinite;
+ transition:transform .45s,border-color .45s,box-shadow .45s;
+}
+
+.compliment-card:nth-child(2){animation-delay:.15s,.8s}
+.compliment-card:nth-child(3){animation-delay:.3s,1.5s}
+.compliment-card:nth-child(4){animation-delay:.45s,2.2s}
+
+@keyframes cardAppear{
+ from{opacity:0;transform:translateY(35px) scale(.96)}
+ to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@keyframes cardFloat{
+ 0%,100%{translate:0 0}
+ 50%{translate:0 -7px}
+}
+
+.compliment-card:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ pointer-events:none;
+ background:linear-gradient(120deg,transparent 20%,#ffffff12 45%,transparent 70%);
+ transform:translateX(-120%);
+ animation:glassShine 8s ease-in-out infinite;
+}
+
+@keyframes glassShine{
+ 0%,65%{transform:translateX(-120%)}
+ 85%,100%{transform:translateX(120%)}
+}
+
+.compliment-card:after{
+ content:"";
+ position:absolute;
+ top:0;
+ left:15%;
+ right:15%;
+ height:1px;
+ background:linear-gradient(90deg,transparent,#e8c98e,transparent);
+ opacity:.8;
+}
+
+.compliment-card:hover{
+ transform:translateY(-8px) scale(1.015);
+ border-color:#e7bd79aa;
+ box-shadow:0 25px 65px #0009,0 0 35px #e3264622;
+}
+
+.compliment-icon{
+ display:block;
+ font-size:30px;
+ margin-bottom:13px;
+ filter:drop-shadow(0 0 12px #e3264666);
+ animation:iconPulse 3s ease-in-out infinite;
+}
+
+@keyframes iconPulse{
+ 0%,100%{transform:scale(1)}
+ 50%{transform:scale(1.12)}
+}
+
+.compliment-card h2{
+ color:var(--gold);
+ font-family:'Cormorant Garamond',serif;
+ font-weight:500;
+ font-size:30px;
+ margin-bottom:15px;
+ letter-spacing:1px;
+}
+
+.compliment-card p{
+ color:#f5e6e2;
+ font-family:'Cormorant Garamond',serif;
+ font-size:clamp(18px,3.2vw,22px);
+ font-style:italic;
+ line-height:1.55;
+ position:relative;
+ z-index:1;
+}
+
+.compliment-card .card-number{
+ display:block;
+ color:#c59d69;
+ font-size:9px;
+ letter-spacing:4px;
+ margin-top:19px;
+ opacity:.8;
+}
+
+.compliment-footer{
+ color:#c6a8a8;
+ font-family:'Great Vibes',cursive;
+ font-size:30px;
+ margin:15px 0 28px;
+}
+
 /* WISHES */
 
 #wishesPage{
@@ -813,6 +1032,33 @@ button{cursor:pointer}
  .music-btn{top:10px;right:10px}
  .question-card{padding:40px 19px}
  .answer-btn{min-width:105px}
+
+ .compliment-content{
+  width:91%;
+  padding:85px 0 55px;
+ }
+
+ .compliment-grid{
+  gap:12px;
+ }
+
+ .compliment-card{
+  min-height:255px;
+  padding:25px 12px;
+ }
+
+ .compliment-card h2{
+  font-size:25px;
+ }
+
+ .compliment-card p{
+  font-size:18px;
+  line-height:1.5;
+ }
+
+ .compliment-icon{
+  font-size:26px;
+ }
 }
 
 @media(max-width:360px){
@@ -822,6 +1068,11 @@ button{cursor:pointer}
  }
  .cake{transform:scale(.70)}
  .cake-scene{height:250px}
+
+ .compliment-grid{gap:9px}
+ .compliment-card{padding:22px 9px;min-height:270px}
+ .compliment-card p{font-size:16px}
+ .compliment-card h2{font-size:23px}
 }
 </style>
 </head>
@@ -1019,11 +1270,105 @@ button{cursor:pointer}
    </p>
   </div>
 
-  <button class="primary-btn" onclick="goTo('wishesPage')">A Wish For You</button>
+  <button class="primary-btn" onclick="goTo('complimentPage')">A Few More Words ❤️</button>
  </div>
 </section>
 
-<!-- PAGE 6: WISHES -->
+<!-- PAGE 6: FOUR COMPLIMENTS -->
+
+<section class="page" id="complimentPage">
+
+ <div class="compliment-glow g1"></div>
+ <div class="compliment-glow g2"></div>
+ <div class="compliment-particles" id="complimentParticles"></div>
+
+ <div class="compliment-content">
+
+  <div class="eyebrow">Every little detail is beautiful</div>
+
+  <h1 class="compliment-heading">
+   What makes you<br>
+   <em>so special.</em>
+  </h1>
+
+  <div class="gold-line"></div>
+
+  <p class="compliment-intro">
+   FOUR LITTLE THINGS · ENDLESS WORDS
+  </p>
+
+  <div class="compliment-grid">
+
+   <!-- EYES -->
+
+   <article class="compliment-card">
+    <span class="compliment-icon">👀</span>
+    <h2>Eyes</h2>
+    <p>
+     "Na jaane kaisa sukoon hai teri aankhon mein,
+     Ki dil baar-baar wahin theharna chahta hai,
+     Duniya ki saari khoobsurati ek taraf,
+     Mera dil bas tujhe dekhna chahta hai."
+    </p>
+    <span class="card-number">01 · YOUR EYES</span>
+   </article>
+
+   <!-- SMILE -->
+
+   <article class="compliment-card">
+    <span class="compliment-icon">✨</span>
+    <h2>Smile</h2>
+    <p>
+     "Teri muskurahat pe kuch yun fida ho gaye,
+     Jaise veeran dil mein phool khil gaye,
+     Ab kya tareef karun teri hansi ki,
+     Tujhe hanste dekha aur hum tere ho gaye."
+    </p>
+    <span class="card-number">02 · YOUR SMILE</span>
+   </article>
+
+   <!-- OUTFIT -->
+
+   <article class="compliment-card">
+    <span class="compliment-icon">👗</span>
+    <h2>Outfit</h2>
+    <p>
+     "Na rangon ki zaroorat, na gehno ka sahaara hai,
+     Tere saadgi bhare andaaz ne hi dil hamaara haara hai,
+     Tu jis libaas mein bhi saamne aa jaaye,
+     Lagta hai jaise husn ne khud ko sanwaara hai."
+    </p>
+    <span class="card-number">03 · YOUR STYLE</span>
+   </article>
+
+   <!-- FACE -->
+
+   <article class="compliment-card">
+    <span class="compliment-icon">🌹</span>
+    <h2>Face</h2>
+    <p>
+     "Na chaand ki chaahat, na taaron ki farmaish hai,
+     Tera chehra hi meri mohabbat ki numaish hai,
+     Jab bhi nazar padti hai tere haseen rukhsaar par,
+     Lagta hai jaise khuda ki sabse khoobsurat aazmaish hai."
+    </p>
+    <span class="card-number">04 · YOUR BEAUTY</span>
+   </article>
+
+  </div>
+
+  <div class="compliment-footer">
+   Some things are simply beyond words... ❤️
+  </div>
+
+  <button class="primary-btn" onclick="goTo('wishesPage')">
+   A Wish For You
+  </button>
+
+ </div>
+</section>
+
+<!-- PAGE 7: WISHES -->
 
 <section class="page" id="wishesPage">
  <div class="content">
@@ -1047,7 +1392,7 @@ button{cursor:pointer}
  </div>
 </section>
 
-<!-- PAGE 7: FINAL NOTE -->
+<!-- PAGE 8: FINAL NOTE -->
 
 <section class="page" id="finalPage">
  <div class="content">
@@ -1340,6 +1685,26 @@ for(let i=0;i<65;i++){
  drop.style.animationDelay=Math.random()*3+"s";
  drop.style.opacity=.2+Math.random()*.5;
  rain.appendChild(drop);
+}
+
+/* NEW PAGE: FLOATING ROSE PETALS AND GOLDEN SPARKLES */
+
+const complimentParticles=document.getElementById("complimentParticles");
+const complimentSymbols=["✦","✧","♥","🌹","·"];
+
+for(let i=0;i<30;i++){
+ const particle=document.createElement("span");
+ particle.textContent=complimentSymbols[
+  Math.floor(Math.random()*complimentSymbols.length)
+ ];
+
+ particle.style.left=Math.random()*100+"%";
+ particle.style.fontSize=(9+Math.random()*15)+"px";
+ particle.style.animationDuration=(9+Math.random()*12)+"s";
+ particle.style.animationDelay=(-Math.random()*18)+"s";
+ particle.style.opacity=.3+Math.random()*.5;
+
+ complimentParticles.appendChild(particle);
 }
 
 /* FLOATING PARTICLES */
