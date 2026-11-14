@@ -417,8 +417,6 @@ button{cursor:pointer}
  align-items:flex-end;
 }
 
-/* CAKE */
-
 .cake{
  position:relative;
  width:250px;
@@ -700,7 +698,7 @@ button{cursor:pointer}
  100%{transform:translate(90px,110vh) rotate(400deg);opacity:0}
 }
 
-/* NEW PAGE: ROMANTIC COMPLIMENTS */
+/* COMPLIMENTS PAGE */
 
 #complimentPage{
  align-items:center;
@@ -717,8 +715,7 @@ button{cursor:pointer}
  inset:0;
  z-index:-1;
  pointer-events:none;
- background:
- radial-gradient(circle at 50% 50%,transparent 20%,#0008 100%);
+ background:radial-gradient(circle at 50% 50%,transparent 20%,#0008 100%);
 }
 
 .compliment-glow{
@@ -774,13 +771,28 @@ button{cursor:pointer}
  100%{transform:translate3d(55px,-110vh,0) rotate(260deg);opacity:0}
 }
 
+/* OUTER TRANSPARENT SECTION */
+
 .compliment-content{
  width:min(850px,92%);
- padding:85px 0 65px;
+ padding:65px 28px;
  position:relative;
  z-index:2;
- margin:auto;
+ margin:55px auto;
  text-align:center;
+
+ background:linear-gradient(
+  145deg,
+  rgba(255,255,255,.045),
+  rgba(255,255,255,.012)
+ );
+ border:1px solid rgba(215,183,120,.28);
+ border-radius:8px;
+ backdrop-filter:blur(16px);
+ -webkit-backdrop-filter:blur(16px);
+ box-shadow:
+  0 25px 90px rgba(0,0,0,.35),
+  inset 0 0 45px rgba(255,255,255,.025);
 }
 
 .compliment-heading{
@@ -790,9 +802,7 @@ button{cursor:pointer}
  line-height:1.05;
 }
 
-.compliment-heading em{
- color:#e32646;
-}
+.compliment-heading em{color:#e32646}
 
 .compliment-intro{
  color:#c5aeb0;
@@ -801,6 +811,8 @@ button{cursor:pointer}
  line-height:2;
  margin:18px auto 35px;
 }
+
+/* FOUR MATCHING CARDS */
 
 .compliment-grid{
  display:grid;
@@ -811,16 +823,28 @@ button{cursor:pointer}
 }
 
 .compliment-card{
- min-height:245px;
- padding:30px 21px;
+ min-height:0;
+ padding:28px 20px 25px;
  position:relative;
  overflow:hidden;
- border:1px solid #d7b77855;
- border-radius:5px;
- background:linear-gradient(145deg,#ffffff13,#ffffff04 55%,#a20f2710);
+ border:1px solid rgba(215,183,120,.42);
+ border-radius:6px;
+
+ /* Transparent glass card */
+ background:linear-gradient(
+  145deg,
+  rgba(255,255,255,.075),
+  rgba(255,255,255,.018) 60%,
+  rgba(162,15,39,.045)
+ );
+
  backdrop-filter:blur(18px);
  -webkit-backdrop-filter:blur(18px);
- box-shadow:0 18px 55px #0007,inset 0 0 35px #ffffff06;
+
+ box-shadow:
+  0 18px 55px rgba(0,0,0,.28),
+  inset 0 0 30px rgba(255,255,255,.025);
+
  animation:cardAppear .9s ease both,cardFloat 6s ease-in-out infinite;
  transition:transform .45s,border-color .45s,box-shadow .45s;
 }
@@ -871,10 +895,23 @@ button{cursor:pointer}
  box-shadow:0 25px 65px #0009,0 0 35px #e3264622;
 }
 
+/* HEADING AT TOP OF EVERY CARD */
+
+.compliment-card h2{
+ color:var(--gold);
+ font-family:'Cormorant Garamond',serif;
+ font-weight:500;
+ font-size:30px;
+ margin-bottom:17px;
+ letter-spacing:1px;
+ position:relative;
+ z-index:1;
+}
+
 .compliment-icon{
  display:block;
- font-size:30px;
- margin-bottom:13px;
+ font-size:29px;
+ margin-bottom:7px;
  filter:drop-shadow(0 0 12px #e3264666);
  animation:iconPulse 3s ease-in-out infinite;
 }
@@ -884,14 +921,47 @@ button{cursor:pointer}
  50%{transform:scale(1.12)}
 }
 
-.compliment-card h2{
- color:var(--gold);
- font-family:'Cormorant Garamond',serif;
- font-weight:500;
- font-size:30px;
- margin-bottom:15px;
- letter-spacing:1px;
+/* EMPTY PICTURE PLACEHOLDER */
+
+.picture-placeholder{
+ width:116px;
+ height:100px;
+ margin:0 auto 20px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:7px;
+
+ border:1px dashed rgba(215,183,120,.7);
+ border-radius:4px;
+
+ background:linear-gradient(
+  145deg,
+  rgba(255,255,255,.055),
+  rgba(255,255,255,.012)
+ );
+
+ box-shadow:inset 0 0 22px rgba(215,183,120,.045);
+ position:relative;
+ z-index:1;
 }
+
+.picture-placeholder .picture-symbol{
+ color:rgba(215,183,120,.85);
+ font-size:24px;
+ line-height:1;
+}
+
+.picture-placeholder small{
+ color:rgba(215,183,120,.8);
+ font-family:'Montserrat',sans-serif;
+ font-size:8px;
+ letter-spacing:1.5px;
+ text-transform:uppercase;
+}
+
+/* SHAYARI */
 
 .compliment-card p{
  color:#f5e6e2;
@@ -1035,29 +1105,29 @@ button{cursor:pointer}
 
  .compliment-content{
   width:91%;
-  padding:85px 0 55px;
+  padding:42px 13px;
+  margin:55px auto 35px;
  }
 
- .compliment-grid{
-  gap:12px;
- }
+ .compliment-grid{gap:12px}
 
  .compliment-card{
-  min-height:255px;
-  padding:25px 12px;
+  padding:23px 11px;
  }
 
- .compliment-card h2{
-  font-size:25px;
- }
+ .compliment-card h2{font-size:25px}
 
  .compliment-card p{
   font-size:18px;
   line-height:1.5;
  }
 
- .compliment-icon{
-  font-size:26px;
+ .compliment-icon{font-size:26px}
+
+ .picture-placeholder{
+  width:105px;
+  height:92px;
+  margin-bottom:17px;
  }
 }
 
@@ -1070,9 +1140,14 @@ button{cursor:pointer}
  .cake-scene{height:250px}
 
  .compliment-grid{gap:9px}
- .compliment-card{padding:22px 9px;min-height:270px}
+ .compliment-card{padding:21px 8px}
  .compliment-card p{font-size:16px}
  .compliment-card h2{font-size:23px}
+
+ .picture-placeholder{
+  width:92px;
+  height:85px;
+ }
 }
 </style>
 </head>
@@ -1172,26 +1247,15 @@ button{cursor:pointer}
 
   <div class="cake-scene">
 
-   <!-- LEFT VIDEO: BUBU -->
-
    <div class="dancer bubu">
     <span class="dance-note note-left">♫</span>
-    <video
-     id="bubuVideo"
-     autoplay
-     muted
-     loop
-     playsinline
-     preload="auto"
-     disablepictureinpicture>
+    <video id="bubuVideo" autoplay muted loop playsinline preload="auto" disablepictureinpicture>
      <source src="https://mradnanhaiking-afk.github.io/FOR-HASBI-NAZ-/WhatsApp%20Video%202026-11-12%20at%204.12.37%20PM.mp4" type="video/mp4">
     </video>
     <div class="dancer-floor"></div>
    </div>
 
    <div class="cake-glow"></div>
-
-   <!-- CENTRE CAKE -->
 
    <div class="cake">
     <div class="cake-layer layer-bottom"><div class="icing"></div></div>
@@ -1207,18 +1271,9 @@ button{cursor:pointer}
     <div class="candle"><div class="flame"></div></div>
    </div>
 
-   <!-- RIGHT VIDEO: DUDU -->
-
    <div class="dancer dudu">
     <span class="dance-note note-right">♪</span>
-    <video
-     id="duduVideo"
-     autoplay
-     muted
-     loop
-     playsinline
-     preload="auto"
-     disablepictureinpicture>
+    <video id="duduVideo" autoplay muted loop playsinline preload="auto" disablepictureinpicture>
      <source src="https://mradnanhaiking-afk.github.io/FOR-HASBI-NAZ-/WhatsApp%20Video%202026-11-12%20at%204.12.46%20PM.mp4" type="video/mp4">
     </video>
     <div class="dancer-floor"></div>
@@ -1304,6 +1359,12 @@ button{cursor:pointer}
    <article class="compliment-card">
     <span class="compliment-icon">👀</span>
     <h2>Eyes</h2>
+
+    <div class="picture-placeholder">
+     <span class="picture-symbol">▧</span>
+     <small>Eyes Picture</small>
+    </div>
+
     <p>
      "Na jaane kaisa sukoon hai teri aankhon mein,
      Ki dil baar-baar wahin theharna chahta hai,
@@ -1316,8 +1377,14 @@ button{cursor:pointer}
    <!-- SMILE -->
 
    <article class="compliment-card">
-    <span class="compliment-icon">✨</span>
+    <span class="compliment-icon">😊</span>
     <h2>Smile</h2>
+
+    <div class="picture-placeholder">
+     <span class="picture-symbol">▧</span>
+     <small>Smile Picture</small>
+    </div>
+
     <p>
      "Teri muskurahat pe kuch yun fida ho gaye,
      Jaise veeran dil mein phool khil gaye,
@@ -1332,6 +1399,12 @@ button{cursor:pointer}
    <article class="compliment-card">
     <span class="compliment-icon">👗</span>
     <h2>Outfit</h2>
+
+    <div class="picture-placeholder">
+     <span class="picture-symbol">▧</span>
+     <small>Outfit Picture</small>
+    </div>
+
     <p>
      "Na rangon ki zaroorat, na gehno ka sahaara hai,
      Tere saadgi bhare andaaz ne hi dil hamaara haara hai,
@@ -1346,6 +1419,12 @@ button{cursor:pointer}
    <article class="compliment-card">
     <span class="compliment-icon">🌹</span>
     <h2>Face</h2>
+
+    <div class="picture-placeholder">
+     <span class="picture-symbol">▧</span>
+     <small>Face Picture</small>
+    </div>
+
     <p>
      "Na chaand ki chaahat, na taaron ki farmaish hai,
      Tera chehra hi meri mohabbat ki numaish hai,
@@ -1532,8 +1611,6 @@ passwordInput.addEventListener("input",function(){
  this.value=formatPassword(digits);
 });
 
-/* Backspace works naturally even when the cursor is after an automatic hyphen */
-
 passwordInput.addEventListener("keydown",function(e){
  if(e.key==="Backspace"){
   const start=this.selectionStart;
@@ -1687,7 +1764,7 @@ for(let i=0;i<65;i++){
  rain.appendChild(drop);
 }
 
-/* NEW PAGE: FLOATING ROSE PETALS AND GOLDEN SPARKLES */
+/* FLOATING ROSE PETALS AND GOLDEN SPARKLES */
 
 const complimentParticles=document.getElementById("complimentParticles");
 const complimentSymbols=["✦","✧","♥","🌹","·"];
