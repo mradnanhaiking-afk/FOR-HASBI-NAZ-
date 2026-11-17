@@ -849,6 +849,9 @@ button{cursor:pointer}
   inset 0 0 35px rgba(215,183,120,.035);
  animation:cardAppear .9s ease both,cardFloat 6s ease-in-out infinite;
  transition:transform .5s,border-color .5s,box-shadow .5s;
+ cursor:pointer;
+ -webkit-tap-highlight-color:transparent;
+ touch-action:manipulation;
 }
 
 .compliment-card:nth-child(2){animation-delay:.15s,.8s}
@@ -899,14 +902,22 @@ button{cursor:pointer}
  opacity:.9;
 }
 
-.compliment-card:hover{
- transform:perspective(900px) translateY(-10px) rotateX(2deg) scale(1.018);
+.compliment-card:hover,
+.compliment-card:focus-visible,
+.compliment-card:active,
+.compliment-card.is-pressed{
+ transform:perspective(900px) translateY(-11px) rotateX(2deg) scale(1.018);
  border-color:#f0ce8b;
  box-shadow:
   0 30px 75px #000b,
   0 0 35px #e3264633,
   0 0 20px #d7b77822,
   inset 0 0 35px #d7b7780b;
+}
+
+.compliment-card:focus-visible{
+ outline:2px solid #f0ce8b;
+ outline-offset:4px;
 }
 
 .compliment-card h2{
@@ -976,6 +987,21 @@ button{cursor:pointer}
  transition:transform .7s ease,filter .7s ease;
 }
 
+/* SMILE MULTI-PHOTO GALLERY */
+
+.compliment-photo-stack{
+ display:grid;
+ grid-template-columns:1fr;
+ gap:13px;
+ width:100%;
+ margin:0 auto 25px;
+}
+
+.compliment-photo-stack .compliment-photo-frame{
+ height:220px;
+ margin:0;
+}
+
 .compliment-card:hover .compliment-photo-frame{
  border-color:#f2d69c;
  box-shadow:
@@ -1015,6 +1041,145 @@ button{cursor:pointer}
  font-size:32px;
  margin:20px 0 30px;
  text-shadow:0 0 18px #e3264633;
+}
+
+/* FULL SCREEN PHOTO VIEWER */
+
+.photo-lightbox{
+ position:fixed;
+ inset:0;
+ z-index:100;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:65px 65px 55px;
+ background:rgba(5,3,5,.96);
+ backdrop-filter:blur(18px);
+ -webkit-backdrop-filter:blur(18px);
+}
+
+.photo-lightbox.show{
+ display:flex;
+ animation:lightboxFade .3s ease both;
+}
+
+@keyframes lightboxFade{
+ from{opacity:0}
+ to{opacity:1}
+}
+
+.photo-lightbox:before{
+ content:"";
+ position:absolute;
+ inset:15px;
+ border:1px solid rgba(215,183,120,.22);
+ pointer-events:none;
+}
+
+.lightbox-image-wrap{
+ width:100%;
+ height:100%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:relative;
+ z-index:1;
+}
+
+.lightbox-image{
+ display:block;
+ max-width:100%;
+ max-height:100%;
+ width:auto;
+ height:auto;
+ object-fit:contain;
+ border:1px solid rgba(215,183,120,.65);
+ border-radius:5px;
+ background:#080607;
+ box-shadow:
+  0 20px 70px #000c,
+  0 0 35px #d7b77822,
+  0 0 45px #e3264622;
+ animation:photoZoom .4s ease both;
+}
+
+@keyframes photoZoom{
+ from{opacity:.5;transform:scale(.94)}
+ to{opacity:1;transform:scale(1)}
+}
+
+.lightbox-close{
+ position:absolute;
+ top:22px;
+ right:25px;
+ z-index:5;
+ width:43px;
+ height:43px;
+ display:grid;
+ place-items:center;
+ border:1px solid #d7b77888;
+ border-radius:50%;
+ color:#f8e9e5;
+ background:#1b0b10;
+ font-size:27px;
+ line-height:1;
+ transition:.3s;
+}
+
+.lightbox-close:hover{
+ background:#a20f27;
+ border-color:#f0ce8b;
+ transform:rotate(90deg);
+}
+
+.lightbox-arrow{
+ position:absolute;
+ top:50%;
+ transform:translateY(-50%);
+ z-index:5;
+ width:45px;
+ height:55px;
+ display:grid;
+ place-items:center;
+ border:1px solid #d7b77877;
+ border-radius:5px;
+ color:#f8e9e5;
+ background:rgba(25,8,14,.85);
+ font-family:'Cormorant Garamond',serif;
+ font-size:38px;
+ line-height:1;
+ transition:.3s;
+}
+
+.lightbox-arrow:hover{
+ background:#8d1026;
+ border-color:#f0ce8b;
+ box-shadow:0 0 25px #e3264644;
+}
+
+.lightbox-prev{left:12px}
+.lightbox-next{right:12px}
+
+.lightbox-arrow[hidden]{
+ display:none;
+}
+
+.lightbox-caption{
+ position:absolute;
+ bottom:17px;
+ left:0;
+ right:0;
+ z-index:5;
+ text-align:center;
+ color:#e8c98e;
+ font-size:10px;
+ letter-spacing:3px;
+ text-transform:uppercase;
+ text-shadow:0 0 15px #d7b77855;
+}
+
+body.lightbox-open{
+ overflow:hidden;
 }
 
 /* WISHES */
@@ -1203,6 +1368,15 @@ button{cursor:pointer}
   margin-bottom:19px;
  }
 
+ .compliment-photo-stack{
+  gap:10px;
+  margin-bottom:19px;
+ }
+
+ .compliment-photo-stack .compliment-photo-frame{
+  height:180px;
+ }
+
  .compliment-card .card-number{
   font-size:8px;
   letter-spacing:2px;
@@ -1212,6 +1386,36 @@ button{cursor:pointer}
 
  .note .handwritten-signature{
   font-size:43px;
+ }
+
+ .photo-lightbox{
+  padding:65px 45px 60px;
+ }
+
+ .photo-lightbox:before{
+  inset:8px;
+ }
+
+ .lightbox-close{
+  top:17px;
+  right:17px;
+  width:39px;
+  height:39px;
+ }
+
+ .lightbox-arrow{
+  width:34px;
+  height:48px;
+  font-size:30px;
+ }
+
+ .lightbox-prev{left:5px}
+ .lightbox-next{right:5px}
+
+ .lightbox-caption{
+  bottom:18px;
+  font-size:9px;
+  letter-spacing:2px;
  }
 }
 
@@ -1232,6 +1436,10 @@ button{cursor:pointer}
  .compliment-photo-frame{
   height:205px;
   padding:4px;
+ }
+
+ .compliment-photo-stack .compliment-photo-frame{
+  height:160px;
  }
 
  .compliment-card .card-number{
@@ -1461,75 +1669,123 @@ button{cursor:pointer}
 
   <div class="compliment-grid">
 
-   <article class="compliment-card">
+   <!-- EYES CARD -->
+
+   <article class="compliment-card"
+    role="button" tabindex="0"
+    aria-label="Open Eyes photo">
+
     <span class="compliment-icon">👀</span>
     <h2>Eyes</h2>
+
     <div class="compliment-photo-frame">
      <img
       src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_160551.jpg"
       alt="Eyes Picture"
+      class="compliment-photo"
       loading="lazy">
     </div>
+
     <p>
      "Na jaane kaisa sukoon hai teri aankhon mein,
      Ki dil baar-baar wahin theharna chahta hai,
      Duniya ki saari khoobsurati ek taraf,
      Mera dil bas tujhe dekhna chahta hai."
     </p>
+
     <span class="card-number">01 · YOUR EYES</span>
    </article>
 
-   <article class="compliment-card">
+   <!-- SMILE CARD - TWO PHOTOS -->
+
+   <article class="compliment-card"
+    role="button" tabindex="0"
+    aria-label="Open Smile photos">
+
     <span class="compliment-icon">😊</span>
     <h2>Smile</h2>
-    <div class="compliment-photo-frame">
-     <img
-      src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_160641.jpg"
-      alt="Smile Picture"
-      loading="lazy">
+
+    <div class="compliment-photo-stack">
+
+     <div class="compliment-photo-frame">
+      <img
+       src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_160641.jpg"
+       alt="Smile Picture One"
+       class="compliment-photo"
+       loading="lazy">
+     </div>
+
+     <div class="compliment-photo-frame">
+      <img
+       src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_160505.jpg"
+       alt="Smile Picture Two"
+       class="compliment-photo"
+       loading="lazy">
+     </div>
+
     </div>
+
     <p>
      "Teri muskurahat pe kuch yun fida ho gaye,
      Jaise veeran dil mein phool khil gaye,
      Ab kya tareef karun teri hansi ki,
      Tujhe hanste dekha aur hum tere ho gaye."
     </p>
+
     <span class="card-number">02 · YOUR SMILE</span>
    </article>
 
-   <article class="compliment-card">
+   <!-- OUTFIT CARD -->
+
+   <article class="compliment-card"
+    role="button" tabindex="0"
+    aria-label="Open Outfit photo">
+
     <span class="compliment-icon">👗</span>
     <h2>Outfit</h2>
+
     <div class="compliment-photo-frame">
      <img
       src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_154908_969.jpg"
       alt="Outfit Picture"
+      class="compliment-photo"
       loading="lazy">
     </div>
+
     <p>
      "Na rangon ki zaroorat, na gehno ka sahaara hai,
      Tere saadgi bhare andaaz ne hi dil hamaara haara hai,
      Tu jis libaas mein bhi saamne aa jaaye,
      Lagta hai jaise husn ne khud ko sanwaara hai."
     </p>
+
     <span class="card-number">03 · YOUR STYLE</span>
    </article>
 
-   <article class="compliment-card">
+   <!-- FACE CARD -->
+
+   <article class="compliment-card"
+    role="button" tabindex="0"
+    aria-label="Open Face photo">
+
     <span class="compliment-icon">🌹</span>
     <h2>Face</h2>
+
     <div class="compliment-photo-frame">
      <img
       src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_154839_774.jpg"
       alt="Face Picture"
+      class="compliment-photo"
       loading="lazy">
     </div>
+
     <p>
      "Na chaand ki chaahat, na taaron ki farmaish hai,
      Tera chehra hi meri mohabbat ki numaish hai,
      Jab bhi nazar padti hai tere haseen rukhsaar par,
      Lagta hai jaise khuda ki sabse khoobsurat aazmaish hai."
     </p>
+
     <span class="card-number">04 · YOUR BEAUTY</span>
    </article>
 
@@ -1545,6 +1801,44 @@ button{cursor:pointer}
 
  </div>
 </section>
+
+<!-- FULL SCREEN PHOTO VIEWER -->
+
+<div class="photo-lightbox"
+ id="photoLightbox"
+ role="dialog"
+ aria-modal="true"
+ aria-label="Photo gallery"
+ aria-hidden="true">
+
+ <button class="lightbox-close"
+  id="lightboxClose"
+  aria-label="Close photo viewer">
+  ×
+ </button>
+
+ <button class="lightbox-arrow lightbox-prev"
+  id="lightboxPrev"
+  aria-label="Previous photo">
+  ‹
+ </button>
+
+ <div class="lightbox-image-wrap">
+  <img class="lightbox-image"
+   id="lightboxImage"
+   src=""
+   alt="">
+ </div>
+
+ <button class="lightbox-arrow lightbox-next"
+  id="lightboxNext"
+  aria-label="Next photo">
+  ›
+ </button>
+
+ <div class="lightbox-caption" id="lightboxCaption"></div>
+
+</div>
 
 <!-- PAGE 7: WISHES -->
 
@@ -1896,6 +2190,166 @@ for(let i=0;i<30;i++){
 
  complimentParticles.appendChild(particle);
 }
+
+/* CARD TOUCH LIFT + FULL PHOTO VIEWER */
+
+const photoLightbox=document.getElementById("photoLightbox");
+const lightboxImage=document.getElementById("lightboxImage");
+const lightboxCaption=document.getElementById("lightboxCaption");
+const lightboxClose=document.getElementById("lightboxClose");
+const lightboxPrev=document.getElementById("lightboxPrev");
+const lightboxNext=document.getElementById("lightboxNext");
+
+let activePhotoList=[];
+let activePhotoIndex=0;
+let lastFocusedCard=null;
+let touchLiftTimer=null;
+
+function updatePhotoViewer(){
+ const selectedPhoto=activePhotoList[activePhotoIndex];
+
+ if(!selectedPhoto)return;
+
+ lightboxImage.src=selectedPhoto.currentSrc || selectedPhoto.src;
+ lightboxImage.alt=selectedPhoto.alt || "Full size photo";
+
+ const cardTitle=lastFocusedCard
+  ? lastFocusedCard.querySelector("h2").textContent
+  : "Photo";
+
+ lightboxCaption.textContent=
+  cardTitle+" · "+(activePhotoIndex+1)+" / "+activePhotoList.length;
+
+ const multiplePhotos=activePhotoList.length>1;
+
+ lightboxPrev.hidden=!multiplePhotos;
+ lightboxNext.hidden=!multiplePhotos;
+}
+
+function openPhotoViewer(card){
+ activePhotoList=Array.from(
+  card.querySelectorAll(".compliment-photo-frame img")
+ );
+
+ if(activePhotoList.length===0)return;
+
+ activePhotoIndex=0;
+ lastFocusedCard=card;
+
+ updatePhotoViewer();
+
+ photoLightbox.classList.add("show");
+ photoLightbox.setAttribute("aria-hidden","false");
+ document.body.classList.add("lightbox-open");
+
+ lightboxClose.focus();
+}
+
+function closePhotoViewer(){
+ photoLightbox.classList.remove("show");
+ photoLightbox.setAttribute("aria-hidden","true");
+ document.body.classList.remove("lightbox-open");
+
+ lightboxImage.removeAttribute("src");
+
+ if(lastFocusedCard){
+  lastFocusedCard.focus();
+ }
+
+ activePhotoList=[];
+ activePhotoIndex=0;
+}
+
+function showPreviousPhoto(){
+ if(activePhotoList.length<2)return;
+
+ activePhotoIndex=
+  (activePhotoIndex-1+activePhotoList.length)%activePhotoList.length;
+
+ updatePhotoViewer();
+}
+
+function showNextPhoto(){
+ if(activePhotoList.length<2)return;
+
+ activePhotoIndex=
+  (activePhotoIndex+1)%activePhotoList.length;
+
+ updatePhotoViewer();
+}
+
+/* Every compliment card becomes clickable */
+
+document.querySelectorAll(".compliment-card").forEach(card=>{
+
+ card.addEventListener("click",()=>{
+  openPhotoViewer(card);
+ });
+
+ card.addEventListener("keydown",event=>{
+  if(event.key==="Enter" || event.key===" "){
+   event.preventDefault();
+   openPhotoViewer(card);
+  }
+ });
+
+ /* Touch lift animation */
+
+ card.addEventListener("pointerdown",()=>{
+  card.classList.add("is-pressed");
+
+  clearTimeout(touchLiftTimer);
+
+  touchLiftTimer=setTimeout(()=>{
+   card.classList.remove("is-pressed");
+  },650);
+ });
+
+ card.addEventListener("pointerup",()=>{
+  setTimeout(()=>{
+   card.classList.remove("is-pressed");
+  },450);
+ });
+
+ card.addEventListener("pointercancel",()=>{
+  card.classList.remove("is-pressed");
+ });
+
+ card.addEventListener("pointerleave",()=>{
+  card.classList.remove("is-pressed");
+ });
+
+});
+
+/* Photo viewer controls */
+
+lightboxClose.addEventListener("click",closePhotoViewer);
+lightboxPrev.addEventListener("click",showPreviousPhoto);
+lightboxNext.addEventListener("click",showNextPhoto);
+
+photoLightbox.addEventListener("click",event=>{
+ if(event.target===photoLightbox){
+  closePhotoViewer();
+ }
+});
+
+/* Keyboard controls */
+
+document.addEventListener("keydown",event=>{
+ if(!photoLightbox.classList.contains("show"))return;
+
+ if(event.key==="Escape"){
+  closePhotoViewer();
+ }
+
+ if(event.key==="ArrowLeft"){
+  showPreviousPhoto();
+ }
+
+ if(event.key==="ArrowRight"){
+  showNextPhoto();
+ }
+});
 
 /* FLOATING PARTICLES */
 
