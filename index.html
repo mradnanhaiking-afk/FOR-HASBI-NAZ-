@@ -698,14 +698,15 @@ button{cursor:pointer}
  100%{transform:translate(90px,110vh) rotate(400deg);opacity:0}
 }
 
-/* COMPLIMENTS PAGE */
+/* PREMIUM COMPLIMENTS PAGE */
 
 #complimentPage{
  align-items:center;
  background:
- radial-gradient(ellipse at 15% 20%,#79112755,transparent 42%),
- radial-gradient(ellipse at 85% 75%,#9d183533,transparent 45%),
- linear-gradient(145deg,#090607,#17080e 48%,#090607);
+ radial-gradient(ellipse at 15% 20%,#79112766,transparent 42%),
+ radial-gradient(ellipse at 85% 75%,#9d183355,transparent 45%),
+ radial-gradient(ellipse at 50% 50%,#35101b55,transparent 65%),
+ linear-gradient(145deg,#050304,#17060d 48%,#080506);
  isolation:isolate;
 }
 
@@ -715,17 +716,19 @@ button{cursor:pointer}
  inset:0;
  z-index:-1;
  pointer-events:none;
- background:radial-gradient(circle at 50% 50%,transparent 20%,#0008 100%);
+ background:
+  radial-gradient(circle at 50% 50%,transparent 20%,#0009 100%),
+  linear-gradient(135deg,#d7b77808,transparent 40%,#e3264608);
 }
 
 .compliment-glow{
  position:absolute;
- width:260px;
- height:260px;
+ width:300px;
+ height:300px;
  border-radius:50%;
- filter:blur(100px);
+ filter:blur(105px);
  pointer-events:none;
- opacity:.35;
+ opacity:.4;
  animation:glowDrift 9s ease-in-out infinite alternate;
 }
 
@@ -736,7 +739,7 @@ button{cursor:pointer}
 }
 
 .compliment-glow.g2{
- background:#9b6a32;
+ background:#bd8b45;
  bottom:5%;
  right:-100px;
  animation-delay:2s;
@@ -758,9 +761,9 @@ button{cursor:pointer}
 .compliment-particles span{
  position:absolute;
  bottom:-30px;
- color:#e8b9a0;
+ color:#e8c98e;
  opacity:0;
- text-shadow:0 0 12px #e32646;
+ text-shadow:0 0 12px #e32646,0 0 22px #d7b778;
  animation:complimentFloat linear infinite;
 }
 
@@ -771,28 +774,34 @@ button{cursor:pointer}
  100%{transform:translate3d(55px,-110vh,0) rotate(260deg);opacity:0}
 }
 
-/* OUTER TRANSPARENT SECTION */
+/* OUTER GLASS SECTION */
 
 .compliment-content{
- width:min(850px,92%);
- padding:65px 28px;
+ width:min(900px,94%);
+ padding:70px 30px;
  position:relative;
  z-index:2;
  margin:55px auto;
  text-align:center;
-
- background:linear-gradient(
-  145deg,
-  rgba(255,255,255,.045),
-  rgba(255,255,255,.012)
- );
- border:1px solid rgba(215,183,120,.28);
- border-radius:8px;
- backdrop-filter:blur(16px);
- -webkit-backdrop-filter:blur(16px);
+ background:
+  linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012) 55%,rgba(162,15,39,.045));
+ border:1px solid rgba(215,183,120,.4);
+ border-radius:10px;
+ backdrop-filter:blur(18px);
+ -webkit-backdrop-filter:blur(18px);
  box-shadow:
-  0 25px 90px rgba(0,0,0,.35),
-  inset 0 0 45px rgba(255,255,255,.025);
+  0 25px 90px rgba(0,0,0,.5),
+  0 0 45px rgba(162,15,39,.12),
+  inset 0 0 45px rgba(215,183,120,.035);
+}
+
+.compliment-content:before{
+ content:"";
+ position:absolute;
+ inset:8px;
+ border:1px solid rgba(215,183,120,.12);
+ border-radius:6px;
+ pointer-events:none;
 }
 
 .compliment-heading{
@@ -805,43 +814,41 @@ button{cursor:pointer}
 .compliment-heading em{color:#e32646}
 
 .compliment-intro{
- color:#c5aeb0;
+ color:#d0b7ad;
  font-size:11px;
- letter-spacing:2px;
+ letter-spacing:3px;
  line-height:2;
- margin:18px auto 35px;
+ margin:18px auto 40px;
 }
 
-/* FOUR MATCHING CARDS */
+/* FOUR PREMIUM PHOTO CARDS */
 
 .compliment-grid{
  display:grid;
  grid-template-columns:repeat(2,minmax(0,1fr));
- gap:19px;
+ gap:25px;
  width:100%;
- margin:35px auto 40px;
+ margin:40px auto 45px;
 }
 
 .compliment-card{
  min-height:0;
- padding:28px 20px 25px;
+ padding:30px 22px 28px;
  position:relative;
  overflow:hidden;
- border:1px solid rgba(215,183,120,.42);
- border-radius:6px;
- background:linear-gradient(
-  145deg,
-  rgba(255,255,255,.075),
-  rgba(255,255,255,.018) 60%,
-  rgba(162,15,39,.045)
- );
- backdrop-filter:blur(18px);
- -webkit-backdrop-filter:blur(18px);
+ isolation:isolate;
+ border:1px solid rgba(215,183,120,.48);
+ border-radius:9px;
+ background:
+  radial-gradient(ellipse at 50% 0%,rgba(178,27,54,.22),transparent 60%),
+  linear-gradient(145deg,#261017 0%,#13090d 52%,#090607 100%);
  box-shadow:
-  0 18px 55px rgba(0,0,0,.28),
-  inset 0 0 30px rgba(255,255,255,.025);
+  0 20px 55px rgba(0,0,0,.48),
+  0 0 25px rgba(162,15,39,.10),
+  inset 0 1px 0 rgba(255,255,255,.07),
+  inset 0 0 35px rgba(215,183,120,.035);
  animation:cardAppear .9s ease both,cardFloat 6s ease-in-out infinite;
- transition:transform .45s,border-color .45s,box-shadow .45s;
+ transition:transform .5s,border-color .5s,box-shadow .5s;
 }
 
 .compliment-card:nth-child(2){animation-delay:.15s,.8s}
@@ -849,7 +856,7 @@ button{cursor:pointer}
 .compliment-card:nth-child(4){animation-delay:.45s,2.2s}
 
 @keyframes cardAppear{
- from{opacity:0;transform:translateY(35px) scale(.96)}
+ from{opacity:0;transform:translateY(40px) scale(.94)}
  to{opacity:1;transform:translateY(0) scale(1)}
 }
 
@@ -861,15 +868,22 @@ button{cursor:pointer}
 .compliment-card:before{
  content:"";
  position:absolute;
- inset:0;
+ inset:-1px;
+ z-index:-1;
  pointer-events:none;
- background:linear-gradient(120deg,transparent 20%,#ffffff12 45%,transparent 70%);
+ background:linear-gradient(
+  120deg,
+  transparent 15%,
+  rgba(255,255,255,.10) 35%,
+  rgba(215,183,120,.16) 50%,
+  transparent 75%
+ );
  transform:translateX(-120%);
- animation:glassShine 8s ease-in-out infinite;
+ animation:glassShine 7s ease-in-out infinite;
 }
 
 @keyframes glassShine{
- 0%,65%{transform:translateX(-120%)}
+ 0%,60%{transform:translateX(-120%)}
  85%,100%{transform:translateX(120%)}
 }
 
@@ -877,102 +891,130 @@ button{cursor:pointer}
  content:"";
  position:absolute;
  top:0;
- left:15%;
- right:15%;
+ left:12%;
+ right:12%;
  height:1px;
- background:linear-gradient(90deg,transparent,#e8c98e,transparent);
- opacity:.8;
+ background:linear-gradient(90deg,transparent,#f3d59c,transparent);
+ box-shadow:0 0 12px #d7b77888;
+ opacity:.9;
 }
 
 .compliment-card:hover{
- transform:translateY(-8px) scale(1.015);
- border-color:#e7bd79aa;
- box-shadow:0 25px 65px #0009,0 0 35px #e3264622;
+ transform:perspective(900px) translateY(-10px) rotateX(2deg) scale(1.018);
+ border-color:#f0ce8b;
+ box-shadow:
+  0 30px 75px #000b,
+  0 0 35px #e3264633,
+  0 0 20px #d7b77822,
+  inset 0 0 35px #d7b7780b;
 }
 
 .compliment-card h2{
- color:var(--gold);
+ color:#edcf94;
  font-family:'Cormorant Garamond',serif;
  font-weight:500;
- font-size:30px;
- margin-bottom:17px;
- letter-spacing:1px;
+ font-size:34px;
+ margin-bottom:20px;
+ letter-spacing:1.5px;
  position:relative;
  z-index:1;
+ text-shadow:0 0 18px #d7b77833;
 }
 
 .compliment-icon{
  display:block;
- font-size:29px;
- margin-bottom:7px;
- filter:drop-shadow(0 0 12px #e3264666);
+ font-size:31px;
+ margin-bottom:9px;
+ filter:drop-shadow(0 0 12px #e3264677);
  animation:iconPulse 3s ease-in-out infinite;
 }
 
 @keyframes iconPulse{
- 0%,100%{transform:scale(1)}
- 50%{transform:scale(1.12)}
+ 0%,100%{transform:scale(1) rotate(0)}
+ 50%{transform:scale(1.13) rotate(4deg)}
 }
 
-.picture-placeholder{
- width:116px;
- height:100px;
- margin:0 auto 20px;
- display:flex;
- flex-direction:column;
- align-items:center;
- justify-content:center;
- gap:7px;
- border:1px dashed rgba(215,183,120,.7);
- border-radius:4px;
- background:linear-gradient(
-  145deg,
-  rgba(255,255,255,.055),
-  rgba(255,255,255,.012)
- );
- box-shadow:inset 0 0 22px rgba(215,183,120,.045);
+/* LARGE ORIGINAL PHOTOS - NO CROPPING */
+
+.compliment-photo-frame{
+ width:100%;
+ height:300px;
+ margin:0 auto 25px;
+ padding:7px;
  position:relative;
  z-index:1;
+ overflow:hidden;
+ border:1px solid rgba(215,183,120,.72);
+ border-radius:7px;
+ background:
+  linear-gradient(145deg,#30101a,#090607 60%,#27100e);
+ box-shadow:
+  0 10px 30px rgba(0,0,0,.5),
+  0 0 18px rgba(215,183,120,.12),
+  inset 0 0 20px rgba(215,183,120,.08);
+ transition:border-color .45s,box-shadow .45s,transform .45s;
 }
 
-.picture-placeholder .picture-symbol{
- color:rgba(215,183,120,.85);
- font-size:24px;
- line-height:1;
+.compliment-photo-frame:before{
+ content:"";
+ position:absolute;
+ inset:3px;
+ z-index:2;
+ border:1px solid rgba(255,255,255,.08);
+ border-radius:4px;
+ pointer-events:none;
 }
 
-.picture-placeholder small{
- color:rgba(215,183,120,.8);
- font-family:'Montserrat',sans-serif;
- font-size:8px;
- letter-spacing:1.5px;
- text-transform:uppercase;
+.compliment-photo-frame img{
+ display:block;
+ width:100%;
+ height:100%;
+ object-fit:contain;
+ object-position:center;
+ border-radius:3px;
+ background:#080607;
+ transition:transform .7s ease,filter .7s ease;
+}
+
+.compliment-card:hover .compliment-photo-frame{
+ border-color:#f2d69c;
+ box-shadow:
+  0 12px 35px #0009,
+  0 0 25px #d7b77833,
+  0 0 35px #e326461c;
+ transform:translateY(-3px);
+}
+
+.compliment-card:hover .compliment-photo-frame img{
+ transform:scale(1.025);
+ filter:brightness(1.06);
 }
 
 .compliment-card p{
- color:#f5e6e2;
+ color:#f7e9e2;
  font-family:'Cormorant Garamond',serif;
- font-size:clamp(18px,3.2vw,22px);
+ font-size:clamp(19px,3.2vw,23px);
  font-style:italic;
- line-height:1.55;
+ line-height:1.6;
  position:relative;
  z-index:1;
 }
 
 .compliment-card .card-number{
  display:block;
- color:#c59d69;
+ color:#d7b778;
  font-size:9px;
  letter-spacing:4px;
- margin-top:19px;
- opacity:.8;
+ margin-top:23px;
+ opacity:.9;
 }
 
 .compliment-footer{
- color:#c6a8a8;
+ color:#e0c5b2;
  font-family:'Great Vibes',cursive;
- font-size:30px;
- margin:15px 0 28px;
+ font-size:32px;
+ margin:20px 0 30px;
+ text-shadow:0 0 18px #e3264633;
 }
 
 /* WISHES */
@@ -1131,31 +1173,42 @@ button{cursor:pointer}
  .answer-btn{min-width:105px}
 
  .compliment-content{
-  width:91%;
-  padding:42px 13px;
+  width:94%;
+  padding:45px 12px;
   margin:55px auto 35px;
  }
 
- .compliment-grid{gap:12px}
-
- .compliment-card{
-  padding:23px 11px;
+ .compliment-grid{
+  gap:15px;
+  margin-top:32px;
  }
 
- .compliment-card h2{font-size:25px}
+ .compliment-card{
+  padding:23px 10px 22px;
+  border-radius:7px;
+ }
+
+ .compliment-card h2{font-size:27px}
 
  .compliment-card p{
   font-size:18px;
-  line-height:1.5;
+  line-height:1.55;
  }
 
- .compliment-icon{font-size:26px}
+ .compliment-icon{font-size:27px}
 
- .picture-placeholder{
-  width:105px;
-  height:92px;
-  margin-bottom:17px;
+ .compliment-photo-frame{
+  height:235px;
+  padding:5px;
+  margin-bottom:19px;
  }
+
+ .compliment-card .card-number{
+  font-size:8px;
+  letter-spacing:2px;
+ }
+
+ .compliment-footer{font-size:27px}
 
  .note .handwritten-signature{
   font-size:43px;
@@ -1167,17 +1220,40 @@ button{cursor:pointer}
   width:82px;
   height:125px;
  }
+
  .cake{transform:scale(.70)}
  .cake-scene{height:250px}
 
- .compliment-grid{gap:9px}
- .compliment-card{padding:21px 8px}
+ .compliment-grid{gap:10px}
+ .compliment-card{padding:20px 8px}
  .compliment-card p{font-size:16px}
- .compliment-card h2{font-size:23px}
+ .compliment-card h2{font-size:24px}
 
- .picture-placeholder{
-  width:92px;
-  height:85px;
+ .compliment-photo-frame{
+  height:205px;
+  padding:4px;
+ }
+
+ .compliment-card .card-number{
+  letter-spacing:1.5px;
+ }
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+
+@media(prefers-reduced-motion:reduce){
+ .compliment-card,
+ .compliment-card:before,
+ .compliment-icon,
+ .compliment-glow,
+ .compliment-particles span{
+  animation:none;
+ }
+
+ .compliment-card,
+ .compliment-photo-frame,
+ .compliment-photo-frame img{
+  transition:none;
  }
 }
 </style>
@@ -1388,12 +1464,11 @@ button{cursor:pointer}
    <article class="compliment-card">
     <span class="compliment-icon">👀</span>
     <h2>Eyes</h2>
-    <div class="picture-placeholder" style="overflow:hidden;padding:0;border-style:solid;">
+    <div class="compliment-photo-frame">
      <img
       src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_160551.jpg"
       alt="Eyes Picture"
-      loading="lazy"
-      style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
+      loading="lazy">
     </div>
     <p>
      "Na jaane kaisa sukoon hai teri aankhon mein,
@@ -1407,12 +1482,11 @@ button{cursor:pointer}
    <article class="compliment-card">
     <span class="compliment-icon">😊</span>
     <h2>Smile</h2>
-    <div class="picture-placeholder" style="overflow:hidden;padding:0;border-style:solid;">
+    <div class="compliment-photo-frame">
      <img
       src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_160641.jpg"
       alt="Smile Picture"
-      loading="lazy"
-      style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
+      loading="lazy">
     </div>
     <p>
      "Teri muskurahat pe kuch yun fida ho gaye,
@@ -1426,12 +1500,11 @@ button{cursor:pointer}
    <article class="compliment-card">
     <span class="compliment-icon">👗</span>
     <h2>Outfit</h2>
-    <div class="picture-placeholder" style="overflow:hidden;padding:0;border-style:solid;">
+    <div class="compliment-photo-frame">
      <img
       src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_154908_969.jpg"
       alt="Outfit Picture"
-      loading="lazy"
-      style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
+      loading="lazy">
     </div>
     <p>
      "Na rangon ki zaroorat, na gehno ka sahaara hai,
@@ -1445,12 +1518,11 @@ button{cursor:pointer}
    <article class="compliment-card">
     <span class="compliment-icon">🌹</span>
     <h2>Face</h2>
-    <div class="picture-placeholder" style="overflow:hidden;padding:0;border-style:solid;">
+    <div class="compliment-photo-frame">
      <img
       src="https://raw.githubusercontent.com/mradnanhaiking-afk/FOR-HASBI-NAZ-/main/IMG_20261117_154839_774.jpg"
       alt="Face Picture"
-      loading="lazy"
-      style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
+      loading="lazy">
     </div>
     <p>
      "Na chaand ki chaahat, na taaron ki farmaish hai,
@@ -1565,83 +1637,6 @@ button{cursor:pointer}
     tension side mein rakhna aur khoob saara smile karna.
     You deserve beautiful moments, beautiful memories
     and all the happiness in the world. 🥺❤️
-   </p>
-
-   <!-- NEW EMOTIONAL CONTINUATION -->
-
-   <div class="gold-line"></div>
-
-   <p>
-    Hasbi, ek baat kahun...? Sirf tumhare andar hi dil nahi hai,
-    mere andar bhi dil hai. Mujhe bhi chot lagti hai, mujhe bhi
-    takleef hoti hai. Har baar tumhari baaton ko samajhne ki
-    koshish karte karte kabhi ye bhi sochna ki meri feelings ka kya?
-   </p>
-
-   <p>
-    Tumhe pata hai, mujhse us shaadi ko lekar baat kyun nahi
-    ho paati? Kyun us din ki yaad aaj bhi mujhe andar se bechain
-    kar deti hai? Kyunki maine us din koi shaadi nahi dekhi thi,
-    maine apna ek bharosa tutte hue dekha tha... jab maine tumhe
-    kisi aur ke kareeb dekha. Us pal jo mehsoos hua na, use
-    lafzon mein samjhana bahut mushkil hai. Mai andar se itna
-    toot gaya tha ki khud ko sambhalna bhi mushkil ho raha tha.
-    Us raat mai bahut ghabra gaya tha... aur shayad tumhe kabhi
-    andaza bhi nahi hua ki us waqt mai kis haal mein tha.
-   </p>
-
-   <p>
-    Maine tumhari feelings ko hamesha apni feelings se upar
-    rakha. Tumhari wajah se dusri ladkiyon se door raha, apni
-    boundaries banayi, kyunki mere liye tumhari jagah alag thi.
-    Lekin jab mujhe laga ki tum mujhse sach chhupa rahi ho,
-    toh sirf gussa nahi aaya, apne hi bharose par dukh hua.
-   </p>
-
-   <p>
-    Aur ab meri baatein tumhe kadwi aur buri lagne lagi hain na?
-    Meri fikr tumhe pareshani lagti hai, meri overthinking tumhe
-    irritate karti hai. 🙃 Lekin kabhi ye bhi sochna ki jis insaan
-    ki care tumhe aaj itni buri lag rahi hai, usne tumhari khushi
-    ke liye kitni baar apne dil ki baat chupayi hai.
-   </p>
-
-   <p>
-    Haan, mujhse bhi galtiyan hui hain. Kabhi gusse mein zyada
-    bol diya, kabhi ek hi baat baar baar keh di. Lekin iska matlab
-    ye toh nahi ki mere emotions ki koi value hi nahi? Mai bhi
-    thak jata hu har baar apni feelings samjhate samjhate.
-    Mujhe bhi kabhi tumhari taraf se samjhe jaane ki zaroorat hoti hai.
-   </p>
-
-   <p>
-    Mai tumhe rokna nahi chahta, tumhari freedom nahi cheenna
-    chahta. Lekin iska matlab ye bhi nahi ki har baar mai hi
-    apni takleef ko nazarandaaz karta rahun. Mai bhi chahta hu
-    ki tum meri feelings ko utni hi ahmiyat do jitni mai tumhari
-    feelings ko deta aaya hu.
-   </p>
-
-   <p>
-    Aur ek baat... mai tumse bahut pyaar karta hu Hasbi.
-    Itna ki tumhari wajah se aansu bhi bahaye hain, kitni baar
-    apne gusse ko pee kar chup bhi raha hu. Lekin ab mai apne
-    dil ko har baar ye samjha kar nahi rakh sakta ki shayad
-    agli baar tum meri feelings samjhogi.
-   </p>
-
-   <p>
-    Mai tumse ladna nahi chahta, bas chahta hu ki ek baar tum
-    meri jagah khud ko rakh kar dekho. Shayad tab tumhe samajh
-    aaye ki mai itna badla hua kyun lagne laga hu...
-   </p>
-
-   <p>
-    Mujhse galti ho gayi ki maine khud par tumhe itna haq de diya...
-    lekin ab nahi. Ab tum meri jagah rahogi aur mai tumhari jagah...
-    taaki ek baar tum bhi meri feelings ko mehsoos kar sako,
-    aur mai bhi samajh saku ki tumhari nazar mein meri jagah
-    aakhir hai kahan. 🥀
    </p>
 
    <div class="gold-line"></div>
